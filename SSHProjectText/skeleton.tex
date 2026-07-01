@@ -1,0 +1,125 @@
+% =========================================================================
+%  skeleton.tex
+%  A learning/editing playground that mirrors the section structure of
+%  VITALflow_2022.pdf. Every section is filled with Lorem Ipsum placeholder
+%  text so you can freely delete/replace it. Comments explain what each
+%  LaTeX command does.
+% =========================================================================
+
+\documentclass[10pt,twocolumn]{article}   % [options]{class}. twocolumn = two-column layout like IEEE papers.
+
+% ---- Packages (each \usepackage adds a capability) ----
+\usepackage[margin=0.75in]{geometry}      % controls page margins
+\usepackage{times}                        % use Times-like font
+\usepackage{graphicx}                     % enables \includegraphics for images
+\usepackage{booktabs}                     % nicer table rules (\toprule, \midrule, \bottomrule)
+\usepackage{amsmath}                      % math symbols/environments
+\usepackage{lipsum}                       % provides \lipsum[n] to generate placeholder text
+\usepackage{caption}                      % improves figure/table caption formatting
+\usepackage[colorlinks=true, citecolor=blue, linkcolor=blue, urlcolor=blue]{hyperref} % clickable links/citations
+
+% ---- Make section numbers show as Roman numerals (I, II, III...), like IEEE papers ----
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\Alph{subsection}}
+
+% ---- Title block metadata ----
+\title{\textbf{Your Paper Title Goes Here}}
+\author{
+    Author One$^*$, Author Two$^*$, Author Three$^\dagger$ \\
+    \small $^*$Affiliation One \quad $^\dagger$Affiliation Three
+}
+\date{} % empty date = no date shown
+
+\begin{document}
+
+% ---- Title + Abstract ----
+\maketitle % renders the \title/\author/\date block above
+\begin{abstract}
+\lipsum[1] % placeholder text, paragraph 1 of the lipsum package's built-in text
+\end{abstract}
+
+% =====================  I. INTRODUCTION  =====================
+\section{Introduction}
+\lipsum[2-3]
+
+% =====================  II. RELATED WORK  =====================
+\section{Related Work}
+\lipsum[4-5]
+
+% ============  III. TYPICAL TASKS AND REQUIREMENTS  ============
+\section{Typical Tasks and Visualization Requirements}
+\lipsum[6]
+
+% A basic table, similar to Table I in VITALflow.
+\begin{table}[t]
+\centering
+\caption{Example placeholder table}
+\label{tab:requirements}
+\begin{tabular}{lcccc}
+\toprule
+Requirement & Task 1 & Task 2 & Task 3 & Task 4 \\
+\midrule
+Row A & + & - & + & + \\
+Row B & tech & plan & - & + \\
+Row C & + & + & + & - \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\lipsum[7]
+
+% =====================  IV. APPROACH  =====================
+\section{Approach}
+\lipsum[8]
+
+% A figure using the first placeholder image.
+% [t] = try to place at the top of the page/column.
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\linewidth]{placeholder1.png} % width=\linewidth scales image to column width
+    \caption{Example figure placeholder. Replace \texttt{placeholder1.png} with your own image file.}
+    \label{fig:placeholder1}
+\end{figure}
+
+\subsection{First Component}
+\lipsum[9]
+
+\subsection{Second Component}
+\lipsum[10]
+
+\subsection{Third Component}
+\lipsum[11]
+
+% =====================  V. IMPLEMENTATION  =====================
+\section{Implementation}
+\lipsum[12]
+
+% A second figure using the other placeholder image, sized smaller.
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.8\linewidth]{placeholder2.png}
+    \caption{Second example figure, scaled to 80\% of column width.}
+    \label{fig:placeholder2}
+\end{figure}
+
+\lipsum[13]
+
+% ==============  VI. EVALUATION AND DISCUSSION  ==============
+\section{Evaluation and Discussion}
+\lipsum[14-15]
+
+% =====================  VII. SUMMARY  =====================
+\section{Summary}
+\lipsum[16]
+
+% ---- Unnumbered section (the * suppresses numbering) ----
+\section*{Acknowledgments}
+\lipsum[17]
+
+% ---- References ----
+% Uncomment the two lines below once you have a refs.bib file with entries,
+% and cite them in the text using \cite{yourkey}.
+% \bibliographystyle{plain}
+% \bibliography{refs}
+
+\end{document}
