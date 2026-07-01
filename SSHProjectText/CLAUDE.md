@@ -14,21 +14,30 @@ reproduce the actual paper content.
 
 ## Build commands
 
-Compile with pdflatex (run twice if cross-references/citations change, to resolve them):
+The file has a bibliography (`refs.bib`), so a full build needs 4 passes — pdflatex, bibtex, then
+pdflatex twice more to resolve citation numbers:
 
 ```
 pdflatex -interaction=nonstopmode skeleton.tex
+bibtex skeleton
 pdflatex -interaction=nonstopmode skeleton.tex
+pdflatex -interaction=nonstopmode skeleton.tex
+```
+
+Or just use `latexmk`, which figures out how many passes are needed automatically:
+
+```
+latexmk -pdf -interaction=nonstopmode skeleton.tex
 ```
 
 This produces `skeleton.pdf`. Clean up aux files after building:
 
 ```
-rm -f skeleton.aux skeleton.log skeleton.out
+rm -f skeleton.aux skeleton.log skeleton.out skeleton.bbl skeleton.blg skeleton.fdb_latexmk skeleton.fls
 ```
 
-Alternatively, open `skeleton.tex` in VS Code (LaTeX Workshop extension is installed) — it auto-builds
-on save and shows the rendered PDF in a side tab (see `.vscode/settings.json`).
+Alternatively, open `skeleton.tex` in VS Code (LaTeX Workshop extension is installed, backed by
+`latexmk`) — it auto-builds on save and shows the rendered PDF in a side tab (see `.vscode/settings.json`).
 
 ## Structure notes
 
@@ -37,7 +46,9 @@ on save and shows the rendered PDF in a side tab (see `.vscode/settings.json`).
   this environment — the skeleton uses plain `article` with `twocolumn` instead.
 - Figures reference `placeholder1.png` and `placeholder2.png` (generated with Pillow) at different
   `\includegraphics` widths, intentionally, to show how image scaling works.
-- The bibliography (`\bibliography{refs}`) is commented out — there is no `refs.bib` yet. Uncomment
-  and add a `.bib` file if citations are needed.
+- `refs.bib` holds real published-paper entries (citation keys, not full content) used to demonstrate
+  `\cite{}` in Introduction/Related Work/Approach, with `ieeetr` bibliography style (numbered brackets,
+  matching the source paper's citation look). BibTeX treats any `@` character as a new-entry marker,
+  even inside a `%` comment — don't type `@` in `refs.bib` comments, or parsing breaks.
 - Every non-obvious LaTeX command in `skeleton.tex` has an inline comment explaining what it does —
   keep that pattern when adding new constructs, since the file's purpose is pedagogical.

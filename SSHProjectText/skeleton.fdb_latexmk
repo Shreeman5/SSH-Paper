@@ -1,7 +1,14 @@
 # Fdb version 3
-["pdflatex"] 1782941476 "/home/shreeman/Desktop/SSHProjectText/skeleton.tex" "skeleton.pdf" "skeleton" 1782941476
+["bibtex skeleton"] 1782947398 "skeleton.aux" "skeleton.bbl" "skeleton" 1782947398
+  "/usr/share/texlive/texmf-dist/bibtex/bst/base/ieeetr.bst" 1292289607 18361 1a00e58565e7f19bf2b3e1bfb82254ae ""
+  "refs.bib" 1782947278 2508 0943168ef0a839a805a48bcb048f980c ""
+  "skeleton.aux" 1782947398 3223 85ce77ff44bdcab6c6b8e98dbb6bff20 "pdflatex"
+  (generated)
+  "skeleton.bbl"
+  "skeleton.blg"
+["pdflatex"] 1782947398 "/home/shreeman/Desktop/SSHPAPER/SSHProjectText/skeleton.tex" "skeleton.pdf" "skeleton" 1782947398
   "/etc/texmf/web2c/texmf.cnf" 1663268206 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/shreeman/Desktop/SSHProjectText/skeleton.tex" 1782941476 4116 d2023c9c11e2f09aa515e132d8cd012b ""
+  "/home/shreeman/Desktop/SSHPAPER/SSHProjectText/skeleton.tex" 1782947396 5110 4dd54872e52d1ede7ba21a8b432f9edf ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm" 1136768653 960 379cc0019370a9e0208a0a3f949f847a ""
@@ -10,6 +17,8 @@
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm" 1136768653 4524 6bce29db5bc272ba5f332261583fee9c ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmr7t.tfm" 1136768653 2124 2601a75482e9426d33db523edf23570a ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm" 1136768653 4408 25b74d011a4c66b7f212c0cc3c90061b ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmri7t.tfm" 1136768653 2288 f478fc8fed18759effb59f3dad7f3084 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm" 1136768653 4640 532ca3305aad10cc01d769f3f91f1029 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex9.tfm" 1246382020 996 a18840b13b499c08ac2de96a99eda4bc ""
@@ -31,9 +40,11 @@
   "/usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb" 1136849748 45758 19968a0990191524e34e1994d4a31cb6 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb" 1136849748 44729 811d6c62865936705a31c797a1d5dada ""
   "/usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb" 1136849748 46026 6dab18b61c907687b520c72847215a68 ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb" 1136849748 45458 a3faba884469519614ca56ba5f6b1de1 ""
   "/usr/share/texlive/texmf-dist/fonts/vf/adobe/courier/pcrr7t.vf" 1136768653 1344 6ff472164bf9de0fb2e864b28ac156d9 ""
   "/usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmb7t.vf" 1136768653 1372 788387fea833ef5963f4c5bffe33eb89 ""
   "/usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf" 1136768653 1380 0ea3a3370054be6da6acd929ec569f06 ""
+  "/usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmri7t.vf" 1136768653 1384 a9d8adaf491ce34e5fba99dc7bbe5f39 ""
   "/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1461363279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/share/texlive/texmf-dist/tex/generic/atbegshi/atbegshi.sty" 1575674566 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
   "/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty" 1576625341 40635 c40361e206be584d448876bba8a64a3b ""
@@ -101,9 +112,10 @@
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1769877273 1405650 58012aa87c010ead885f379aede1e4ae ""
   "placeholder1.png" 1782940552 1917 c4a10213baf80f68bfed6d689656ed01 ""
   "placeholder2.png" 1782940552 2082 1251d421d59c0c859f314910d990207e ""
-  "skeleton.aux" 1782941476 2824 735fef616d32b7ff5e424aa4f5d51923 "pdflatex"
-  "skeleton.out" 1782941476 1343 274292ce85eb03d99ec4ee673df66da5 "pdflatex"
-  "skeleton.tex" 1782941476 4116 d2023c9c11e2f09aa515e132d8cd012b ""
+  "skeleton.aux" 1782947398 3223 85ce77ff44bdcab6c6b8e98dbb6bff20 "pdflatex"
+  "skeleton.bbl" 1782947398 1483 b2e73302f062e1b0cd9857cf75057e23 "bibtex skeleton"
+  "skeleton.out" 1782947398 1343 274292ce85eb03d99ec4ee673df66da5 "pdflatex"
+  "skeleton.tex" 1782947396 5110 4dd54872e52d1ede7ba21a8b432f9edf ""
   (generated)
   "skeleton.aux"
   "skeleton.log"

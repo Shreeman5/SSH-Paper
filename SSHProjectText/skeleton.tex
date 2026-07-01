@@ -41,10 +41,15 @@
 % =====================  I. INTRODUCTION  =====================
 \section{Introduction}
 \lipsum[2-3]
+% \cite{key} inserts a numbered, clickable citation like [1] wherever it appears.
+% Multiple keys in one \cite{a,b} produce a combined citation like [1], [2].
+NetFlow-based monitoring is a well-established foundation for this kind of analysis \cite{hofstede2014flow}.
 
 % =====================  II. RELATED WORK  =====================
 \section{Related Work}
 \lipsum[4-5]
+Prior visual analytics work has explored suspicious-behavior detection \cite{goodall2019situ} and
+broader surveys of network security visualization \cite{shiravi2012survey}.
 
 % ============  III. TYPICAL TASKS AND REQUIREMENTS  ============
 \section{Typical Tasks and Visualization Requirements}
@@ -71,6 +76,9 @@ Row C & + & + & + & - \\
 % =====================  IV. APPROACH  =====================
 \section{Approach}
 \lipsum[8]
+Our clustering of daily time series builds on the calendar-based approach of \cite{vanwijk1999cluster},
+while the multi-dimensional filtering view is inspired by parallel sets \cite{kosara2006parallel} and
+parallel coordinates \cite{inselberg1987parallel}.
 
 % A figure using the first placeholder image.
 % [t] = try to place at the top of the page/column.
@@ -117,9 +125,12 @@ Row C & + & + & + & - \\
 \lipsum[17]
 
 % ---- References ----
-% Uncomment the two lines below once you have a refs.bib file with entries,
-% and cite them in the text using \cite{yourkey}.
-% \bibliographystyle{plain}
-% \bibliography{refs}
+% \bibliographystyle sets the citation format; ieeetr = numbered brackets [1], [2], ...
+% sorted by order of first citation, matching the look of the reference paper.
+% \bibliography{refs} pulls entries from refs.bib that were \cite{}'d above.
+% Compiling references requires an extra pass: pdflatex -> bibtex -> pdflatex -> pdflatex
+% (VS Code's LaTeX Workshop "Build LaTeX project" recipe does all of this automatically).
+\bibliographystyle{ieeetr}
+\bibliography{refs}
 
 \end{document}

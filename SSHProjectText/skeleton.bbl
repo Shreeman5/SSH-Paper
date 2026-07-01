@@ -1,0 +1,34 @@
+\begin{thebibliography}{1}
+
+\bibitem{hofstede2014flow}
+R.~Hofstede, P.~Celeda, B.~Trammell, I.~Drago, R.~Sadre, A.~Sperotto, and
+  A.~Pras, ``Flow monitoring explained: From packet capture to data analysis
+  with netflow and ipfix,'' {\em IEEE Communications Surveys \& Tutorials},
+  vol.~16, no.~4, 2014.
+
+\bibitem{goodall2019situ}
+J.~R. Goodall, E.~D. Ragan, C.~A. Steed, J.~W. Reed, G.~D. Richardson, K.~M.~T.
+  Huffer, R.~A. Bridges, and J.~A. Laska, ``Situ: Identifying and explaining
+  suspicious behavior in networks,'' {\em IEEE Transactions on Visualization
+  and Computer Graphics}, vol.~25, no.~1, 2019.
+
+\bibitem{shiravi2012survey}
+H.~Shiravi, A.~Shiravi, and A.~A. Ghorbani, ``A survey of visualization systems
+  for network security,'' {\em IEEE Transactions on Visualization and Computer
+  Graphics}, vol.~18, no.~8, 2012.
+
+\bibitem{vanwijk1999cluster}
+J.~J. van Wijk and E.~R. van Selow, ``Cluster and calendar based visualization
+  of time series data,'' in {\em Proceedings IEEE Symposium on Information
+  Visualization}, 1999.
+
+\bibitem{kosara2006parallel}
+R.~Kosara, F.~Bendix, and H.~Hauser, ``Parallel sets: Interactive exploration
+  and visual analysis of categorical data,'' {\em IEEE Transactions on
+  Visualization and Computer Graphics}, vol.~12, no.~4, 2006.
+
+\bibitem{inselberg1987parallel}
+A.~Inselberg and B.~Dimsdale, ``Parallel coordinates for visualizing
+  multi-dimensional geometry,'' in {\em Computer Graphics 1987}, 1987.
+
+\end{thebibliography}
