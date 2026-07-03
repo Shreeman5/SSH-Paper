@@ -3,44 +3,49 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: skeleton.aux
 The style file: ieeetr.bst
 Database file #1: refs.bib
-You've used 3 entries,
+Warning--I didn't find a database entry for "vanwijk1999cluster"
+Warning--I didn't find a database entry for "kosara2006parallel"
+Warning--I didn't find a database entry for "inselberg1987parallel"
+Warning--empty journal in mansmann2006interactive
+You've used 52 entries,
             1876 wiz_defined-function locations,
-            493 strings with 4009 characters,
-and the built_in function-call counts, 540 in all, are:
-= -- 38
-> -- 27
+            778 strings with 15668 characters,
+and the built_in function-call counts, 17953 in all, are:
+= -- 1737
+> -- 725
 < -- 0
-+ -- 10
-- -- 7
-* -- 38
-:= -- 91
-add.period$ -- 3
-call.type$ -- 3
-change.case$ -- 3
++ -- 260
+- -- 208
+* -- 1270
+:= -- 2391
+add.period$ -- 52
+call.type$ -- 52
+change.case$ -- 52
 chr.to.int$ -- 0
-cite$ -- 3
-duplicate$ -- 35
-empty$ -- 66
-format.name$ -- 7
-if$ -- 124
+cite$ -- 53
+duplicate$ -- 983
+empty$ -- 1729
+format.name$ -- 208
+if$ -- 4406
 int.to.chr$ -- 0
-int.to.str$ -- 3
-missing$ -- 3
-newline$ -- 12
-num.names$ -- 3
-pop$ -- 18
+int.to.str$ -- 52
+missing$ -- 52
+newline$ -- 159
+num.names$ -- 52
+pop$ -- 270
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 7
+skip$ -- 690
 stack$ -- 0
-substring$ -- 0
-swap$ -- 3
+substring$ -- 1372
+swap$ -- 411
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 0
-while$ -- 3
-width$ -- 4
-write$ -- 28
+warning$ -- 1
+while$ -- 197
+width$ -- 54
+write$ -- 516
+(There were 4 warnings)
