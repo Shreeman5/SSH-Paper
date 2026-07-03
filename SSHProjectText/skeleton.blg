@@ -3,44 +3,44 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: skeleton.aux
 The style file: ieeetr.bst
 Database file #1: refs.bib
-You've used 6 entries,
+You've used 3 entries,
             1876 wiz_defined-function locations,
-            510 strings with 4656 characters,
-and the built_in function-call counts, 1173 in all, are:
-= -- 80
-> -- 87
+            493 strings with 4009 characters,
+and the built_in function-call counts, 540 in all, are:
+= -- 38
+> -- 27
 < -- 0
-+ -- 31
-- -- 25
-* -- 104
-:= -- 208
-add.period$ -- 6
-call.type$ -- 6
-change.case$ -- 6
++ -- 10
+- -- 7
+* -- 38
+:= -- 91
+add.period$ -- 3
+call.type$ -- 3
+change.case$ -- 3
 chr.to.int$ -- 0
-cite$ -- 6
-duplicate$ -- 62
-empty$ -- 117
-format.name$ -- 25
-if$ -- 259
+cite$ -- 3
+duplicate$ -- 35
+empty$ -- 66
+format.name$ -- 7
+if$ -- 124
 int.to.chr$ -- 0
-int.to.str$ -- 6
-missing$ -- 6
-newline$ -- 21
-num.names$ -- 6
-pop$ -- 24
+int.to.str$ -- 3
+missing$ -- 3
+newline$ -- 12
+num.names$ -- 3
+pop$ -- 18
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 10
+skip$ -- 7
 stack$ -- 0
 substring$ -- 0
-swap$ -- 6
+swap$ -- 3
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 6
-width$ -- 7
-write$ -- 58
+while$ -- 3
+width$ -- 4
+write$ -- 28

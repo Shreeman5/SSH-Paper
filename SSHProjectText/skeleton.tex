@@ -23,10 +23,10 @@
 \renewcommand{\thesubsection}{\Alph{subsection}}
 
 % ---- Title block metadata ----
-\title{\textbf{Your Paper Title Goes Here}}
+\title{\textbf{SSHVisual: Visual Tool to Analyze SSH Data}}
 \author{
-    Author One$^*$, Author Two$^*$, Author Three$^\dagger$ \\
-    \small $^*$Affiliation One \quad $^\dagger$Affiliation Three
+    Shreeman Gautam$^*$, Robert Ricci$^*$\\
+    \small $^*$University of Utah
 }
 \date{} % empty date = no date shown
 
@@ -35,25 +35,116 @@
 % ---- Title + Abstract ----
 \maketitle % renders the \title/\author/\date block above
 \begin{abstract}
-\lipsum[1] % placeholder text, paragraph 1 of the lipsum package's built-in text
+Attackers attempt to log in to computer systems or servers all over the world in order to use them for nefarious purposes. We have collected 
+the login attempts by these attackers on our servers over SSH. Previous works in network visualization have 1. analyzed the attackers' IP  
+and AS dimension of the SSH logins, 2. used automated detection systems to find anomalous network events given baseline events and, 3. employed  
+collaborative methods to help analysts share findings about network events with each other. With our visualization SSHVisual, we 1. analyze the
+IP and AS and give more attention to the username dimension of SSH attacker logins to draw a holistic picture of SSH attackers in service of SSH 
+campaign detection, 2. utilize detection by analysts of anomalous events in absence of baseline events, 3. employ collaboration like previous
+works, 4. use a novel similarity metric to find out attacker persistence over time and 5. correlate SSH attacks with real-world events. We
+build all these features in SSHVisual by studying tasks and requirements of network administrators. Using case studies with network admins, we 
+demonstrate that our approach helps them find important events from data.
 \end{abstract}
 
 % =====================  I. INTRODUCTION  =====================
 \section{Introduction}
-\lipsum[2-3]
-% \cite{key} inserts a numbered, clickable citation like [1] wherever it appears.
-% Multiple keys in one \cite{a,b} produce a combined citation like [1], [2].
-NetFlow-based monitoring is a well-established foundation for this kind of analysis \cite{hofstede2014flow}.
+Computer systems worldwide employ SSH to allow their users to securely connect to them in order to execute commands and do remote administration.
+A lot of users do a username, password combination (password based authentication) in order to gain entry to the SSH server with key based 
+authentication being less common. Attackers, who are adversarial in nature, can use brute force attack mechanisms to get into SSH servers. Sometimes, 
+they guess what the username, password combinations are and other times, they take advantage of poorly secured servers. Then, these attackers
+use these servers to launch botnet campaigns to carry out further attacks or steal resources from the servers, like cryptomining.
+
+Knowing the prevalence of SSH attacks in the IPv4 space, we decided to collect SSH data with our servers with the purpose of understanding 
+attacker behavior visually and holistically. To that end, we built a visual tool called SSHvisual in order to address the gaps that existing
+network visualizations have and use best practices that network visualizations already employ. Surveys of network visualizations [1]–[5] 
+establish both the maturity of the network visualization field and the gaps we target.
+
+Three visual contributions address the gaps we have found. First, actor-level analysis: we treat the attacker as a first-class actor — including the username identity, 
+not only the source IP or autonomous system (AS) — and we identify coordinated campaigns, since our data affords no stable baseline for 
+automated detection. Second, we apply a novel similarity metric to these actors, particularly in the username dimension, as they evolve over time. 
+Third, we corroborate actor behavior in the visualization with real world events, with a particular emphasis on the username dimension given the limitations of 
+IP corroboration. Additionally, following established practices, we allow for analyst driven collaboration and labeling of irregularities found in the data.
 
 % =====================  II. RELATED WORK  =====================
 \section{Related Work}
-\lipsum[4-5]
-Prior visual analytics work has explored suspicious-behavior detection \cite{goodall2019situ} and
-broader surveys of network security visualization \cite{shiravi2012survey}.
+
+A long line of tools [6, 7, 8, 10, 27, 12, 21, 13] render network traffic and security events navigable for operators and analysts with the majority being network flow 
+and traffic oriented. Additionally, a smaller alert- and log-oriented group [9, 23, 26, 15, 16, 11, 18, 22, 19, 20] organizes IDS output and heterogeneous logs of which
+[15] contributes a visual analysis (of the CICIDS2017 dataset) that isolates attack clusters — including SSH brute-force (SSH-Patator) — through clustering and 
+dimensionality reduction, namely a multi-resolution wavelet-feature analysis.
+
+
+\subsection{Attack Campaigns (Emphasis on the Username Dimension) with Time}
+
+Honeypot literature does not promote the username identity as an actor in its own right (for attack campaign detection purposes): it remains an attribute to count, never a 
+unit to track — the unit that, alongside the IP and AS, anchors our analysis. Some papers [30, 31, 32, 34, 35, 36, 38] collect and chart honeypot traffic, with several of them 
+capturing SSH credentials (usernames and passwords). Where credentials are charted — the SCADA SSH honeypot [34], kippo-graph [35], and the container deployment [36] — 
+usernames and passwords  appear only as static top-N tallies (kippo-graph's top-10  username and password bars are the archetype), never placed on a time axis even where 
+the same tool charts attack volume over time.The WAN honeypot framework [37] is the closest prior system on the credential axis: it computes an IP-to-IP dictionary-overlap 
+(containment) score to probe whether six same-/24 source IPs share a wordlist — a manual, one-off prototype of credential-based coordination analysis, performed on the 
+IP unit and without a temporal dimension. 
+
+
+
+\subsection{Attacker Similarity (Emphasis on the Username Dimension) with Time}
+Computed similarity between entities is well established in literature [14, 24, 28, 29]. We do not claim similarity computation itself as novel; the contribution lies in the entity 
+it operates on and how it moves through time. On the entity: these systems cluster internal hosts [14], behavioral profiles [28], IP/port members [29], or  internal enterprise users 
+grouped by shared resources — not external attacker identities [24]. None treats the username as an attacker actor. On time: [29, 28] reach into the temporal dimension, 
+but both do not compute the similarity of the attacker population across consecutive windows. We apply similarity based metrics — for example, Jaccard overlap of 
+attackers between successive windows — particularly to the username actor unit, capturing how the attacker population persists or churns over time.
+
+\subsection{Limits of automated detection}
+A central premise of our approach is that SSH traffic does not admit the "normal baseline" that automated anomaly and campaign detection presuppose. 
+The broader literature documents why such detection is fragile: Sommer and Paxson [M1] note that, despite extensive research, 
+machine-learning anomaly detection is rarely deployed for intrusion detection, given the enormous variability of "normal," the high cost of errors, 
+and the difficulty of sound evaluation; Axelsson [M2] shows that automated anomaly detection is throttled by the base-rate fallacy: where intrusions are 
+rare relative to benign traffic, the false-positive rate becomes the limiting factor. Honeypot traffic departs from that setting entirely — it offers 
+no stable 'normal' against which to define an anomaly, with Gates and Taylor [M3] supporting our approach by challenging the paradigm directly, 
+questioning that anomalies and attacks are rare, that a stable normal exists and sometimes normal traffic may be malicious and malicious traffic may be 
+normal, finally observing that detection ultimately devolves to an analyst manually investigating clusters of activity. 
+
+This fragility is visible from some of the papers referenced so far. The automated detectors there are built on a per-actor baseline: Situ [14] learns a 
+probabilistic model of each IP's behavior and flags low-probability events, and CLIQUE [25] scores each actor's deviation from a calculated baseline of 
+its own expected activity. Both presume the stable per-actor "normal" that honeypot traffic — near-uniformly hostile and constantly churning — cannot supply, 
+so they do not transfer to this setting by construction. And even where such a baseline does hold, Situ itself concedes that automation is not enough: 
+having reviewed the limits of signature-, supervised-, and reputation-based detection, it argues that operators "do not want another automated tool with 
+algorithms they do not trust," and builds a human-in-the-loop visual analytics system instead. We reach the same conclusion from a starker starting point: 
+lacking even the per-actor baseline these systems assume, we treat anomaly and campaign detection as analyst-driven from the outset, providing visual support 
+for it rather than another automated detector.
+
+\subsection{Actor identity and real-world event correlation}
+The attacks we observe do not arrive at a steady rate; they rise, fall, and change in character as events unfold in the wider world, so understanding 
+them means lining them up against what is happening outside the network. The link is well documented: Bilge and Dumitras [M7] found that the number of 
+attacks against a given vulnerability can jump by up to five orders of magnitude — a hundred-thousand-fold increase — once it is publicly disclosed, and 
+Sabottke et al. [M8] showed that future exploitation can be predicted from signals in disclosure channels alone. Allodi and Massacci [M9] add that a vulnerability's 
+official severity score is a poor guide to whether it is actually attacked, so the dependable way to learn what attackers are reacting to is to watch real 
+activity and line it up against real events, not to read it off a score. We want to do this at the level of a campaign — a group of attackers acting together — 
+rather than one attacker at a time, and that raises a practical problem: a campaign rarely shows up as a single source address. IP addresses do not stay tied to 
+one machine — one host is assigned many addresses over time [M4], hosts cycle through new addresses [M5], and counting by address can overstate the number of 
+real machines by orders of magnitude [M6] — so it is likely that a view organized by address scatters one campaign across dozens of entries that look unrelated. 
+The username pulls those pieces back together: the same login names likely recur across the changing addresses, so grouping by username re-assembles the 
+campaign that an address-by-address view splits apart. A username is not a perfect identity either — names like "root" are tried by almost everyone, and 
+one campaign runs through a whole list of names — so we treat it as one analysis dimension alongside the address and the network it belongs to (its AS), 
+resolving the overlaps with the similarity and grouping methods above. 
+
+\subsection{Analyst labeling and collaboration (Emphasis on the Username Dimension)}
+Because detection on this data is analyst-driven, the findings an operator produces by hand must be captured and shared rather than discarded. 
+In two, lines of work [17, 21], interactive labeling has been used to fold the analyst's judgments back into the system. Collaborative analysis has been 
+supported through shared artifacts with [12] and [27] being notable examples. These systems establish that labeling and collaboration are valuable, 
+but each works on a different kind of data and a different unit: none lets an analyst group username-level campaign actors observed in SSH login traffic 
+into a named, persistent artifact that other operators can see and build on. Our labeling-and-sharing mechanism is the step that turns a manually 
+identified set of usernames into a durable, shared campaign.
+
 
 % ============  III. TYPICAL TASKS AND REQUIREMENTS  ============
 \section{Typical Tasks and Visualization Requirements}
-\lipsum[6]
+\lipsum[8]
+
+\subsection{Data and Domain Characterization}
+\lipsum[9]
+
+\subsection{Task Abstraction}
+\lipsum[10]
 
 % A basic table, similar to Table I in VITALflow.
 \begin{table}[t]
@@ -71,11 +162,11 @@ Row C & + & + & + & - \\
 \end{tabular}
 \end{table}
 
-\lipsum[7]
+\lipsum[11]
 
 % =====================  IV. APPROACH  =====================
 \section{Approach}
-\lipsum[8]
+\lipsum[12]
 Our clustering of daily time series builds on the calendar-based approach of \cite{vanwijk1999cluster},
 while the multi-dimensional filtering view is inspired by parallel sets \cite{kosara2006parallel} and
 parallel coordinates \cite{inselberg1987parallel}.
@@ -85,40 +176,74 @@ parallel coordinates \cite{inselberg1987parallel}.
 \begin{figure}[t]
     \centering
     \includegraphics[width=\linewidth]{placeholder1.png} % width=\linewidth scales image to column width
-    \caption{Example figure placeholder. Replace \texttt{placeholder1.png} with your own image file.}
+    \caption{Show campaign detection using username+IP+AS}
     \label{fig:placeholder1}
 \end{figure}
 
 \subsection{First Component}
-\lipsum[9]
-
-\subsection{Second Component}
-\lipsum[10]
-
-\subsection{Third Component}
-\lipsum[11]
-
-% =====================  V. IMPLEMENTATION  =====================
-\section{Implementation}
-\lipsum[12]
+\lipsum[13]
 
 % A second figure using the other placeholder image, sized smaller.
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.8\linewidth]{placeholder2.png}
-    \caption{Second example figure, scaled to 80\% of column width.}
+    \caption{Show collaboration + labeling}
     \label{fig:placeholder2}
 \end{figure}
 
-\lipsum[13]
+\subsection{Second Component}
+\lipsum[14]
+
+\subsection{Third Component}
+\lipsum[15]
+
+% A second figure using the other placeholder image, sized smaller.
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.8\linewidth]{placeholder2.png}
+    \caption{Show similarity metric at play}
+    \label{fig:placeholder2}
+\end{figure}
+
+% =====================  V. IMPLEMENTATION  =====================
+\section{Implementation}
+\lipsum[16]
+
+\subsection{System Architecture}
+\lipsum[17]
+
+\subsection{Data Pipeline}
+\lipsum[18]
+
+% A second figure using the other placeholder image, sized smaller.
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.8\linewidth]{placeholder2.png}
+    \caption{Show correlation of attacks with real events}
+    \label{fig:placeholder2}
+\end{figure}
+
+\lipsum[19]
 
 % ==============  VI. EVALUATION AND DISCUSSION  ==============
 \section{Evaluation and Discussion}
-\lipsum[14-15]
+\lipsum[20-21]
+
+\subsection{Case Studies}
+\lipsum[22]
+
+\subsection{Discussion}
+\lipsum[23]
 
 % =====================  VII. SUMMARY  =====================
 \section{Summary}
-\lipsum[16]
+\lipsum[24]
+
+\subsection{Limitations}
+\lipsum[25]
+
+\subsection{Future Work}
+\lipsum[26]
 
 % ---- Unnumbered section (the * suppresses numbering) ----
 \section*{Acknowledgments}
