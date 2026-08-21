@@ -34,33 +34,55 @@
 
 % ---- Title + Abstract ----
 \maketitle % renders the \title/\author/\date block above
-\begin{abstract}
-Attackers attempt to log in to computer systems or servers all over the world in order to use them for nefarious purposes. We have collected the login attempts by these attackers on our 
-servers over SSH. Previous works in network visualization have 1. analyzed the attackers' IP  and AS dimension of the SSH logins, 2. used automated detection systems to find anomalous 
-network events given baseline events and, 3. employed collaborative methods to help analysts share findings about network events with each other. With our visualization SSHVisual, 
-we 1. analyze the IP and AS and give more attention to the username dimension of SSH attacker logins to draw a holistic picture of SSH attackers in service of SSH campaign detection, 
-2. utilize detection by analysts of anomalous events in absence of baseline events, 3. employ collaboration like previous works, 4. use a novel similarity metric to find out attacker 
-persistence over time and 5. correlate SSH attacks with real-world events. We build all these features in SSHVisual by studying tasks and requirements of network administrators. Using 
-case studies with network admins, we demonstrate that our approach helps them find important events from data.
+\begin{abstract} 
+
+[CONTEXT/BACKGROUND] Network operators use visualizations to detect attacks on their systems, exploring and interacting with data to uncover patterns 
+that would otherwise stay hidden. Operators then use these findings to block attackers and to expand the knowledge base of known threats. Detecting
+anomalies and uncovering deeper patterns iteratively in data is at best, tedious and at worst, not achievable without data visualizations.
+
+[EXISTING PROBLEM] Previous works in network visualization analyzed the IP and AS dimensions of SSH logins without much focus on the username aspect of 
+the attackers' attempts, detected anomalous network events only where baseline events were available, and enabled operators to share findings with one 
+another. Little attention has been paid to whether attackers observed at different times represent the same persistent actor.
+
+[OUR SOLUTION] We present an iterative visualization SSHVisual, using login attempts collected on our own SSH-facing systems. SSHVisual analyzes the IP, AS, and username dimensions 
+of SSH attacks, in service of SSH campaign detection. It complements automated detection by allowing operators to find anomalous events without baseline events. 
+It correlates SSH attacks with real-world events, and it introduces a similarity metric that quantifies attacker persistence over time. Like previous 
+systems, SSHVisual supports iterative and collaborative sharing of findings between operators.
+
+[EVALUATION AND CONCLUSION] We evaluated SSHVisual in a qualitative study with network operators and found that it helps them block attacks
+and uncover patterns. Participants identified campaigns 
+in which a set of attempted usernames recurred across unrelated IPs and ASes, and reported that this activity would not have surfaced in their 
+existing tooling. The similarity metric surfaced attackers returning across different time periods despite changing network origin. SSHVisual shows that treating 
+usernames as a first-class analytic dimension reveals attacker coordination that IP-centric analysis misses, and that exploratory, operator-driven 
+detection remains valuable precisely where automated methods are weakest. [THIS PARAGRAPH CAN CHANGE IF WE DECIDE TO EVALUATE IT OURSELVES]
+
 \end{abstract}
 
 % =====================  I. INTRODUCTION  =====================
 \section{Introduction}
-Computer systems worldwide employ SSH \cite{ylonen1996ssh} to allow their users to securely connect to them in order to execute commands and do remote administration. A lot of users do a username, password 
-combination (password based authentication) in order to gain entry to the SSH server. Attackers, who are adversarial in nature, can use 
-brute force attack mechanisms \cite{295683} to get into SSH servers. Sometimes, they guess what the username, password combinations are and other times, they take advantage of poorly secured servers 
-to build botnets \cite{295683} to carry out further attacks \cite{antonakakis2017understanding, kolias2017ddos} or steal resources from the servers, like cryptomining \cite{dang2019understanding, pastrana2019first}.
+Computer systems worldwide employ SSH \cite{ylonen1996ssh} to allow their users to securely connect to them in order to execute commands and do remote 
+administration. A lot of users do a username, password combination (password based authentication) in order to gain entry to the SSH system. Attackers, 
+who are adversarial in nature, can use brute force attack mechanisms \cite{295683} to get into SSH systems. Sometimes, they guess what the username, 
+password combinations are and other times, they take advantage of poorly secured systems to build botnets \cite{295683} to carry out further attacks 
+\cite{antonakakis2017understanding, kolias2017ddos} or steal resources from the systems, like cryptomining \cite{dang2019understanding, pastrana2019first}.
 
-Knowing the prevalence of SSH attacks in the IPv4 space, we decided to collect SSH data with our servers with the purpose of understanding attacker behavior visually and holistically. To 
-that end, we built a visual tool called SSHvisual in order to address the gaps that existing network visualizations have and use best practices that network visualizations already employ. 
-Surveys of network visualizations \cite{7166305, 6007132, zhang2017survey, raynor2022state, wu2018research} establish both the maturity of the network visualization 
-field and the gaps we target.
+Given the prevalence of SSH attacks in the IPv4 space \cite{295683}, we collect SSH login data on our own systems and present SSHVisual. SSHVisual serves 
+two kinds of network operators. Network administrators, who handle day-to-day SSH traffic, need to identify attackers quickly and block them. Security 
+analysts, who study traffic over longer time periods, look for patterns that are not immediately apparent and share what they find across organizations. Consider 
+a single time period: an administrator can isolate the highest-volume attacker and block it immediately, while an analyst examining the same window can iteratively
+surface a set of low-frequency attackers that attempt an identical sequence of usernames, and group them as a coordinated botnet.
 
-Three visual contributions address the gaps we have found. First, actor-level analysis: we treat the attacker as a first-class actor — including the username identity, not only the source 
-IP or autonomous system (AS) — and we identify coordinated campaigns, since our data affords no stable baseline for automated detection. Second, we apply a novel similarity metric to these 
-actors, particularly in the username dimension, as they evolve over time. Third, we corroborate actor behavior in the visualization with real world events, with a particular emphasis on the 
-username dimension given the limitations of IP corroboration. Additionally, following established practices, we allow for analyst driven collaboration and labeling of irregularities found 
-in the data.
+Surveys of network visualization \cite{7166305, 6007132, zhang2017survey, raynor2022state, wu2018research} establish the maturity of the field and the gaps 
+we target. Our contributions follow from treating the username as an attacker identity. First, actor-level analysis: we treat the attacker as a 
+first-class actor — including the username identity, not only the source IP or autonomous system (AS) — and we identify coordinated campaigns. Since our data 
+affords no stable baseline for automated detection, this identification is necessarily exploratory (therefore, not antagonistic but complementary to automated
+detection with stable baselines) — operators recognize coordination visually rather than specifying it in advance. Second, a similarity metric that 
+quantifies attacker similarity and lets operators track how actors evolve in the username dimension across time periods. 
+Third, correlation of actor behavior with real-world events, which is more tractable through usernames than IPs, given the limitations of IP corroboration.
+Additionally, following established practices, we allow for iterative operator driven collaboration and labeling of irregularities found in the data.
+
+The rest of the paper is as follows: Section II is Related Work, Section III is Task Requirements (WOULD IT BE FAIR THAT WE ESTABLISH THE REQUIREMENTS WITHOUT 
+CONSULTING ANY NETWORK OPERATORS?), Section IV is Design, Section V is Evaluation and Section VI is Conclusion and Future Work.
 
 % =====================  II. RELATED WORK  =====================
 \section{Related Work}
@@ -73,7 +95,7 @@ organizes IDS output and heterogeneous logs of which
 dimensionality reduction, namely a multi-resolution wavelet-feature analysis.
 
 
-\subsection{Attack Campaigns (Emphasis on the Username Dimension) with Time}
+\subsection{Attack Campaigns with Time}
 
 Honeypot literature does not promote the username identity as an actor in its own right (for attack campaign detection purposes): it remains an attribute to count, never a 
 unit to track — the unit that, alongside the IP and AS, anchors our analysis. Some papers \cite{djap2021xb, visoottiviseth2011distributed, baykara2018novel, belqruch2019scada,
@@ -86,8 +108,7 @@ the same tool charts attack volume over time.The WAN honeypot framework \cite{fr
 IP unit and without a temporal dimension. 
 
 
-
-\subsection{Attacker Similarity (Emphasis on the Username Dimension) with Time}
+\subsection{Attacker Similarity with Time}
 Computed similarity between entities is well established in literature \cite{goodall2018situ, liao2012intelligent, pike2008putting, hao2015ensemble}. We do not claim similarity computation itself as novel; the contribution lies in the entity 
 it operates on and how it moves through time. On the entity: these systems cluster internal hosts \cite{goodall2018situ}, behavioral profiles \cite{pike2008putting}, IP/port members \cite{hao2015ensemble}, or  internal enterprise users 
 grouped by shared resources — not external attacker identities \cite{liao2012intelligent}. None treats the username as an attacker actor. On time: \cite{pike2008putting, hao2015ensemble} reach into the temporal dimension, 
@@ -95,14 +116,14 @@ but both do not compute the similarity of the attacker population across consecu
 attackers between successive windows — particularly to the username actor unit, capturing how the attacker population persists or churns over time.
 
 \subsection{Limits of automated detection}
-A central premise of our approach is that SSH traffic does not admit the "normal baseline" that automated anomaly and campaign detection presuppose. 
+One premise of our approach is that SSH traffic does not admit the "normal baseline" that automated anomaly and campaign detection presuppose. 
 The broader literature documents why such detection is fragile: Sommer and Paxson \cite{sommer2010outside} note that, despite extensive research, 
 machine-learning anomaly detection is rarely deployed for intrusion detection, given the enormous variability of "normal," the high cost of errors, 
 and the difficulty of sound evaluation; Axelsson \cite{axelsson2000base} shows that automated anomaly detection is throttled by the base-rate fallacy: where intrusions are 
 rare relative to benign traffic, the false-positive rate becomes the limiting factor. Honeypot traffic departs from that setting entirely — it offers 
 no stable 'normal' against which to define an anomaly, with Gates and Taylor \cite{gates2006challenging} supporting our approach by challenging the paradigm directly, 
 questioning that anomalies and attacks are rare, that a stable normal exists and sometimes normal traffic may be malicious and malicious traffic may be 
-normal, finally observing that detection ultimately devolves to an analyst manually investigating clusters of activity. 
+normal, finally observing that detection ultimately devolves to an operator manually investigating clusters of activity. 
 
 This fragility is visible from some of the papers referenced so far. The automated detectors there are built on a per-actor baseline: Situ \cite{goodall2018situ} learns a 
 probabilistic model of each IP's behavior and flags low-probability events, and CLIQUE \cite{best2011atypical} scores each actor's deviation from a calculated baseline of 
@@ -110,7 +131,7 @@ its own expected activity. Both presume the stable per-actor "normal" that honey
 so they do not transfer to this setting by construction. And even where such a baseline does hold, Situ itself concedes that automation is not enough: 
 having reviewed the limits of signature-, supervised-, and reputation-based detection, it argues that operators "do not want another automated tool with 
 algorithms they do not trust," and builds a human-in-the-loop visual analytics system instead. We reach the same conclusion from a starker starting point: 
-lacking even the per-actor baseline these systems assume, we treat anomaly and campaign detection as analyst-driven from the outset, providing visual support 
+lacking even the per-actor baseline these systems assume, we treat anomaly and campaign detection as operator-driven from the outset, providing visual support 
 for it rather than another automated detector.
 
 \subsection{Actor identity and real-world event correlation}
@@ -128,18 +149,15 @@ campaign that an address-by-address view splits apart. A username is not a perfe
 one campaign runs through a whole list of names — so we treat it as one analysis dimension alongside the address and the network it belongs to (its AS), 
 resolving the overlaps with the similarity and grouping methods above. 
 
-\subsection{Analyst labeling and collaboration (Emphasis on the Username Dimension)}
-Because detection on this data is analyst-driven, the findings an operator produces by hand must be captured and shared rather than discarded. 
-In two, lines of work \cite{guerra2019study, xiao2006enhancing}, interactive labeling has been used to fold the analyst's judgments back into the system. Collaborative analysis has been 
+\subsection{Operator labeling and collaboration}
+Since detection on our data is operator-driven, the findings an operator produces by hand must be captured and shared rather than discarded. 
+In two lines of work \cite{guerra2019study, xiao2006enhancing}, interactive labeling has been used to fold the operator's judgments back into the system. Collaborative analysis has been 
 supported through shared artifacts with \cite{chen2014oceans} and \cite{goodall2009viassist} being notable examples. These systems establish that labeling and collaboration are valuable, 
-but each works on a different kind of data and a different unit: none lets an analyst group username-level campaign actors observed in SSH login traffic 
-into a named, persistent artifact that other operators can see and build on. Our labeling-and-sharing mechanism is the step that turns a manually 
-identified set of usernames into a durable, shared campaign.
+which is why our labeling-and-sharing mechanism is the step that turns an identified set of usernames into a durable, shared campaign.
 
 
 % ============  III. TYPICAL TASKS AND REQUIREMENTS  ============
-\section{Typical Tasks and Visualization Requirements}
-\lipsum[8]
+\section{Task Requirements}
 
 \subsection{Data and Domain Characterization}
 \lipsum[9]
