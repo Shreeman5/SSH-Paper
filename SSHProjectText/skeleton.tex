@@ -35,26 +35,20 @@
 % ---- Title + Abstract ----
 \maketitle % renders the \title/\author/\date block above
 \begin{abstract} 
-
-[CONTEXT/BACKGROUND] Network operators use visualizations to detect attacks on their systems, exploring and interacting with data to uncover patterns 
+Network operators use visualizations to detect attacks on their systems, exploring and interacting with data to uncover patterns 
 that would otherwise stay hidden. Operators then use these findings to block attackers and to expand the knowledge base of known threats. Detecting
 anomalies and uncovering deeper patterns iteratively in data is at best, tedious and at worst, not achievable without data visualizations.
-
-[EXISTING PROBLEM] Previous works in network visualization analyzed the IP and AS dimensions of SSH logins without much focus on the username aspect of 
+Previous works in network visualization analyzed the IP and AS dimensions of SSH logins without much focus on the username aspect of 
 the attackers' attempts, detected anomalous network events only where baseline events were available, and enabled operators to share findings with one 
 another. Little attention has been paid to whether attackers observed at different times represent the same persistent actor.
-
-[OUR SOLUTION] We present an iterative visualization SSHVisual, using login attempts collected on our own SSH-facing systems. SSHVisual analyzes the IP, AS, and username dimensions 
-of SSH attacks, in service of SSH campaign detection. It complements automated detection by allowing operators to find anomalous events without baseline events. 
+We present an iterative visualization SSHVisual, using login attempts collected on our own SSH-facing systems. SSHVisual analyzes the IP, AS, and username dimensions 
+of SSH attacks, in service of SSH campaign detection. It complements automated detection by allowing operators to find anomalous events without normal baseline events. 
 It correlates SSH attacks with real-world events, and it introduces a similarity metric that quantifies attacker persistence over time. Like previous 
-systems, SSHVisual supports iterative and collaborative sharing of findings between operators.
-
-[EVALUATION AND CONCLUSION] We evaluated SSHVisual in a qualitative study with network operators and found that it helps them block attacks
-and uncover patterns. Participants identified campaigns 
-in which a set of attempted usernames recurred across unrelated IPs and ASes, and reported that this activity would not have surfaced in their 
-existing tooling. The similarity metric surfaced attackers returning across different time periods despite changing network origin. SSHVisual shows that treating 
+systems, SSHVisual supports iterative and collaborative sharing of findings between operators. We evaluated SSHVisual using case studies and found that it helps us block attacks
+and uncover patterns. We identified campaigns in which a set of attempted usernames recurred across unrelated IPs and ASes. 
+The similarity metric surfaced attackers returning across different time periods despite changing network origin. SSHVisual shows that treating 
 usernames as a first-class analytic dimension reveals attacker coordination that IP-centric analysis misses, and that exploratory, operator-driven 
-detection remains valuable precisely where automated methods are weakest. [THIS PARAGRAPH CAN CHANGE IF WE DECIDE TO EVALUATE IT OURSELVES]
+detection remains valuable.
 
 \end{abstract}
 
@@ -74,15 +68,15 @@ surface a set of low-frequency attackers that attempt an identical sequence of u
 
 Surveys of network visualization \cite{7166305, 6007132, zhang2017survey, raynor2022state, wu2018research} establish the maturity of the field and the gaps 
 we target. Our contributions follow from treating the username as an attacker identity. First, actor-level analysis: we treat the attacker as a 
-first-class actor — including the username identity, not only the source IP or autonomous system (AS) — and we identify coordinated campaigns. Since our data 
-affords no stable baseline for automated detection, this identification is necessarily exploratory (therefore, not antagonistic but complementary to automated
-detection with stable baselines) — operators recognize coordination visually rather than specifying it in advance. Second, a similarity metric that 
+first-class actor — including the username identity, not only the source IP or autonomous system (AS) — and we identify coordinated campaigns. Since network data 
+affords no nromal baseline for automated detection \cite{gates2006challenging}, this identification is necessarily exploratory (therefore, not antagonistic but complementary to automated
+detection with nromal baselines) — operators recognize coordination visually rather than specifying it in advance. Second, a similarity metric that 
 quantifies attacker similarity and lets operators track how actors evolve in the username dimension across time periods. 
 Third, correlation of actor behavior with real-world events, which is more tractable through usernames than IPs, given the limitations of IP corroboration.
 Additionally, following established practices, we allow for iterative operator driven collaboration and labeling of irregularities found in the data.
 
-The rest of the paper is as follows: Section II is Related Work, Section III is Task Requirements (WOULD IT BE FAIR THAT WE ESTABLISH THE REQUIREMENTS WITHOUT 
-CONSULTING ANY NETWORK OPERATORS?), Section IV is Design, Section V is Evaluation and Section VI is Conclusion and Future Work.
+The rest of the paper is as follows: Section II is Related Work, Section III is Tasks and Requirements, Section IV is Design, Section V is Evaluation and 
+Section VI is Conclusion and Future Work.
 
 % =====================  II. RELATED WORK  =====================
 \section{Related Work}
@@ -116,23 +110,18 @@ but both do not compute the similarity of the attacker population across consecu
 attackers between successive windows — particularly to the username actor unit, capturing how the attacker population persists or churns over time.
 
 \subsection{Limits of automated detection}
-One premise of our approach is that SSH traffic does not admit the "normal baseline" that automated anomaly and campaign detection presuppose. 
-The broader literature documents why such detection is fragile: Sommer and Paxson \cite{sommer2010outside} note that, despite extensive research, 
-machine-learning anomaly detection is rarely deployed for intrusion detection, given the enormous variability of "normal," the high cost of errors, 
-and the difficulty of sound evaluation; Axelsson \cite{axelsson2000base} shows that automated anomaly detection is throttled by the base-rate fallacy: where intrusions are 
-rare relative to benign traffic, the false-positive rate becomes the limiting factor. Honeypot traffic departs from that setting entirely — it offers 
-no stable 'normal' against which to define an anomaly, with Gates and Taylor \cite{gates2006challenging} supporting our approach by challenging the paradigm directly, 
-questioning that anomalies and attacks are rare, that a stable normal exists and sometimes normal traffic may be malicious and malicious traffic may be 
-normal, finally observing that detection ultimately devolves to an operator manually investigating clusters of activity. 
-
-This fragility is visible from some of the papers referenced so far. The automated detectors there are built on a per-actor baseline: Situ \cite{goodall2018situ} learns a 
-probabilistic model of each IP's behavior and flags low-probability events, and CLIQUE \cite{best2011atypical} scores each actor's deviation from a calculated baseline of 
-its own expected activity. Both presume the stable per-actor "normal" that honeypot traffic — near-uniformly hostile and constantly churning — cannot supply, 
-so they do not transfer to this setting by construction. And even where such a baseline does hold, Situ itself concedes that automation is not enough: 
-having reviewed the limits of signature-, supervised-, and reputation-based detection, it argues that operators "do not want another automated tool with 
-algorithms they do not trust," and builds a human-in-the-loop visual analytics system instead. We reach the same conclusion from a starker starting point: 
-lacking even the per-actor baseline these systems assume, we treat anomaly and campaign detection as operator-driven from the outset, providing visual support 
-for it rather than another automated detector.
+One premise of our approach is that SSH honeypot traffic does not admit the normal baseline that automated anomaly and campaign detection presuppose. 
+The broader literature already documents the fragility of such detection: Sommer and Paxson \cite{sommer2010outside} note that machine-learning anomaly detection 
+is rarely deployed for intrusion detection given the variability of "normal" the cost of errors, and the difficulty of sound evaluation, 
+while Axelsson \cite{axelsson2000base} shows it is throttled by the base-rate fallacy, where the false-positive rate becomes the limiting factor once 
+intrusions are rare relative to benign traffic. Our setting departs from that one entirely, in the direction Gates and Taylor \cite{gates2006challenging} 
+anticipate when they question whether attacks are rare or a stable normal exists, note that normal traffic may itself be malicious and malicious traffic 
+unremarkable, and observe that detection ultimately devolves to an operator investigating clusters of activity by hand. The consequence is visible in the 
+systems cited above: Situ \cite{goodall2018situ} learns a probabilistic model of each IP's behavior and CLIQUE \cite{best2011atypical} scores each actor 
+against a baseline of its own expected activity, so both presume a per-actor "normal" that near-uniformly hostile, constantly churning traffic cannot supply. 
+Situ nonetheless concedes that automation alone is insufficient — operators "do not want another automated tool with algorithms they do not trust" — and 
+builds a human-in-the-loop system; we reach the same conclusion from a starker starting point, lacking even the per-actor baseline it assumes, and so 
+treat campaign identification as operator-driven from the outset.
 
 \subsection{Actor identity and real-world event correlation}
 The attacks we observe do not arrive at a steady rate; they rise, fall, and change in character as events unfold in the wider world, so understanding 
@@ -157,34 +146,43 @@ which is why our labeling-and-sharing mechanism is the step that turns an identi
 
 
 % ============  III. TYPICAL TASKS AND REQUIREMENTS  ============
-\section{Task Requirements}
+\section{Tasks and Requirements}
 
-\subsection{Data and Domain Characterization}
-\lipsum[9]
+The design of SSHVisual derives from our(authors) experiences as network operators and as mentioned, the gaps and established practices that we have found
+in network literature. Accordingly, we formulate the tasks and requirements to accomodate network operator needs, fill out gaps and respect establish practices.
 
-\subsection{Task Abstraction}
-\lipsum[10]
+The visual tasks for network operators are as follows: Find SSH campaigns, using data that has Username, IP, AS, and other information, and publish them/share that information(T1); 
+Find anomalies from data, block them and publish them/share that information(T2); Allow iterative collaboration based on visualized information(T3). T1 is aimed primarily at 
+security analysts, T2 is aimed primarily at network administrators and T3 is aimed at both analysts and administrators.
 
-% A basic table, similar to Table I in VITALflow.
-\begin{table}[t]
-\centering
-\caption{Example placeholder table}
-\label{tab:requirements}
-\begin{tabular}{lcccc}
-\toprule
-Requirement & Task 1 & Task 2 & Task 3 & Task 4 \\
-\midrule
-Row A & + & - & + & + \\
-Row B & tech & plan & - & + \\
-Row C & + & + & + & - \\
-\bottomrule
-\end{tabular}
-\end{table}
+The first requirement (R1) is profiling attacker similarity. The visualization should be able to algorithmically cluster similar attackers based primarily along the username 
+dimension, secondarily along IP and AS information and tertiarily along other dimensions. R1 mostly serves T1 as it allows analysts to build a repository of similar attackers.
 
-\lipsum[11]
+The second requirement (R2) is linking data events to real life events. The visualization should be able to show, if any, news artifacts that correspond similar information
+as observed in data. If there is nothing to show, that is valuable new information that the operator has uncovered and which others can use if the operator shares that information. 
+R2 serves both T1 and T2 as it allows analysts and administrators to either build on existing attackers knowledge base or share new attackers to interested parties. Keep in
+mind that the visualization itself does not allow the operators to publish info; we assume that the operators can share their knowledge using typed up reports and screenshots
+in existing network monitoring websites.
+
+The third requirement (R3) is filtering of variables. The visualization should be able to show attackers who fit constraint(s) on variables as specified by the operator. R3 
+primarily fulfills T1 and T2 because administrators can filter out anomalies and analysts can find similar attackers given constraints.
+
+The fourth requirement (R4) is minimal visual overload. Line charts show 10 attackers at most (unless the operator wants to see more) using username, IP and AS along a temporal dimension. At the same time, an
+aggregate graph shows all the attacks without specifications. For instance, if 150M attacks happened on a given day in the aggregate graph and 75M of that came from one username/IP/AS in the 
+username/IP/AS graph, those attackers can be identified easily. R4 primarily fulfills T2 as it allows for easier detection and eventual blockage of attackers.
+
+The fifth requirement (R5) is tagging/flagging. Any aberrant attacker can be tagged/flagged by the network operator so that operators on the same network do not have to
+identify the same patterns/anomalies twice. R5 supports T3 as it allows for collaboration. 
+
+The sixth requirement (R6) is exploratory workflows and usage of different visualization types. The visual system should allow for filtering and clustering using tabular visualization, 
+linechart visualization based on clustering/non-clustering and filtering/non-filtering, and checking information with  real life events. For instance, an administrator can 
+find an anomaly easily using filtering in the tabular visualization and may not have to see that in a linechart to block attackers. However, an analyst may need to use 
+the tabular visualization to build a repository of similar attackers and use the linechart visualization to see those attackers visually. R6 supports T1 and T2 because 
+two different people can use the same system for different means and to achieve different results.
+
 
 % =====================  IV. APPROACH  =====================
-\section{Approach}
+\section{Design/Approach -- How requirements are fulfilled in the visualization -- screenshots go here}
 \lipsum[12]
 Our clustering of daily time series builds on the calendar-based approach of \cite{vanwijk1999cluster},
 while the multi-dimensional filtering view is inspired by parallel sets \cite{kosara2006parallel} and
@@ -225,14 +223,8 @@ parallel coordinates \cite{inselberg1987parallel}.
 \end{figure}
 
 % =====================  V. IMPLEMENTATION  =====================
-\section{Implementation}
-\lipsum[16]
+\section{Implementation --> how we made the tool. this section may not exist by the end}
 
-\subsection{System Architecture}
-\lipsum[17]
-
-\subsection{Data Pipeline}
-\lipsum[18]
 
 % A second figure using the other placeholder image, sized smaller.
 \begin{figure}[t]

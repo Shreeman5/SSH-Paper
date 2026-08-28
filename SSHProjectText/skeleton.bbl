@@ -58,6 +58,11 @@ C.~Wu, S.~Sheng, and X.~Dong, ``Research on visualization systems for ddos
   attack detection,'' in {\em 2018 IEEE International Conference on Systems,
   Man, and Cybernetics (SMC)}, pp.~2986--2991, IEEE, 2018.
 
+\bibitem{gates2006challenging}
+C.~Gates and C.~Taylor, ``Challenging the anomaly detection paradigm: A
+  provocative discussion,'' in {\em Proceedings of the 2006 workshop on New
+  security paradigms}, pp.~21--29, 2006.
+
 \bibitem{mansmann2006interactive}
 F.~Mansmann and S.~Mansmann, ``Interactive exploration of data traffic with
   hierarchical network maps,'' 2006.
@@ -233,11 +238,6 @@ R.~Sommer and V.~Paxson, ``Outside the closed world: On using machine learning
 S.~Axelsson, ``The base-rate fallacy and the difficulty of intrusion
   detection,'' {\em ACM Transactions on Information and System Security
   (TISSEC)}, vol.~3, no.~3, pp.~186--205, 2000.
-
-\bibitem{gates2006challenging}
-C.~Gates and C.~Taylor, ``Challenging the anomaly detection paradigm: A
-  provocative discussion,'' in {\em Proceedings of the 2006 workshop on New
-  security paradigms}, pp.~21--29, 2006.
 
 \bibitem{best2011atypical}
 D.~M. Best, R.~P. Hafen, B.~K. Olsen, and W.~A. Pike, ``Atypical behavior
