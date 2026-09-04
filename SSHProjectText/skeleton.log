@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.31)  28 AUG 2026 02:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.31)  4 SEP 2026 07:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -277,6 +277,27 @@ LaTeX Warning: Label `fig:placeholder2' multiply defined.
 
 LaTeX Warning: Label `fig:placeholder2' multiply defined.
 
+
+LaTeX Warning: Label `fig:placeholder2' multiply defined.
+
+
+LaTeX Warning: Label `fig:placeholder2' multiply defined.
+
+
+LaTeX Warning: Label `fig:placeholder2' multiply defined.
+
+
+LaTeX Warning: Label `fig:placeholder2' multiply defined.
+
+
+LaTeX Warning: Label `fig:placeholder2' multiply defined.
+
+
+LaTeX Warning: Label `fig:placeholder2' multiply defined.
+
+
+LaTeX Warning: Label `fig:placeholder2' multiply defined.
+
 )
 \openout1 = `skeleton.aux'.
 
@@ -383,46 +404,64 @@ LaTeX Info: Redefining \nameref on input line 33.
 
 
 ] [2]
-Underfull \hbox (badness 1102) in paragraph at lines 185--185
-[]\OT1/ptm/b/n/14.4 Design/Approach -- How re-quire-
- []
+<Discovery.png, id=208, 1824.8175pt x 614.295pt>
+File: Discovery.png Graphic file (type png)
+<use Discovery.png>
+Package pdftex.def Info: Discovery.png  used on input line 188.
+(pdftex.def)             Requested size: 198.35674pt x 66.76654pt.
+<Linechart.png, id=210, 612.2875pt x 960.58875pt>
+File: Linechart.png Graphic file (type png)
+<use Linechart.png>
+Package pdftex.def Info: Linechart.png  used on input line 195.
+(pdftex.def)             Requested size: 198.35674pt x 311.19093pt.
+ [3 <./Discovery.png>]
+Underfull \vbox (badness 5446) has occurred while \output is active []
 
+<UsernameSimilarity.png, id=217, 1810.765pt x 868.24374pt>
+File: UsernameSimilarity.png Graphic file (type png)
+<use UsernameSimilarity.png>
+Package pdftex.def Info: UsernameSimilarity.png  used on input line 256.
+(pdftex.def)             Requested size: 198.35674pt x 95.10965pt.
+<IPSimilarity.png, id=218, 1810.765pt x 317.185pt>
+File: IPSimilarity.png Graphic file (type png)
+<use IPSimilarity.png>
+Package pdftex.def Info: IPSimilarity.png  used on input line 265.
+(pdftex.def)             Requested size: 198.35674pt x 34.74525pt.
+<Sorting.png, id=219, 1810.765pt x 308.15125pt>
+File: Sorting.png Graphic file (type png)
+<use Sorting.png>
+Package pdftex.def Info: Sorting.png  used on input line 273.
+(pdftex.def)             Requested size: 198.35674pt x 33.75568pt.
+<VisualClarity.png, id=220, 902.37125pt x 783.92876pt>
+File: VisualClarity.png Graphic file (type png)
+<use VisualClarity.png>
+Package pdftex.def Info: VisualClarity.png  used on input line 285.
+(pdftex.def)             Requested size: 198.35674pt x 172.32132pt.
 
-Package lipsum Warning: Unknown language 'latin'. Hyphenation patterns for
-(lipsum)                'english' will be used instead.
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-LaTeX Warning: Citation `vanwijk1999cluster' on page 3 undefined on input line 187.
-
-
-LaTeX Warning: Citation `kosara2006parallel' on page 3 undefined on input line 188.
-
-
-LaTeX Warning: Citation `inselberg1987parallel' on page 3 undefined on input line 189.
-
-<placeholder1.png, id=216, 602.25pt x 401.5pt>
-File: placeholder1.png Graphic file (type png)
-<use placeholder1.png>
-Package pdftex.def Info: placeholder1.png  used on input line 195.
-(pdftex.def)             Requested size: 247.94499pt x 165.29608pt.
-[3 <./placeholder1.png (PNG copy)>]
-<placeholder2.png, id=222, 602.25pt x 401.5pt>
-File: placeholder2.png Graphic file (type png)
-<use placeholder2.png>
-Package pdftex.def Info: placeholder2.png  used on input line 206.
-(pdftex.def)             Requested size: 198.35674pt x 132.2381pt.
-File: placeholder2.png Graphic file (type png)
-<use placeholder2.png>
-Package pdftex.def Info: placeholder2.png  used on input line 220.
-(pdftex.def)             Requested size: 198.35674pt x 132.2381pt.
-File: placeholder2.png Graphic file (type png)
-<use placeholder2.png>
-Package pdftex.def Info: placeholder2.png  used on input line 232.
-(pdftex.def)             Requested size: 198.35674pt x 132.2381pt.
-
-Underfull \vbox (badness 2253) has occurred while \output is active []
-
- [4 <./placeholder2.png (PNG copy)>] (./skeleton.bbl [5] [6]
+ [4 <./Linechart.png> <./UsernameSimilarity.png>]
+<tag1.png, id=229, 1801.73125pt x 282.05376pt>
+File: tag1.png Graphic file (type png)
+<use tag1.png>
+Package pdftex.def Info: tag1.png  used on input line 293.
+(pdftex.def)             Requested size: 198.35674pt x 31.05182pt.
+<tag2.png, id=230, 1801.73125pt x 282.05376pt>
+File: tag2.png Graphic file (type png)
+<use tag2.png>
+Package pdftex.def Info: tag2.png  used on input line 300.
+(pdftex.def)             Requested size: 198.35674pt x 31.05182pt.
+<tag3.png, id=231, 1801.73125pt x 550.055pt>
+File: tag3.png Graphic file (type png)
+<use tag3.png>
+Package pdftex.def Info: tag3.png  used on input line 307.
+(pdftex.def)             Requested size: 198.35674pt x 60.5566pt.
+<tag4.png, id=232, 1801.73125pt x 453.695pt>
+File: tag4.png Graphic file (type png)
+<use tag4.png>
+Package pdftex.def Info: tag4.png  used on input line 314.
+(pdftex.def)             Requested size: 198.35674pt x 49.94814pt.
+ (./skeleton.bbl [5 <./IPSimilarity.png> <./Sorting.png> <./VisualClarity.png> <./tag1.png>] [6 <./tag2.png> <./tag3.png> <./tag4.png>]
 Underfull \hbox (badness 1490) in paragraph at lines 188--191
 []\OT1/ptm/m/n/10 I. Ko-niaris, G. Pa-padim-itriou, and P. Nicopoli-tidis,
  []
@@ -436,27 +475,24 @@ Underfull \hbox (badness 1331) in paragraph at lines 198--202
 
 ] (./skeleton.aux)
 
-LaTeX Warning: There were undefined references.
-
-
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `skeleton.out' has not changed.
-(rerunfilecheck)             Checksum: 16E0236684660EDA3189ED640136CFC3;3673.
+(rerunfilecheck)             Checksum: F8373AF34231D09711346B972DE5E1D1;4696.
  ) 
 Here is how much of TeX's memory you used:
- 11346 strings out of 480247
- 186960 string characters out of 5896151
- 578375 words of memory out of 5000000
- 29052 multiletter control sequences out of 15000+600000
- 489802 words of font info for 66 fonts, out of 8000000 for 9000
+ 11400 strings out of 480247
+ 187833 string characters out of 5896151
+ 578571 words of memory out of 5000000
+ 29096 multiletter control sequences out of 15000+600000
+ 488176 words of font info for 64 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 68i,11n,77p,630b,445s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 68i,11n,77p,1947b,448s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on skeleton.pdf (8 pages, 114619 bytes).
+Output written on skeleton.pdf (8 pages, 1092574 bytes).
 PDF statistics:
- 296 PDF objects out of 1000 (max. 8388607)
- 271 compressed objects within 3 object streams
- 87 named destinations out of 1000 (max. 500000)
- 163 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 312 PDF objects out of 1000 (max. 8388607)
+ 269 compressed objects within 3 object streams
+ 90 named destinations out of 1000 (max. 500000)
+ 187 words of extra memory for PDF output out of 10000 (max. 10000000)
 

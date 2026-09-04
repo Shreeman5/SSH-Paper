@@ -3,13 +3,10 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: skeleton.aux
 The style file: ieeetr.bst
 Database file #1: refs.bib
-Warning--I didn't find a database entry for "vanwijk1999cluster"
-Warning--I didn't find a database entry for "kosara2006parallel"
-Warning--I didn't find a database entry for "inselberg1987parallel"
 Warning--empty journal in mansmann2006interactive
 You've used 52 entries,
             1876 wiz_defined-function locations,
-            778 strings with 15668 characters,
+            775 strings with 15611 characters,
 and the built_in function-call counts, 17953 in all, are:
 = -- 1737
 > -- 725
@@ -48,4 +45,4 @@ warning$ -- 1
 while$ -- 197
 width$ -- 54
 write$ -- 516
-(There were 4 warnings)
+(There was 1 warning)

@@ -151,74 +151,127 @@ which is why our labeling-and-sharing mechanism is the step that turns an identi
 The design of SSHVisual derives from our(authors) experiences as network operators and as mentioned, the gaps and established practices that we have found
 in network literature. Accordingly, we formulate the tasks and requirements to accomodate network operator needs, fill out gaps and respect establish practices.
 
-The visual tasks for network operators are as follows: Find SSH campaigns, using data that has Username, IP, AS, and other information, and publish them/share that information(T1); 
-Find anomalies from data, block them and publish them/share that information(T2); Allow iterative collaboration based on visualized information(T3). T1 is aimed primarily at 
+The visual tasks for network operators are as follows: Find SSH campaigns, using data that has Username, IP, AS, and other information, and share that information(T1); 
+Find anomalies from data, block them and share that information(T2); Allow iterative collaboration based on visualized information(T3). T1 is aimed primarily at 
 security analysts, T2 is aimed primarily at network administrators and T3 is aimed at both analysts and administrators.
 
 The first requirement (R1) is profiling attacker similarity. The visualization should be able to algorithmically cluster similar attackers based primarily along the username 
 dimension, secondarily along IP and AS information and tertiarily along other dimensions. R1 mostly serves T1 as it allows analysts to build a repository of similar attackers.
 
-The second requirement (R2) is linking data events to real life events. The visualization should be able to show, if any, news artifacts that correspond similar information
-as observed in data. If there is nothing to show, that is valuable new information that the operator has uncovered and which others can use if the operator shares that information. 
-R2 serves both T1 and T2 as it allows analysts and administrators to either build on existing attackers knowledge base or share new attackers to interested parties. Keep in
-mind that the visualization itself does not allow the operators to publish info; we assume that the operators can share their knowledge using typed up reports and screenshots
-in existing network monitoring websites.
+The second requirement (R2) is sorting of variables. The visualization should be able to show attackers who fit constraint(s) on variables as specified by the operator. R2 
+primarily fulfills T1 and T2 because administrators can sort out anomalies and analysts can find similar attackers given constraints.
 
-The third requirement (R3) is filtering of variables. The visualization should be able to show attackers who fit constraint(s) on variables as specified by the operator. R3 
-primarily fulfills T1 and T2 because administrators can filter out anomalies and analysts can find similar attackers given constraints.
+The third requirement (R3) is visual clarity. Line charts show 10 attackers (for readability) at most (unless the operator wants to see more) using username, IP and AS along a 
+temporal dimension. At the same time, an aggregate graph shows all the attacks without specifications. For instance, if 150M attacks happened on a given day in the aggregate 
+graph and 75M of that came from one username/IP/AS in the username/IP/AS graph, those attackers can be identified easily. R3 primarily fulfills T2 as it allows for easier 
+detection and eventual blockage of attackers.
 
-The fourth requirement (R4) is minimal visual overload. Line charts show 10 attackers at most (unless the operator wants to see more) using username, IP and AS along a temporal dimension. At the same time, an
-aggregate graph shows all the attacks without specifications. For instance, if 150M attacks happened on a given day in the aggregate graph and 75M of that came from one username/IP/AS in the 
-username/IP/AS graph, those attackers can be identified easily. R4 primarily fulfills T2 as it allows for easier detection and eventual blockage of attackers.
+The fourth requirement (R4) is tagging. Any aberrant attacker can be tagged by the network operator so that operators on the same network do not have to
+identify the same patterns/anomalies twice. Attackers tagged by one network operator are on display for other operators to see (as in, tagging attackers and making them stick to the visual). 
+R4 supports T3 as it allows for collaboration. 
 
-The fifth requirement (R5) is tagging/flagging. Any aberrant attacker can be tagged/flagged by the network operator so that operators on the same network do not have to
-identify the same patterns/anomalies twice. R5 supports T3 as it allows for collaboration. 
-
-The sixth requirement (R6) is exploratory workflows and usage of different visualization types. The visual system should allow for filtering and clustering using tabular visualization, 
-linechart visualization based on clustering/non-clustering and filtering/non-filtering, and checking information with  real life events. For instance, an administrator can 
-find an anomaly easily using filtering in the tabular visualization and may not have to see that in a linechart to block attackers. However, an analyst may need to use 
-the tabular visualization to build a repository of similar attackers and use the linechart visualization to see those attackers visually. R6 supports T1 and T2 because 
-two different people can use the same system for different means and to achieve different results.
+The fifth requirement (R5) is exploratory workflows through different visualization types because no single visualization serves every need. The visual system 
+should allow for sorting and clustering using tabular visualization, and linechart visualization based on clustering,and sorting. A tabular visualization
+is good for precise lookup of related attackers without a temporal structure and a linechart visualization lacks precision but preserves the temporal structure in order to
+show things like spikes and campaigns at a glance. For instance, an administrator can find an anomaly easily using filtering in the tabular visualization and may not have to 
+see that in a linechart to block attackers. However, an analyst may need to use the tabular visualization to build a repository of similar attackers and use the 
+linechart visualization to see those attackers visually. R5 supports T1 and T2 because two different people can use the same system for different means and to achieve different results.
 
 
 % =====================  IV. APPROACH  =====================
-\section{Design/Approach -- How requirements are fulfilled in the visualization -- screenshots go here}
-\lipsum[12]
-Our clustering of daily time series builds on the calendar-based approach of \cite{vanwijk1999cluster},
-while the multi-dimensional filtering view is inspired by parallel sets \cite{kosara2006parallel} and
-parallel coordinates \cite{inselberg1987parallel}.
+\section{Visual Approach -- I realized too late that part of R5 is redundant and can be combined with R2 -- Basically
+R5 should just be about why we need 2 visualizations and everything else from R5 can go into other requirements but mostly into R2 --
+Additionally, being able to drill down on the linecharts can be a requirement as well}
 
-% A figure using the first placeholder image.
-% [t] = try to place at the top of the page/column.
 \begin{figure}[t]
     \centering
-    \includegraphics[width=\linewidth]{placeholder1.png} % width=\linewidth scales image to column width
-    \caption{Show campaign detection using username+IP+AS}
-    \label{fig:placeholder1}
-\end{figure}
-
-\subsection{First Component}
-\lipsum[13]
-
-% A second figure using the other placeholder image, sized smaller.
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=0.8\linewidth]{placeholder2.png}
-    \caption{Show collaboration + labeling}
+    \includegraphics[width=0.8\linewidth]{Discovery.png}
+    \caption{Tabular Viz - Requirement R5}
     \label{fig:placeholder2}
 \end{figure}
 
-\subsection{Second Component}
-\lipsum[14]
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.8\linewidth]{Linechart.png}
+    \caption{Linechart Viz - Requirement R5}
+    \label{fig:placeholder2}
+\end{figure}
 
-\subsection{Third Component}
-\lipsum[15]
+For the user interface, we first choose to show the overall picture of what is happening in the data. So, accordingly, we show
+2 views where the first view shows tabular visualizations that are temporal independent and the second view shows linecharts that
+are temporal dependent. By default, the tabular visualizations and the linecharts show data for all the time periods with the operator
+having the option to specify a narrower time period in the linecharts. The tabular visualization is shown in Figure 1 and the linecharts
+are shown in Figure 2. Additionally, in figure 1, the operator has the option to switch between tabs; currently, the tab is set to 
+attackers along the username dimension but can be switched to countries, IP addresses or ASN organizations with all the other
+dimensions showing columns that can be similar or different. For instance, the country tab has a 'Unique ASNs' column which the 
+ASN tab lacks.
+
+Now, Figure 1 also illustrates the strength of a tabular visualization that a linechart visualization lacks. It helps operators 
+sort and rank a dimension (in the figure: country) along column variables. This becomes especially important when the data is tail-heavy,
+that is, most of the data is dedicated to a few actors and almost everything else is buried beneath. However, and as mentioned,
+the tabular visualization does not help the operator answer questions along the temporal dimension. This is where Figure 2 becomes 
+important. For instance, an operator can ask questions like, "Do the countries in Figure 1 have the same peaks and valleys in time?"
+or "Does one country attack earlier and another country attacks later?" and the tabular visualization will not be able to answer 
+those question but a linechart visualization can do that. From Figure 2, the operator can see that there was an increase in activity on Dec 30
+using the "Total Attack Over Time" chart and immediately also see that every country in the "Top 10 attacking countries" chart also
+had a spike in activity on Dec 30. Figure 1 and 2 show a visual system that fulfills requirement 5.
+% A figure using the first placeholder image.
+% [t] = try to place at the top of the page/column.
+
+In figure 3, we see who the attacker base using the same usernames is. We do this by clustering how many distinct addresses, networks, and 
+countries try a given username, how stable that population is day to day, and how concentrated the traffic is on its single most active source.
+Additionally, unlike IP addresses, where we run k-means clustering on seventeen dimensions/features, we do not do that for usernames because 
+previous diagnostic analysis showed that some features were basically unsuable. For instance, most of the IPs have at least one attack per
+day and therefore, they have a stability score (which is a feature) that factors this feature into clustering. However, half of the usernames 
+we saw do not have this feature (that is, they were only seen one day and therefore, calculating stability is meaningless) and therefore,
+it did not factor into the k-means clustering that we did for the username. Regardless, we saw nine clusters and we can see one of those clusters
+in Figure 3.
+
+In Figure 4, we characterise IP addresses by a seventeen-dimensional behavioural profile drawn entirely from its 
+observed activity over the time period in the data. The features fall into four groups: volume (log-scaled totals, daily means, and peaks), 
+temporal shape (the fraction of days on which the address was active, its burst intensity, its largest day-over-day swings, 
+a fitted trend slope, its activity span, and how much of its traffic falls in the final week), targeting behaviour (how many distinct 
+usernames it tries, how stable that set is from one day to the next, its rotation rate, and the share taken by its single most-tried 
+credential), and two flags for whether the address belongs to a cloud provider and whether it originates from a 
+major source country. Then, k-means clustering is used to find similarity between the IPs. Each cluster is then automatically 
+labelled from its centroid — "High-Volume Persistent Focused", say — so an operator sees an interpretable profile. While querying, 
+finding addresses similar to a given IP means retrieving its cluster and ranking the other members by Euclidean distance.
+
+Figure 3 and Figure 4 illustrate how our system helps operators compile a repository of similar attackers along multiple dimensions and 
+satisfy requirement 1 accordingly.
+
+[FOr Figure 5, I don't know what to write because I think that R5 covers that already]
+
+[For figure 6, should I bring in references as to why having visual clarity is important?]
+
+Figures 7,8, 9, and 10 show the process in tagging a similar group of attackers so that other operators using the visualization
+can see work that's already been done. Before figure 7, the operator observes a set of usernames acting very similarly. In Figure 7, 
+they open the tagging section, in Figure 8, they create a new tag, in Figure 9, they tag a bunch of usernames that bear similarity to
+another username and in figure 10, the operators can see which of the usernames have already been tagged. These 4 figures support
+requirement 4 as they allow operators to collaborate and not do redundant work.
+
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.8\linewidth]{UsernameSimilarity.png}
+    \caption{Username Similarity - Requirement R1}
+    \label{fig:placeholder2}
+\end{figure}
+
 
 % A second figure using the other placeholder image, sized smaller.
 \begin{figure}[t]
     \centering
-    \includegraphics[width=0.8\linewidth]{placeholder2.png}
-    \caption{Show similarity metric at play}
+    \includegraphics[width=0.8\linewidth]{IPSimilarity.png}
+    \caption{IP Similarity - Requirement R1}
+    \label{fig:placeholder2}
+\end{figure}
+
+% A second figure using the other placeholder image, sized smaller.
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.8\linewidth]{Sorting.png}
+    \caption{Sorting - Requirement R2}
     \label{fig:placeholder2}
 \end{figure}
 
@@ -229,36 +282,56 @@ parallel coordinates \cite{inselberg1987parallel}.
 % A second figure using the other placeholder image, sized smaller.
 \begin{figure}[t]
     \centering
-    \includegraphics[width=0.8\linewidth]{placeholder2.png}
-    \caption{Show correlation of attacks with real events}
+    \includegraphics[width=0.8\linewidth]{VisualClarity.png}
+    \caption{Visual Clarity - Requirement R3}
     \label{fig:placeholder2}
 \end{figure}
 
-\lipsum[19]
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.8\linewidth]{tag1.png}
+    \caption{Tag Screen - Requirement R4}
+    \label{fig:placeholder2}
+\end{figure}
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.8\linewidth]{tag2.png}
+    \caption{Creation of new Tag - Requirement R4}
+    \label{fig:placeholder2}
+\end{figure}
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.8\linewidth]{tag3.png}
+    \caption{Addition of usernames to tag - Requirement R4}
+    \label{fig:placeholder2}
+\end{figure}
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.8\linewidth]{tag4.png}
+    \caption{Show tag to other operators - Requirement R4}
+    \label{fig:placeholder2}
+\end{figure}
+
 
 % ==============  VI. EVALUATION AND DISCUSSION  ==============
 \section{Evaluation and Discussion}
-\lipsum[20-21]
 
 \subsection{Case Studies}
-\lipsum[22]
 
 \subsection{Discussion}
-\lipsum[23]
-
 % =====================  VII. SUMMARY  =====================
 \section{Summary}
-\lipsum[24]
 
 \subsection{Limitations}
-\lipsum[25]
 
 \subsection{Future Work}
-\lipsum[26]
 
 % ---- Unnumbered section (the * suppresses numbering) ----
-\section*{Acknowledgments}
-\lipsum[17]
+\section{Acknowledgments}
 
 % ---- References ----
 % \bibliographystyle sets the citation format; ieeetr = numbered brackets [1], [2], ...
