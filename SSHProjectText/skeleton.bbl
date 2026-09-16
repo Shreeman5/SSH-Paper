@@ -284,4 +284,25 @@ J.~L. Guerra, E.~Veas, and C.~A. Catania, ``A study on labeling network hostile
   behavior with intelligent interactive tools,'' in {\em 2019 IEEE Symposium on
   Visualization for Cyber Security (VizSec)}, pp.~1--10, IEEE, 2019.
 
+\bibitem{owens2008study}
+J.~Owens and J.~Matthews, ``A study of passwords and methods used in
+  brute-force {SSH} attacks,'' in {\em USENIX Workshop on Large-Scale Exploits
+  and Emergent Threats (LEET)}, (San Francisco, CA, USA), 2008.
+
+\bibitem{wu2020mining}
+Y.~Wu, P.~M. Cao, A.~Withers, Z.~T. Kalbarczyk, and R.~K. Iyer, ``Mining threat
+  intelligence from billion-scale {SSH} brute-force attacks,'' in {\em Workshop
+  on Decentralized IoT Systems and Security (DISS)}, (San Diego, CA, USA),
+  Internet Society, 2020.
+
+\bibitem{javed2010graphical}
+W.~Javed, B.~McDonnel, and N.~Elmqvist, ``Graphical perception of multiple time
+  series,'' {\em IEEE Transactions on Visualization and Computer Graphics},
+  vol.~16, no.~6, pp.~927--934, 2010.
+
+\bibitem{shneiderman1996eyes}
+B.~Shneiderman, ``The eyes have it: A task by data type taxonomy for
+  information visualizations,'' in {\em Proceedings of the IEEE Symposium on
+  Visual Languages}, pp.~336--343, 1996.
+
 \end{thebibliography}

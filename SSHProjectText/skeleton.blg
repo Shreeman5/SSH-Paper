@@ -4,45 +4,45 @@ The top-level auxiliary file: skeleton.aux
 The style file: ieeetr.bst
 Database file #1: refs.bib
 Warning--empty journal in mansmann2006interactive
-You've used 52 entries,
+You've used 56 entries,
             1876 wiz_defined-function locations,
-            775 strings with 15611 characters,
-and the built_in function-call counts, 17953 in all, are:
-= -- 1737
-> -- 725
+            796 strings with 16390 characters,
+and the built_in function-call counts, 19027 in all, are:
+= -- 1837
+> -- 765
 < -- 0
-+ -- 260
-- -- 208
-* -- 1270
-:= -- 2391
-add.period$ -- 52
-call.type$ -- 52
-change.case$ -- 52
++ -- 275
+- -- 219
+* -- 1348
+:= -- 2537
+add.period$ -- 56
+call.type$ -- 56
+change.case$ -- 56
 chr.to.int$ -- 0
-cite$ -- 53
-duplicate$ -- 983
-empty$ -- 1729
-format.name$ -- 208
-if$ -- 4406
+cite$ -- 57
+duplicate$ -- 1047
+empty$ -- 1844
+format.name$ -- 219
+if$ -- 4668
 int.to.chr$ -- 0
-int.to.str$ -- 52
-missing$ -- 52
-newline$ -- 159
-num.names$ -- 52
-pop$ -- 270
+int.to.str$ -- 56
+missing$ -- 56
+newline$ -- 171
+num.names$ -- 56
+pop$ -- 291
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 690
+skip$ -- 724
 stack$ -- 0
-substring$ -- 1372
-swap$ -- 411
+substring$ -- 1436
+swap$ -- 431
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 1
-while$ -- 197
-width$ -- 54
-write$ -- 516
+while$ -- 207
+width$ -- 58
+write$ -- 555
 (There was 1 warning)

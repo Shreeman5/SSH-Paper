@@ -92,19 +92,72 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {C}Limits of automated detection}{2}{subsection.2.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {D}Actor identity and real-world event correlation}{2}{subsection.2.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {E}Operator labeling and collaboration}{2}{subsection.2.5}\protected@file@percent }
+\citation{owens2008study}
+\citation{wu2020mining}
+\citation{javed2010graphical}
+\citation{shneiderman1996eyes}
 \@writefile{toc}{\contentsline {section}{\numberline {III}Tasks and Requirements}{3}{section.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Tabular Viz - Requirement R5\relax }}{3}{figure.caption.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A}Tasks}{3}{subsection.3.1}\protected@file@percent }
+\newlabel{sec:tasks}{{A}{3}{Tasks}{subsection.3.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B}Requirements}{3}{subsection.3.2}\protected@file@percent }
+\newlabel{sec:reqs}{{B}{3}{Requirements}{subsection.3.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Mapping of requirements to tasks ($\bullet $ primary support, $\circ $ secondary support).\relax }}{3}{table.caption.2}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{fig:placeholder2}{{1}{3}{Tabular Viz - Requirement R5\relax }{figure.caption.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {IV}Visual Approach -- I realized too late that part of R5 is redundant and can be combined with R2 -- Basically R5 should just be about why we need 2 visualizations and everything else from R5 can go into other requirements but mostly into R2 -- Additionally, being able to drill down on the linecharts can be a requirement as well}{3}{section.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Linechart Viz - Requirement R5\relax }}{4}{figure.caption.3}\protected@file@percent }
-\newlabel{fig:placeholder2}{{2}{4}{Linechart Viz - Requirement R5\relax }{figure.caption.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Username Similarity - Requirement R1\relax }}{4}{figure.caption.4}\protected@file@percent }
-\newlabel{fig:placeholder2}{{3}{4}{Username Similarity - Requirement R1\relax }{figure.caption.4}{}}
+\newlabel{tab:task-req}{{1}{3}{Mapping of requirements to tasks ($\bullet $ primary support, $\circ $ secondary support).\relax }{table.caption.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Design}{3}{section.4}\protected@file@percent }
+\newlabel{sec:design}{{IV}{3}{Design}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A}Visual Design}{3}{subsection.4.1}\protected@file@percent }
+\newlabel{sec:visual}{{A}{3}{Visual Design}{subsection.4.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.1}Discovery Table}{3}{subsubsection.4.1.1}\protected@file@percent }
+\newlabel{sec:table}{{A.1}{3}{Discovery Table}{subsubsection.4.1.1}{}}
+\citation{shneiderman1996eyes}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The discovery table, showing the countries tab. Each row summarizes one entity over the selected period, and operators can sort by any combination of columns or select up to ten rows to plot in the linecharts.\relax }}{4}{figure.caption.3}\protected@file@percent }
+\newlabel{fig:discovery}{{1}{4}{The discovery table, showing the countries tab. Each row summarizes one entity over the selected period, and operators can sort by any combination of columns or select up to ten rows to plot in the linecharts.\relax }{figure.caption.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.2}Linecharts}{4}{subsubsection.4.1.2}\protected@file@percent }
+\newlabel{sec:linecharts}{{A.2}{4}{Linecharts}{subsubsection.4.1.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces The linechart view. The aggregate chart at the top supports brushing to zoom; the four charts below show the ten most active countries, ASN organizations, IP addresses, and usernames.\relax }}{4}{figure.caption.4}\protected@file@percent }
+\newlabel{fig:linecharts}{{2}{4}{The linechart view. The aggregate chart at the top supports brushing to zoom; the four charts below show the ten most active countries, ASN organizations, IP addresses, and usernames.\relax }{figure.caption.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces The usernames tab sorted by Max Absolute $\Delta $ (primary key) and Max \% $\Delta $ (secondary key), surfacing bursty, usernames that may never appear among the top ten by volume.\relax }}{5}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:sorting}{{3}{5}{The usernames tab sorted by Max Absolute $\Delta $ (primary key) and Max \% $\Delta $ (secondary key), surfacing bursty, usernames that may never appear among the top ten by volume.\relax }{figure.caption.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces The aggregate, country, and ASN charts at full size. Each per-entity chart shows at most ten series, and the aggregate chart serves as a reference for judging each entity's share of total attacks.\relax }}{5}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:clarity}{{4}{5}{The aggregate, country, and ASN charts at full size. Each per-entity chart shows at most ten series, and the aggregate chart serves as a reference for judging each entity's share of total attacks.\relax }{figure.caption.6}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.3}Sorting and Ranking}{5}{subsubsection.4.1.3}\protected@file@percent }
+\newlabel{sec:sorting}{{A.3}{5}{Sorting and Ranking}{subsubsection.4.1.3}{}}
+\citation{javed2010graphical}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Similarity search for the username \texttt  {james}. The cluster summary, shared infrastructure panel, and ``Why similar?'' labels explain why the results were grouped with the query.\relax }}{6}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:usersim}{{5}{6}{Similarity search for the username \texttt {james}. The cluster summary, shared infrastructure panel, and ``Why similar?'' labels explain why the results were grouped with the query.\relax }{figure.caption.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Similarity search for the IP address 61.177.173.46. The nearest neighbors are adjacent addresses on the same network\relax }}{6}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:ipsim}{{6}{6}{Similarity search for the IP address 61.177.173.46. The nearest neighbors are adjacent addresses on the same network\relax }{figure.caption.8}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {A.4}Visual Clarity}{6}{subsubsection.4.1.4}\protected@file@percent }
+\newlabel{sec:clarity}{{A.4}{6}{Visual Clarity}{subsubsection.4.1.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B}Non-Visual Design}{6}{subsection.4.2}\protected@file@percent }
+\newlabel{sec:nonvisual}{{B}{6}{Non-Visual Design}{subsection.4.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {B.1}Username Similarity}{6}{subsubsection.4.2.1}\protected@file@percent }
+\newlabel{sec:usersim}{{B.1}{6}{Username Similarity}{subsubsection.4.2.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces The empty tag repository for the username dimension.\relax }}{7}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:tag1}{{7}{7}{The empty tag repository for the username dimension.\relax }{figure.caption.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces A newly created tag, listed with its description, author, and application counts.\relax }}{7}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:tag2}{{8}{7}{A newly created tag, listed with its description, author, and application counts.\relax }{figure.caption.10}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {B.2}IP Address Similarity}{7}{subsubsection.4.2.2}\protected@file@percent }
+\newlabel{sec:ipsim}{{B.2}{7}{IP Address Similarity}{subsubsection.4.2.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {B.3}Shared Tagging}{7}{subsubsection.4.2.3}\protected@file@percent }
+\newlabel{sec:tagging}{{B.3}{7}{Shared Tagging}{subsubsection.4.2.3}{}}
 \bibstyle{ieeetr}
 \bibdata{refs}
 \bibcite{ylonen1996ssh}{1}
 \bibcite{295683}{2}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Applying the tag to seven usernames from the similarity results, with a note explaining the application.\relax }}{8}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:tag3}{{9}{8}{Applying the tag to seven usernames from the similarity results, with a note explaining the application.\relax }{figure.caption.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces The tag repository after the tag is applied, listing each tagged username with its note, author, and timestamp.\relax }}{8}{figure.caption.12}\protected@file@percent }
+\newlabel{fig:tag4}{{10}{8}{The tag repository after the tag is applied, listing each tagged username with its note, author, and timestamp.\relax }{figure.caption.12}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Implementation --> how we made the tool. this section may not exist by the end}{8}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Evaluation and Discussion}{8}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A}Case Studies}{8}{subsection.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {B}Discussion}{8}{subsection.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VII}Summary}{8}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A}Limitations}{8}{subsection.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {B}Future Work}{8}{subsection.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VIII}Acknowledgments}{8}{section.8}\protected@file@percent }
 \bibcite{antonakakis2017understanding}{3}
 \bibcite{kolias2017ddos}{4}
 \bibcite{dang2019understanding}{5}
@@ -115,22 +168,6 @@
 \bibcite{raynor2022state}{10}
 \bibcite{wu2018research}{11}
 \bibcite{gates2006challenging}{12}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces IP Similarity - Requirement R1\relax }}{5}{figure.caption.5}\protected@file@percent }
-\newlabel{fig:placeholder2}{{4}{5}{IP Similarity - Requirement R1\relax }{figure.caption.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Sorting - Requirement R2\relax }}{5}{figure.caption.6}\protected@file@percent }
-\newlabel{fig:placeholder2}{{5}{5}{Sorting - Requirement R2\relax }{figure.caption.6}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {V}Implementation --> how we made the tool. this section may not exist by the end}{5}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {VI}Evaluation and Discussion}{5}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {A}Case Studies}{5}{subsection.6.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {B}Discussion}{5}{subsection.6.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {VII}Summary}{5}{section.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {A}Limitations}{5}{subsection.7.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {B}Future Work}{5}{subsection.7.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {VIII}Acknowledgments}{5}{section.8}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Visual Clarity - Requirement R3\relax }}{5}{figure.caption.7}\protected@file@percent }
-\newlabel{fig:placeholder2}{{6}{5}{Visual Clarity - Requirement R3\relax }{figure.caption.7}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Tag Screen - Requirement R4\relax }}{5}{figure.caption.8}\protected@file@percent }
-\newlabel{fig:placeholder2}{{7}{5}{Tag Screen - Requirement R4\relax }{figure.caption.8}{}}
 \bibcite{mansmann2006interactive}{13}
 \bibcite{oberheide2006flamingo}{14}
 \bibcite{mansmann2009visual}{15}
@@ -149,12 +186,6 @@
 \bibcite{choi2009fast}{28}
 \bibcite{humphries2013elvis}{29}
 \bibcite{yu2010ember}{30}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Creation of new Tag - Requirement R4\relax }}{6}{figure.caption.9}\protected@file@percent }
-\newlabel{fig:placeholder2}{{8}{6}{Creation of new Tag - Requirement R4\relax }{figure.caption.9}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Addition of usernames to tag - Requirement R4\relax }}{6}{figure.caption.10}\protected@file@percent }
-\newlabel{fig:placeholder2}{{9}{6}{Addition of usernames to tag - Requirement R4\relax }{figure.caption.10}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Show tag to other operators - Requirement R4\relax }}{6}{figure.caption.11}\protected@file@percent }
-\newlabel{fig:placeholder2}{{10}{6}{Show tag to other operators - Requirement R4\relax }{figure.caption.11}{}}
 \bibcite{djap2021xb}{31}
 \bibcite{visoottiviseth2011distributed}{32}
 \bibcite{baykara2018novel}{33}
@@ -177,4 +208,8 @@
 \bibcite{stone2009your}{50}
 \bibcite{moura2015dynamic}{51}
 \bibcite{guerra2019study}{52}
-\gdef \@abspage@last{8}
+\bibcite{owens2008study}{53}
+\bibcite{wu2020mining}{54}
+\bibcite{javed2010graphical}{55}
+\bibcite{shneiderman1996eyes}{56}
+\gdef \@abspage@last{11}

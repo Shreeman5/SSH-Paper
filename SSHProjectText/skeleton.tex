@@ -16,6 +16,20 @@
 \usepackage{amsmath}                      % math symbols/environments
 \usepackage{lipsum}                       % provides \lipsum[n] to generate placeholder text
 \usepackage{caption}                      % improves figure/table caption formatting
+\usepackage{stfloats}                     % lets full-width figures (figure*) sit at the bottom [b] of a page, not only the top
+\usepackage{placeins}                     % provides \FloatBarrier to stop figures drifting past a given point
+
+% ---- Float placement parameters (LaTeX's defaults are very strict and push figures far from their text) ----
+\renewcommand{\topfraction}{0.9}          % max fraction of a column that floats may occupy at the top
+\renewcommand{\bottomfraction}{0.8}       % max fraction of a column for floats at the bottom
+\renewcommand{\textfraction}{0.07}        % min fraction of a column that must be text
+\renewcommand{\floatpagefraction}{0.7}    % a float-only column must be at least this full
+\renewcommand{\dbltopfraction}{0.9}       % same as \topfraction, for full-width figure*
+\renewcommand{\dblfloatpagefraction}{0.7} % same as \floatpagefraction, for full-width figure*
+\setcounter{topnumber}{3}                 % max floats at the top of a column
+\setcounter{bottomnumber}{3}              % max floats at the bottom of a column
+\setcounter{totalnumber}{5}               % max floats in a column
+\setcounter{dbltopnumber}{4}              % max full-width floats at the top of a page
 \usepackage[colorlinks=true, citecolor=blue, linkcolor=blue, urlcolor=blue]{hyperref} % clickable links/citations
 
 % ---- Make section numbers show as Roman numerals (I, II, III...), like IEEE papers ----
@@ -148,173 +162,331 @@ which is why our labeling-and-sharing mechanism is the step that turns an identi
 % ============  III. TYPICAL TASKS AND REQUIREMENTS  ============
 \section{Tasks and Requirements}
 
-The design of SSHVisual derives from our(authors) experiences as network operators and as mentioned, the gaps and established practices that we have found
-in network literature. Accordingly, we formulate the tasks and requirements to accomodate network operator needs, fill out gaps and respect establish practices.
+The design of SSHVisual draws on the authors' experience as network operators and on gaps we identified in prior work on SSH attack analysis and security visualization. 
+From these we derive three tasks and six requirements. Table~\ref{tab:task-req} summarizes which requirements support which tasks.
 
-The visual tasks for network operators are as follows: Find SSH campaigns, using data that has Username, IP, AS, and other information, and share that information(T1); 
-Find anomalies from data, block them and share that information(T2); Allow iterative collaboration based on visualized information(T3). T1 is aimed primarily at 
-security analysts, T2 is aimed primarily at network administrators and T3 is aimed at both analysts and administrators.
+\subsection{Tasks}
+\label{sec:tasks}
 
-The first requirement (R1) is profiling attacker similarity. The visualization should be able to algorithmically cluster similar attackers based primarily along the username 
+\textbf{T1: Identify SSH campaigns.} Security analysts need to find groups of attackers that behave alike across usernames, IP addresses, autonomous systems (ASes), and countries, 
+and to record those groups so they can be referenced later.
+
+\textbf{T2: Detect anomalies that warrant action.} Network administrators need to notice unusual activity, such as a sudden spike or a single source dominating traffic, 
+quickly enough to decide whether to block it.
+
+\textbf{T3: Share findings across operators.} Analysts and administrators on the same network need to see what their colleagues have already investigated, so that the 
+same patterns are not identified twice.
+
+\subsection{Requirements}
+\label{sec:reqs}
+
+
+\textbf{R1: Attacker similarity profiling.} The system should be able to algorithmically cluster similar attackers based primarily along the username 
 dimension, secondarily along IP and AS information and tertiarily along other dimensions. R1 mostly serves T1 as it allows analysts to build a repository of similar attackers.
 
-The second requirement (R2) is sorting of variables. The visualization should be able to show attackers who fit constraint(s) on variables as specified by the operator. R2 
-primarily fulfills T1 and T2 because administrators can sort out anomalies and analysts can find similar attackers given constraints.
+\textbf{R2: Sorting and ranking} SSH attack data is heavy-tailed: a few usernames~\cite{owens2008study} and IP addresses~\cite{wu2020mining}  account for most attempts, 
+and the remaining entities are buried beneath them. The system should therefore list every entity in each dimension, not only the most active ones, 
+and let the operator sort and rank entities by any combination of attributes. R2 supports T1 and T2: administrators can surface anomalous entities that never reach the 
+top of a volume ranking, and analysts can find entities with similar attribute values.
 
-The third requirement (R3) is visual clarity. Line charts show 10 attackers (for readability) at most (unless the operator wants to see more) using username, IP and AS along a 
-temporal dimension. At the same time, an aggregate graph shows all the attacks without specifications. For instance, if 150M attacks happened on a given day in the aggregate 
-graph and 75M of that came from one username/IP/AS in the username/IP/AS graph, those attackers can be identified easily. R3 primarily fulfills T2 as it allows for easier 
-detection and eventual blockage of attackers.
+\textbf{R3: Visual clarity.} Line charts become harder to read accurately as more series are added~\cite{javed2010graphical}. Each linechart should therefore show at most 
+ten entities. An aggregate chart of total attacks should accompany the per-entity charts, so that operators can judge how much of the total any one entity accounts for. 
+For example, if 150M attacks occur on a given day and 75M of them come from a single username, that username should stand out when the two charts are compared. R3 primarily supports T2.
 
-The fourth requirement (R4) is tagging. Any aberrant attacker can be tagged by the network operator so that operators on the same network do not have to
-identify the same patterns/anomalies twice. Attackers tagged by one network operator are on display for other operators to see (as in, tagging attackers and making them stick to the visual). 
-R4 supports T3 as it allows for collaboration. 
 
-The fifth requirement (R5) is exploratory workflows through different visualization types because no single visualization serves every need. The visual system 
-should allow for sorting and clustering using tabular visualization, and linechart visualization based on clustering,and sorting. A tabular visualization
-is good for precise lookup of related attackers without a temporal structure and a linechart visualization lacks precision but preserves the temporal structure in order to
-show things like spikes and campaigns at a glance. For instance, an administrator can find an anomaly easily using filtering in the tabular visualization and may not have to 
-see that in a linechart to block attackers. However, an analyst may need to use the tabular visualization to build a repository of similar attackers and use the 
-linechart visualization to see those attackers visually. R5 supports T1 and T2 because two different people can use the same system for different means and to achieve different results.
+\textbf{R4: Shared tagging.} Operators should be able to tag attackers, record both what a tag means and why it was applied to a particular attacker, 
+and have those tags persist and remain visible to every operator using the system. Each tag application should record who applied it and when, 
+so that later operators can judge whether a finding is still current. R4 primarily supports T3, and it supports T1 because tags accumulate into a repository of related attackers.
+
+
+\textbf{R5: Complementary tabular and temporal views.} No single visualization serves every need. A table supports precise lookup and ranking but discards temporal structure; 
+a linechart preserves temporal structure, showing spikes and campaigns at a glance, but conveys values less precisely. The system should provide both views and let operators 
+move between them. An administrator may find and act on an anomaly using the table alone, whereas an analyst may use the table to assemble a set of related attackers and 
+then examine their behavior over time in the linecharts. R5 supports T1 and T2.
+
+ 
+\textbf{R6: Interactive exploration of the linecharts.} The linecharts should follow Shneiderman's Visual Information-Seeking Mantra: overview first, zoom and 
+filter, then details-on-demand~\cite{shneiderman1996eyes}. They should open with an overview of the full time range, let the operator zoom into a time window 
+and filter which entities are displayed, and reveal details about an individual entity on request. R6 supports T1 and T2: zooming isolates the time window of a 
+suspected campaign, and filtering removes dominant entities that would otherwise mask smaller ones.
+
+\begin{table}[t]
+  \centering
+  \caption{Mapping of requirements to tasks ($\bullet$ primary support, $\circ$ secondary support).}
+  \label{tab:task-req}
+  \begin{tabular}{lcccccc}
+    \hline
+                                & R1        & R2        & R3        & R4        & R5        & R6        \\
+    \hline
+    T1: Identify SSH campaigns  & $\bullet$ & $\bullet$ &           & $\circ$   & $\bullet$ & $\bullet$ \\
+    T2: Detect anomalies        &           & $\bullet$ & $\bullet$ &           & $\bullet$ & $\bullet$ \\
+    T3: Share findings          &           &           &           & $\bullet$ &           &           \\
+    \hline
+  \end{tabular}
+\end{table}
+
 
 
 % =====================  IV. APPROACH  =====================
-\section{Visual Approach -- I realized too late that part of R5 is redundant and can be combined with R2 -- Basically
-R5 should just be about why we need 2 visualizations and everything else from R5 can go into other requirements but mostly into R2 --
-Additionally, being able to drill down on the linecharts can be a requirement as well}
+\section{Design}
+\label{sec:design}
+ 
+SSHVisual combines two visual components, a discovery table and a set of linecharts, with two non-visual components, similarity search and shared tagging. 
+We describe the visual design in Section~\ref{sec:visual} and the non-visual design in Section~\ref{sec:nonvisual}. All figures show SSH login attempts 
+collected between 1~November 2022 and 8~January 2023, a period of 69 days.
 
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=0.8\linewidth]{Discovery.png}
-    \caption{Tabular Viz - Requirement R5}
-    \label{fig:placeholder2}
+\subsection{Visual Design}
+\label{sec:visual}
+
+\subsubsection{Discovery Table}
+\label{sec:table}
+
+\begin{figure*}[!tb]
+  \centering
+  \includegraphics[width=\textwidth]{Discovery.png}
+  \caption{The discovery table, showing the countries tab. Each row summarizes one entity over the selected period, and operators can sort by any combination of columns or select up to ten rows to plot in the linecharts.}
+  \label{fig:discovery}
+\end{figure*}
+
+The interface provides two views of the data. The discovery table (Figure~\ref{fig:discovery}) is independent of time: each row summarizes one entity over the selected period. 
+The linecharts (Figure~\ref{fig:linecharts}) can be time-dependent. Both views cover the full data period by default.
+ 
+The discovery table has four tabs, one per dimension: countries, IP addresses, ASN organizations, and usernames. In Figure~\ref{fig:discovery} the countries 
+tab is active. Most columns are shared across tabs: total attacks, average daily attacks, persistence (the share of days on which the entity was active), 
+the largest absolute and percentage day-over-day change, attacks in the most recent seven days, first- and last-seen dates, and the maximum daily count. 
+Some columns apply only to particular tabs; for instance, the countries tab offers a Unique ASNs column that the ASN tab lacks. Operators choose which columns 
+to display through the Columns menu. Each entity also carries a badge summarizing its dominant behavior, namely Scan, Spray, Botnet or Brute \textbf{[describe how badges are assigned]}. 
+A search box filters rows by name, and the counter above the table reports the number of entities in the current tab (197 countries in Figure~\ref{fig:discovery}).
+
+Unlike the linecharts, which show only the ten most active entities per dimension, the table lists every entity. Operators can select up to ten rows with the checkboxes 
+and use Analyze Selected to plot those entities in the linecharts, and they can return to the linecharts at any time. This link lets operators move from a precise, 
+ranked lookup to the temporal behavior of the same entities, fulfilling R5.
+
+
+\subsubsection{Linecharts}
+\label{sec:linecharts}
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.9\columnwidth]{Linechart.png} % 0.9 lets it fit on the same page as Figure 1
+  \caption{The linechart view. The aggregate chart at the top supports brushing to zoom; the four charts below show the ten most active countries, ASN organizations, IP addresses, and usernames.}
+  \label{fig:linecharts}
+\end{figure}
+% (Placed earlier in the source than its text on purpose: a full-width figure* can never appear on the page where it is defined, only on a later page.)
+\begin{figure*}[!tb]
+  \centering
+  \includegraphics[width=\textwidth]{Sorting.png}
+  \caption{The usernames tab sorted by Max Absolute $\Delta$ (primary key) and Max \% $\Delta$ (secondary key), surfacing bursty, usernames that may never appear among the top ten by volume.}
+  \label{fig:sorting}
+\end{figure*}
+
+
+The linechart view (Figure~\ref{fig:linecharts}) stacks five charts on a shared daily time axis. The first, Total Attacks Over Time, shows the aggregate volume of 
+attempts; the remaining four show the ten most active countries, ASN organizations, IP addresses, and usernames. Each legend entry lists the entity's total for the selected period.
+ 
+Interaction with the linecharts follows Shneiderman's mantra~\cite{shneiderman1996eyes} (R6), and the charts are coordinated so that an action in any one of them updates all of them.
+ 
+\textbf{Overview first.} On opening, the charts cover all 69 days of data, with each per-entity chart showing the ten most active entities in its dimension.
+ 
+\textbf{Zoom.} Every chart supports brushing. When the operator brushes a time range on any chart, the range is applied to all five charts and recorded in the Active Filters bar, 
+so the temporal context stays the same whichever dimension the operator is examining. Brushing is disabled once the range is two days or fewer, since a line needs more 
+points to show a trend.
+ 
+\textbf{Filter.} Left-clicking a legend entry selects that entity and filters every chart to the attacks associated with it. Because each attack attempt links a username, 
+an IP address, an AS, and a country, the selection propagates along these relationships:
+
+\begin{itemize}
+  \item Selecting a country restricts the AS, IP, and username charts to the entities observed in attacks from that country.
+  \item Selecting an AS shows the country it originates from, along with its IP addresses and the usernames they try.
+  \item Selecting an IP address shows its country and AS, along with the usernames it tries.
+  \item Selecting a username shows the countries, ASes, and IP addresses from which it was tried.
+\end{itemize}
+Right-clicking a legend entry crosses the entity out instead, removing it from its chart and rescaling the y-axis so that smaller series are no longer flattened against the 
+axis by a dominant one.
+ 
+\textbf{Details-on-demand.} Hovering over a data point shows a tooltip with that entity's attack count for the day, hovering over a legend entry highlights the entity's line, 
+and the legend reports each entity's total for the selected period.
+ 
+Linked filtering turns the linecharts from four separate rankings into a means of tracing an entity across dimensions. An operator investigating the spike on 30~December, 
+for example, can select \texttt{root} in the username chart; the IP, AS, and country charts then show which addresses, networks, and countries tried \texttt{root}, and 
+brushing around 30~December narrows the view to the spike itself. Conversely, selecting an AS such as DigitalOcean reveals which usernames its hosts try, indicating 
+whether traffic from a hosting provider reflects one campaign or many. Brushing on every chart, linked filtering, and on-demand details together fulfill R6.
+
+ 
+The linecharts answer questions that the discovery table cannot, such as ``Do the countries in Figure~\ref{fig:discovery} share the same peaks and valleys?'' or ``Does one country 
+begin attacking earlier than another?'' In Figure~\ref{fig:linecharts}, the aggregate chart shows a sharp spike on 30~December, and most of the top ten countries peak on the same 
+day, indicating a coordinated, multi-country event rather than activity from a single source. The charts also reveal differences in timing. China's largest peak falls in late 
+November, weeks before the United States' activity rises, and the IP chart shows individual addresses that each spike for a day or two and then fall silent. Neither pattern can 
+be recovered from the table's per-entity totals. Together, Figures~\ref{fig:discovery} and~\ref{fig:linecharts} show how the two views complement each other, fulfilling R5.
+
+% (Placed earlier than its text so it does not hold up Figures 5 and 6; LaTeX keeps figures in numbered order.)
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=\columnwidth]{VisualClarity.png}
+  \caption{The aggregate, country, and ASN charts at full size. Each per-entity chart shows at most ten series, and the aggregate chart serves as a reference for judging each entity's share of total attacks.}
+  \label{fig:clarity}
 \end{figure}
 
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=0.8\linewidth]{Linechart.png}
-    \caption{Linechart Viz - Requirement R5}
-    \label{fig:placeholder2}
-\end{figure}
-
-For the user interface, we first choose to show the overall picture of what is happening in the data. So, accordingly, we show
-2 views where the first view shows tabular visualizations that are temporal independent and the second view shows linecharts that
-are temporal dependent. By default, the tabular visualizations and the linecharts show data for all the time periods with the operator
-having the option to specify a narrower time period in the linecharts. The tabular visualization is shown in Figure 1 and the linecharts
-are shown in Figure 2. Additionally, in figure 1, the operator has the option to switch between tabs; currently, the tab is set to 
-attackers along the username dimension but can be switched to countries, IP addresses or ASN organizations with all the other
-dimensions showing columns that can be similar or different. For instance, the country tab has a 'Unique ASNs' column which the 
-ASN tab lacks.
-
-Now, Figure 1 also illustrates the strength of a tabular visualization that a linechart visualization lacks. It helps operators 
-sort and rank a dimension (in the figure: country) along column variables. This becomes especially important when the data is tail-heavy,
-that is, most of the data is dedicated to a few actors and almost everything else is buried beneath. However, and as mentioned,
-the tabular visualization does not help the operator answer questions along the temporal dimension. This is where Figure 2 becomes 
-important. For instance, an operator can ask questions like, "Do the countries in Figure 1 have the same peaks and valleys in time?"
-or "Does one country attack earlier and another country attacks later?" and the tabular visualization will not be able to answer 
-those question but a linechart visualization can do that. From Figure 2, the operator can see that there was an increase in activity on Dec 30
-using the "Total Attack Over Time" chart and immediately also see that every country in the "Top 10 attacking countries" chart also
-had a spike in activity on Dec 30. Figure 1 and 2 show a visual system that fulfills requirement 5.
-% A figure using the first placeholder image.
-% [t] = try to place at the top of the page/column.
-
-In figure 3, we see who the attacker base using the same usernames is. We do this by clustering how many distinct addresses, networks, and 
-countries try a given username, how stable that population is day to day, and how concentrated the traffic is on its single most active source.
-Additionally, unlike IP addresses, where we run k-means clustering on seventeen dimensions/features, we do not do that for usernames because 
-previous diagnostic analysis showed that some features were basically unsuable. For instance, most of the IPs have at least one attack per
-day and therefore, they have a stability score (which is a feature) that factors this feature into clustering. However, half of the usernames 
-we saw do not have this feature (that is, they were only seen one day and therefore, calculating stability is meaningless) and therefore,
-it did not factor into the k-means clustering that we did for the username. Regardless, we saw nine clusters and we can see one of those clusters
-in Figure 3.
-
-In Figure 4, we characterise IP addresses by a seventeen-dimensional behavioural profile drawn entirely from its 
-observed activity over the time period in the data. The features fall into four groups: volume (log-scaled totals, daily means, and peaks), 
-temporal shape (the fraction of days on which the address was active, its burst intensity, its largest day-over-day swings, 
-a fitted trend slope, its activity span, and how much of its traffic falls in the final week), targeting behaviour (how many distinct 
-usernames it tries, how stable that set is from one day to the next, its rotation rate, and the share taken by its single most-tried 
-credential), and two flags for whether the address belongs to a cloud provider and whether it originates from a 
-major source country. Then, k-means clustering is used to find similarity between the IPs. Each cluster is then automatically 
-labelled from its centroid — "High-Volume Persistent Focused", say — so an operator sees an interpretable profile. While querying, 
-finding addresses similar to a given IP means retrieving its cluster and ranking the other members by Euclidean distance.
-
-Figure 3 and Figure 4 illustrate how our system helps operators compile a repository of similar attackers along multiple dimensions and 
-satisfy requirement 1 accordingly.
-
-[FOr Figure 5, I don't know what to write because I think that R5 covers that already]
-
-[For figure 6, should I bring in references as to why having visual clarity is important?]
-
-Figures 7,8, 9, and 10 show the process in tagging a similar group of attackers so that other operators using the visualization
-can see work that's already been done. Before figure 7, the operator observes a set of usernames acting very similarly. In Figure 7, 
-they open the tagging section, in Figure 8, they create a new tag, in Figure 9, they tag a bunch of usernames that bear similarity to
-another username and in figure 10, the operators can see which of the usernames have already been tagged. These 4 figures support
-requirement 4 as they allow operators to collaborate and not do redundant work.
+\subsubsection{Sorting and Ranking}
+\label{sec:sorting}
 
 
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=0.8\linewidth]{UsernameSimilarity.png}
-    \caption{Username Similarity - Requirement R1}
-    \label{fig:placeholder2}
-\end{figure}
+
+Figure~\ref{fig:sorting} shows the usernames tab sorted on two columns. Operators add sort keys by holding Ctrl/Cmd while clicking column headers, and the bracketed 
+indices in the headers show when the column was clicked. 
+
+Sorting matters because the data is heavy-tailed. The username linechart in Figure~\ref{fig:linecharts} is dominated by \texttt{root}, which accounts for tens of 
+millions of attempts and flattens every other line. Ranking by day-over-day change instead surfaces usernames such as \texttt{karaf}, \texttt{ossuser}, \texttt{lenovo}, 
+\texttt{inspur}, and \texttt{radware}, several of which are default accounts for specific software or hardware products (\texttt{karaf}, for example, is the 
+default account of Apache Karaf). Their totals are far below the top ten, but their activity is concentrated: \texttt{karaf} received 77.6K attempts in total, 
+44.8K of them on a single day, and was active on only 15 of the 69 days. Bursts of product-specific credentials like these suggest campaigns targeting particular 
+devices, yet they are invisible in a volume-ranked chart. Figure~\ref{fig:sorting} thus shows how sorting and ranking over the full entity list fulfills R2.
 
 
-% A second figure using the other placeholder image, sized smaller.
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=0.8\linewidth]{IPSimilarity.png}
-    \caption{IP Similarity - Requirement R1}
-    \label{fig:placeholder2}
-\end{figure}
+% (Placed earlier in the source than its text on purpose: a full-width figure* can never appear on the page where it is defined, only on a later page.)
+\begin{figure*}[!tb]
+  \centering
+  \includegraphics[width=\textwidth]{UsernameSimilarity.png}
+  \caption{Similarity search for the username \texttt{james}. The cluster summary, shared infrastructure panel, and ``Why similar?'' labels explain why the results were grouped with the query.}
+  \label{fig:usersim}
+\end{figure*}
 
-% A second figure using the other placeholder image, sized smaller.
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=0.8\linewidth]{Sorting.png}
-    \caption{Sorting - Requirement R2}
-    \label{fig:placeholder2}
-\end{figure}
+\begin{figure*}[!tb]
+  \centering
+  \includegraphics[width=\textwidth]{IPSimilarity.png}
+  \caption{Similarity search for the IP address 61.177.173.46. The nearest neighbors are adjacent addresses on the same network}
+  \label{fig:ipsim}
+\end{figure*}
+
+\subsubsection{Visual Clarity}
+\label{sec:clarity}
+ 
+
+Figure~\ref{fig:clarity} shows the upper portion of the linechart view at full size. Each per-entity chart is limited to ten series, because the accuracy with which 
+people read multi-series line charts declines as the number of series grows~\cite{javed2010graphical}. Each chart has its own vertical scale, so that entities 
+are legible even in dimensions with lower totals.
+ 
+The aggregate chart serves as a reference for the charts below it (R3). On 30~December the aggregate chart peaks at roughly 9.5M attempts, while the username chart 
+in Figure~\ref{fig:linecharts} shows \texttt{root} at roughly 5M on the same day, so a single username accounts for about half of the spike. Comparisons across 
+per-entity charts are similarly direct. The United States and DigitalOcean both rise sharply on 9~December and remain elevated for the rest of the period, and a 
+spike from Singapore on 24~November coincides with a spike from Tencent in the ASN chart, consistent with attacks launched from cloud infrastructure hosted in Singapore. 
+Because each chart shows at most ten lines, such correspondences can be spotted at a glance.
+
+
+
+\subsection{Non-Visual Design}
+\label{sec:nonvisual}
+
+% (Placed earlier in the source than its text on purpose: a full-width figure* can never appear on the page where it is defined, only on a later page.)
+\begin{figure*}[!tb]
+  \centering
+  \includegraphics[width=\textwidth]{tag1.png}
+  \caption{The empty tag repository for the username dimension.}
+  \label{fig:tag1}
+\end{figure*}
+
+\begin{figure*}[!tb]
+  \centering
+  \includegraphics[width=\textwidth]{tag2.png}
+  \caption{A newly created tag, listed with its description, author, and application counts.}
+  \label{fig:tag2}
+\end{figure*}
+
+\subsubsection{Username Similarity}
+\label{sec:usersim}
+
+
+Similarity search lets operators start from one attacker and retrieve the attackers that behave most like it. For usernames, the unit of analysis is the population of 
+sources that tries a given username. For each username we compute the breadth of that population (the number of distinct IP addresses, ASes, and countries that try it), 
+its volume, its persistence, and how concentrated its traffic is on its single most active source. We do not reuse the seventeen-dimensional profile we apply to 
+IP addresses (Section~\ref{sec:ipsim}), because a diagnostic analysis showed several of those features to be uninformative for usernames. Day-to-day stability is the 
+clearest example: most IP addresses are active on many days, so their stability is well defined, but about half of the usernames appear on only a single day, where 
+stability is meaningless. We cluster the username profiles with $k$-means, selecting $k=9$. Each 
+cluster is labeled automatically from its centroid. To answer a query, the system retrieves the query's cluster and ranks the other members by Euclidean distance to the query, 
+reported as a similarity score.
+ 
+In Figure~\ref{fig:usersim}, an operator searches for the username \texttt{james}. The system places it in Cluster~3, labeled High-Volume Persistent Botnet-Scale, 
+which contains 2,624 usernames; the cluster summary reports that a typical member receives about 31.8K attempts from roughly 4,000 IP addresses and is active on 72\% of days. 
+The results table lists the 20 most similar usernames, each with its total attacks, top source country, top three source IPs, and a set of ``Why similar?'' labels, such as a 
+shared lead source country or comparable volume, that explain the match.
+ 
+Above the results, a shared infrastructure panel lists IP addresses that appear among the top sources of more than one result, and these addresses are highlighted in the 
+table. In Figure~\ref{fig:usersim}, ten addresses are shared. Two of them, 152.89.196.123 and 152.89.196.220, lie in the same /24 network and are top sources for 
+\texttt{manager}, \texttt{daniel}, \texttt{oscar}, \texttt{sftp}, \texttt{admin1}, and several other usernames. The panel turns behavioral resemblance into infrastructural 
+evidence: usernames tried by the same hosts are likely drawn from the same credential list and belong to the same campaign.
+
+
+% (Placed earlier in the source than its text on purpose: a full-width figure* can never appear on the page where it is defined, only on a later page.)
+\begin{figure*}[!tb]
+  \centering
+  \includegraphics[width=\textwidth]{tag3.png}
+  \caption{Applying the tag to seven usernames from the similarity results, with a note explaining the application.}
+  \label{fig:tag3}
+\end{figure*}
+
+\begin{figure*}[!tb]
+  \centering
+  \includegraphics[width=\textwidth]{tag4.png}
+  \caption{The tag repository after the tag is applied, listing each tagged username with its note, author, and timestamp.}
+  \label{fig:tag4}
+\end{figure*}
+
+\subsubsection{IP Address Similarity}
+\label{sec:ipsim}
+ 
+ 
+We characterize each IP address by a seventeen-dimensional behavioral profile drawn entirely from its observed activity during the data period. The features fall into four 
+groups: volume (log-scaled totals, daily means, and peaks); temporal shape (the fraction of days on which the address was active, its burst intensity, its largest day-over-day 
+swings, a fitted trend slope, its activity span, and the share of its traffic in the final week); targeting behavior (the number of distinct usernames it tries, how stable 
+that set is from one day to the next, its rotation rate, and the share of attempts taken by its most-tried username); and two flags indicating whether the address belongs to 
+a cloud provider and whether it originates from a major source country. We cluster these profiles with $k$-means, label each cluster 
+from its centroid, and answer queries in the same way as for usernames.
+ 
+In Figure~\ref{fig:ipsim}, an operator searches for 61.177.173.46, which falls in Cluster~5, labeled Low-Volume Persistent Exploratory, containing 4,405 addresses. 
+The most similar results are 61.177.173.53, 61.177.173.36, 61.177.173.47, and 61.177.172.124, with similarity scores between 91.2\% and 80.4\%, all belonging to 
+CHINANET-BACKBONE. No feature in the profile encodes an address's network prefix or AS, yet the nearest neighbors of the query are adjacent addresses on the same network. 
+Behavioral features alone therefore recover infrastructure relationships, suggesting that these hosts are operated together.
+ 
+Figures~\ref{fig:usersim} and~\ref{fig:ipsim} show how SSHVisual lets operators assemble sets of similar attackers along both the username and IP dimensions and see why 
+those attackers were grouped, fulfilling R1.
+
+
+\subsubsection{Shared Tagging}
+\label{sec:tagging}
+ 
+ 
+ 
+ 
+ 
+Figures~\ref{fig:tag1}--\ref{fig:tag4} show how an operator records a finding so that other operators can see work that has already been done. Tags are organized in a 
+tag repository for each dimension. The repository displays the current operator's name, and every tag and tag application records its author.
+ 
+In Figure~\ref{fig:tag1} the repository is empty. To create a tag, the operator gives it a name, describes what it means, and picks a color; the interface prompts 
+for the description with the reminder that it is what saves the next operator time. In Figure~\ref{fig:tag2} the operator has created a tag, ``similarity to james,'' 
+for the username cluster found in Figure~\ref{fig:usersim}. The repository now lists the tag with its description, its author, and two counts: applications in the current 
+dimension and applications across all dimensions, both zero so far.
+ 
+Tags are applied from the similarity results. In Figure~\ref{fig:tag3} the operator selects seven usernames (\texttt{abc}, \texttt{jason}, \texttt{manager}, 
+\texttt{info}, \texttt{daniel}, \texttt{bin}, and \texttt{oscar}), chooses the new tag, and adds a note explaining this particular application: ``recurring IP addresses.'' 
+The selection reflects the evidence from the shared infrastructure panel. All seven usernames have highlighted, shared IP addresses among their top sources, whereas 
+\texttt{jack}, despite the highest similarity score, has none and is left untagged. In Figure~\ref{fig:tag4} the repository reports seven applications. Filtering the 
+list by tag shows each tagged username alongside its note, the operator who applied it, and a timestamp, and any application can be removed with Untag. 
+Tagged usernames also appear in the Tags column of subsequent similarity searches, so an operator who later retrieves the same usernames sees immediately that 
+they have already been investigated.
+ 
+Separating a tag's meaning from the rationale for each application lets a later operator understand both what a group represents and why each member 
+belongs to it, without repeating the analysis. The recorded author and timestamp indicate whether a finding is recent. Figures~\ref{fig:tag1}--\ref{fig:tag4} 
+thus show how tagging supports collaboration among operators, fulfilling R4.
+
+
+
+
+
+
+\FloatBarrier % place every remaining Design figure before the next section starts
 
 % =====================  V. IMPLEMENTATION  =====================
 \section{Implementation --> how we made the tool. this section may not exist by the end}
-
-
-% A second figure using the other placeholder image, sized smaller.
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=0.8\linewidth]{VisualClarity.png}
-    \caption{Visual Clarity - Requirement R3}
-    \label{fig:placeholder2}
-\end{figure}
-
-
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=0.8\linewidth]{tag1.png}
-    \caption{Tag Screen - Requirement R4}
-    \label{fig:placeholder2}
-\end{figure}
-
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=0.8\linewidth]{tag2.png}
-    \caption{Creation of new Tag - Requirement R4}
-    \label{fig:placeholder2}
-\end{figure}
-
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=0.8\linewidth]{tag3.png}
-    \caption{Addition of usernames to tag - Requirement R4}
-    \label{fig:placeholder2}
-\end{figure}
-
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=0.8\linewidth]{tag4.png}
-    \caption{Show tag to other operators - Requirement R4}
-    \label{fig:placeholder2}
-\end{figure}
 
 
 % ==============  VI. EVALUATION AND DISCUSSION  ==============
