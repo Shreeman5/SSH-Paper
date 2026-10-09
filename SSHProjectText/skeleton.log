@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.31)  16 SEP 2026 00:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.31)  9 OCT 2026 02:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -382,86 +382,112 @@ LaTeX Info: Redefining \nameref on input line 47.
 
 
 ] [2]
-Overfull \hbox (20.83348pt too wide) in paragraph at lines 217--226
- [][] 
- []
-
-<Discovery.png, id=259, 1824.8175pt x 614.295pt>
+<Discovery.png, id=250, 1824.8175pt x 614.295pt>
 File: Discovery.png Graphic file (type png)
 <use Discovery.png>
-Package pdftex.def Info: Discovery.png  used on input line 246.
+Package pdftex.def Info: Discovery.png  used on input line 248.
 (pdftex.def)             Requested size: 505.89pt x 170.29547pt.
-[3]
-<Linechart.png, id=277, 612.2875pt x 960.58875pt>
+ [3]
+<Linechart.png, id=266, 612.2875pt x 960.58875pt>
 File: Linechart.png Graphic file (type png)
 <use Linechart.png>
-Package pdftex.def Info: Linechart.png  used on input line 271.
+Package pdftex.def Info: Linechart.png  used on input line 273.
 (pdftex.def)             Requested size: 223.14897pt x 350.07698pt.
-<Sorting.png, id=278, 1810.765pt x 308.15125pt>
+<Sorting.png, id=267, 1810.765pt x 308.15125pt>
 File: Sorting.png Graphic file (type png)
 <use Sorting.png>
-Package pdftex.def Info: Sorting.png  used on input line 278.
+Package pdftex.def Info: Sorting.png  used on input line 280.
 (pdftex.def)             Requested size: 505.89pt x 86.08897pt.
 
-Underfull \hbox (badness 3291) in paragraph at lines 287--288
+Underfull \hbox (badness 3291) in paragraph at lines 289--290
 []\OT1/ptm/m/n/10 Interaction with the linecharts fol-lows Shnei-der-man's
  []
 
-[4 <./Discovery.png> <./Linechart.png>]
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 299.
- (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 301.
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 311.
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4 <./Discovery.png> <./Linechart.png>]
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 313.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-<VisualClarity.png, id=291, 902.37125pt x 783.92876pt>
-File: VisualClarity.png Graphic file (type png)
-<use VisualClarity.png>
-Package pdftex.def Info: VisualClarity.png  used on input line 325.
-(pdftex.def)             Requested size: 247.94499pt x 215.39566pt.
- [5 <./Sorting.png> <./VisualClarity.png>]
-<UsernameSimilarity.png, id=305, 1810.765pt x 868.24374pt>
+<UsernameSimilarity.png, id=283, 1810.765pt x 868.24374pt>
 File: UsernameSimilarity.png Graphic file (type png)
 <use UsernameSimilarity.png>
-Package pdftex.def Info: UsernameSimilarity.png  used on input line 349.
+Package pdftex.def Info: UsernameSimilarity.png  used on input line 351.
 (pdftex.def)             Requested size: 505.89pt x 242.5634pt.
-<IPSimilarity.png, id=306, 1810.765pt x 317.185pt>
+<IPSimilarity.png, id=284, 1810.765pt x 317.185pt>
 File: IPSimilarity.png Graphic file (type png)
 <use IPSimilarity.png>
-Package pdftex.def Info: IPSimilarity.png  used on input line 356.
+Package pdftex.def Info: IPSimilarity.png  used on input line 358.
 (pdftex.def)             Requested size: 505.89pt x 88.61275pt.
-<tag1.png, id=310, 1801.73125pt x 282.05376pt>
+<tag1.png, id=285, 1801.73125pt x 282.05376pt>
 File: tag1.png Graphic file (type png)
 <use tag1.png>
-Package pdftex.def Info: tag1.png  used on input line 383.
+Package pdftex.def Info: tag1.png  used on input line 385.
 (pdftex.def)             Requested size: 505.89pt x 79.194pt.
-<tag2.png, id=311, 1801.73125pt x 282.05376pt>
+<tag2.png, id=286, 1801.73125pt x 282.05376pt>
 File: tag2.png Graphic file (type png)
 <use tag2.png>
-Package pdftex.def Info: tag2.png  used on input line 390.
+Package pdftex.def Info: tag2.png  used on input line 392.
 (pdftex.def)             Requested size: 505.89pt x 79.194pt.
- [6 <./UsernameSimilarity.png> <./IPSimilarity.png>]
-<tag3.png, id=323, 1801.73125pt x 550.055pt>
-File: tag3.png Graphic file (type png)
-<use tag3.png>
-Package pdftex.def Info: tag3.png  used on input line 422.
-(pdftex.def)             Requested size: 505.89pt x 154.4424pt.
-<tag4.png, id=324, 1801.73125pt x 453.695pt>
-File: tag4.png Graphic file (type png)
-<use tag4.png>
-Package pdftex.def Info: tag4.png  used on input line 429.
-(pdftex.def)             Requested size: 505.89pt x 127.3868pt.
-
-Underfull \hbox (badness 2142) in paragraph at lines 445--449
-[]\OT1/ptm/m/n/10 In Fig-ure [][]6[][], an op-er-a-tor searches for 61.177.173.46,
- []
-
-[7 <./tag1.png> <./tag2.png>] (./skeleton.bbl
+ [5 <./Sorting.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [8 <./tag3.png> <./tag4.png>] [9]
+<tag3.png, id=300, 1801.73125pt x 550.055pt>
+File: tag3.png Graphic file (type png)
+<use tag3.png>
+Package pdftex.def Info: tag3.png  used on input line 424.
+(pdftex.def)             Requested size: 505.89pt x 154.4424pt.
+<tag4.png, id=301, 1801.73125pt x 453.695pt>
+File: tag4.png Graphic file (type png)
+<use tag4.png>
+Package pdftex.def Info: tag4.png  used on input line 431.
+(pdftex.def)             Requested size: 505.89pt x 127.3868pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [6 <./UsernameSimilarity.png> <./IPSimilarity.png> <./tag1.png> <./tag2.png>]
+Underfull \hbox (badness 2142) in paragraph at lines 447--451
+[]\OT1/ptm/m/n/10 In Fig-ure [][]5[][], an op-er-a-tor searches for 61.177.173.46,
+ []
+
+
+Underfull \vbox (badness 2894) has occurred while \output is active []
+
+ [7 <./tag3.png> <./tag4.png>]
+<FInding Patterns.png, id=335, 1590.94376pt x 964.60374pt>
+File: FInding Patterns.png Graphic file (type png)
+<use FInding Patterns.png>
+Package pdftex.def Info: FInding Patterns.png  used on input line 503.
+(pdftex.def)             Requested size: 505.89pt x 306.72192pt.
+<Blockingsomethingburied.png, id=336, 1518.67375pt x 670.505pt>
+File: Blockingsomethingburied.png Graphic file (type png)
+<use Blockingsomethingburied.png>
+Package pdftex.def Info: Blockingsomethingburied.png  used on input line 510.
+(pdftex.def)             Requested size: 505.89pt x 223.35448pt.
+ [8 <./FInding Patterns.png>]
+Underfull \hbox (badness 2173) in paragraph at lines 538--549
+\OT1/ptm/m/n/10 (Dig-i-talO-cean, Ger-many). Four IPs score 100% user-
+ []
+
+<UsernameCampaign.png, id=352, 1451.4225pt x 805.0075pt>
+File: UsernameCampaign.png Graphic file (type png)
+<use UsernameCampaign.png>
+Package pdftex.def Info: UsernameCampaign.png  used on input line 559.
+(pdftex.def)             Requested size: 505.89pt x 280.57764pt.
+<UsernameCampaignVisual.png, id=353, 1451.4225pt x 429.605pt>
+File: UsernameCampaignVisual.png Graphic file (type png)
+<use UsernameCampaignVisual.png>
+Package pdftex.def Info: UsernameCampaignVisual.png  used on input line 566.
+(pdftex.def)             Requested size: 505.89pt x 149.7347pt.
+[9 <./Blockingsomethingburied.png>] (./skeleton.bbl
+Underfull \vbox (badness 1975) has occurred while \output is active []
+
+ [10 <./UsernameCampaign.png> <./UsernameCampaignVisual.png>] [11]
 Underfull \hbox (badness 1490) in paragraph at lines 188--191
 []\OT1/ptm/m/n/10 I. Ko-niaris, G. Pa-padim-itriou, and P. Nicopoli-tidis,
  []
@@ -471,25 +497,25 @@ Underfull \hbox (badness 1331) in paragraph at lines 198--202
 []\OT1/ptm/m/n/10 I. Ko-niaris, G. Pa-padim-itriou, P. Nicopoli-tidis, and
  []
 
-[10]) [11
+[12]) [13
 
 ] (./skeleton.aux)
 Package rerunfilecheck Info: File `skeleton.out' has not changed.
-(rerunfilecheck)             Checksum: 76EFAA77F19CB079C1970BBEC22B42C8;4445.
+(rerunfilecheck)             Checksum: 4FE61C30C88A3A97ADED0214B9BFD809;3901.
  ) 
 Here is how much of TeX's memory you used:
- 11594 strings out of 480247
- 191414 string characters out of 5896151
- 582470 words of memory out of 5000000
- 29253 multiletter control sequences out of 15000+600000
+ 11615 strings out of 480247
+ 192037 string characters out of 5896151
+ 582380 words of memory out of 5000000
+ 29269 multiletter control sequences out of 15000+600000
  490631 words of font info for 69 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 68i,11n,77p,564b,448s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on skeleton.pdf (11 pages, 1144039 bytes).
+ 68i,11n,77p,418b,448s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on skeleton.pdf (13 pages, 1345010 bytes).
 PDF statistics:
- 437 PDF objects out of 1000 (max. 8388607)
- 382 compressed objects within 4 object streams
- 109 named destinations out of 1000 (max. 500000)
- 275 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 445 PDF objects out of 1000 (max. 8388607)
+ 384 compressed objects within 4 object streams
+ 111 named destinations out of 1000 (max. 500000)
+ 274 words of extra memory for PDF output out of 10000 (max. 10000000)
 

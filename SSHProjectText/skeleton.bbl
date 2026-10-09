@@ -295,14 +295,14 @@ Y.~Wu, P.~M. Cao, A.~Withers, Z.~T. Kalbarczyk, and R.~K. Iyer, ``Mining threat
   on Decentralized IoT Systems and Security (DISS)}, (San Diego, CA, USA),
   Internet Society, 2020.
 
-\bibitem{javed2010graphical}
-W.~Javed, B.~McDonnel, and N.~Elmqvist, ``Graphical perception of multiple time
-  series,'' {\em IEEE Transactions on Visualization and Computer Graphics},
-  vol.~16, no.~6, pp.~927--934, 2010.
-
 \bibitem{shneiderman1996eyes}
 B.~Shneiderman, ``The eyes have it: A task by data type taxonomy for
   information visualizations,'' in {\em Proceedings of the IEEE Symposium on
   Visual Languages}, pp.~336--343, 1996.
+
+\bibitem{javed2010graphical}
+W.~Javed, B.~McDonnel, and N.~Elmqvist, ``Graphical perception of multiple time
+  series,'' {\em IEEE Transactions on Visualization and Computer Graphics},
+  vol.~16, no.~6, pp.~927--934, 2010.
 
 \end{thebibliography}
