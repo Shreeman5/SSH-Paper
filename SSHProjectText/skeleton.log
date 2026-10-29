@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.31)  9 OCT 2026 02:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.31)  29 OCT 2026 08:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -168,6 +168,17 @@ Package: stfloats 2017/03/27 v3.3 Improve float mechanism and baselineskip setti
 \c@dblbotnumber=\count285
 ) (/usr/share/texlive/texmf-dist/tex/latex/placeins/placeins.sty
 Package: placeins 2005/04/18  v 2.2
+) (/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
+Package: titlesec 2021/07/05 v2.14 Sectioning titles
+\ttl@box=\box53
+\beforetitleunit=\skip52
+\aftertitleunit=\skip53
+\ttl@plus=\dimen178
+\ttl@minus=\dimen179
+\ttl@toksa=\toks23
+\titlewidth=\dimen180
+\titlewidthlast=\dimen181
+\titlewidthfirst=\dimen182
 ) (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2021-06-07 v7.00m Hypertext links for LaTeX
  (/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
@@ -195,7 +206,7 @@ Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
 ) (/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
 )
-\@linkdim=\dimen178
+\@linkdim=\dimen183
 \Hy@linkcounter=\count286
 \Hy@pagecounter=\count287
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
@@ -229,15 +240,15 @@ Package hyperref Info: Bookmarks ON on input line 4445.
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4804.
-\XeTeXLinkMargin=\dimen179
+\XeTeXLinkMargin=\dimen184
  (/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
  (/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
 \Fld@menulength=\count290
-\Field@Width=\dimen180
-\Fld@charsize=\dimen181
+\Field@Width=\dimen185
+\Fld@charsize=\dimen186
 Package hyperref Info: Hyper figures OFF on input line 6076.
 Package hyperref Info: Link nesting OFF on input line 6081.
 Package hyperref Info: Hyper index ON on input line 6084.
@@ -271,32 +282,32 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 286.
 )
-\Hy@SectionHShift=\skip52
+\Hy@SectionHShift=\skip54
 )
-LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 47.
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 61.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 ) (./skeleton.aux)
 \openout1 = `skeleton.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -335,16 +346,16 @@ LaTeX Font Info:    ... okay on input line 47.
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count296
-\scratchdimen=\dimen182
-\scratchbox=\box53
+\scratchdimen=\dimen187
+\scratchbox=\box54
 \nofMPsegments=\count297
 \nofMParguments=\count298
-\everyMPshowfont=\toks23
+\everyMPshowfont=\toks24
 \MPscratchCnt=\count299
-\MPscratchDim=\dimen183
+\MPscratchDim=\dimen188
 \MPnumerator=\count300
 \makeMPintoPDFobject=\count301
-\everyMPtoPDFconversion=\toks24
+\everyMPtoPDFconversion=\toks25
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -361,7 +372,7 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package color Info: Driver file: pdftex.def on input line 149.
 )
-Package hyperref Info: Link coloring ON on input line 47.
+Package hyperref Info: Link coloring ON on input line 61.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
  (/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
@@ -371,151 +382,121 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count302
 )
-LaTeX Info: Redefining \ref on input line 47.
-LaTeX Info: Redefining \pageref on input line 47.
-LaTeX Info: Redefining \nameref on input line 47.
+LaTeX Info: Redefining \ref on input line 61.
+LaTeX Info: Redefining \pageref on input line 61.
+LaTeX Info: Redefining \nameref on input line 61.
  (./skeleton.out) (./skeleton.out)
 \@outlinefile=\write3
 \openout3 = `skeleton.out'.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ] [2]
-<Discovery.png, id=250, 1824.8175pt x 614.295pt>
-File: Discovery.png Graphic file (type png)
-<use Discovery.png>
-Package pdftex.def Info: Discovery.png  used on input line 248.
-(pdftex.def)             Requested size: 505.89pt x 170.29547pt.
- [3]
-<Linechart.png, id=266, 612.2875pt x 960.58875pt>
+<Discovery1.png, id=239, 1184.425pt x 967.615pt>
+File: Discovery1.png Graphic file (type png)
+<use Discovery1.png>
+Package pdftex.def Info: Discovery1.png  used on input line 273.
+(pdftex.def)             Requested size: 247.94499pt x 202.55551pt.
+ [3 <./Discovery1.png>]
+<Linechart.png, id=256, 742.775pt x 970.62625pt>
 File: Linechart.png Graphic file (type png)
 <use Linechart.png>
-Package pdftex.def Info: Linechart.png  used on input line 273.
-(pdftex.def)             Requested size: 223.14897pt x 350.07698pt.
-<Sorting.png, id=267, 1810.765pt x 308.15125pt>
-File: Sorting.png Graphic file (type png)
-<use Sorting.png>
-Package pdftex.def Info: Sorting.png  used on input line 280.
-(pdftex.def)             Requested size: 505.89pt x 86.08897pt.
-
-Underfull \hbox (badness 3291) in paragraph at lines 289--290
-[]\OT1/ptm/m/n/10 Interaction with the linecharts fol-lows Shnei-der-man's
- []
-
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 301.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+Package pdftex.def Info: Linechart.png  used on input line 305.
+(pdftex.def)             Requested size: 247.94499pt x 323.99548pt.
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 323.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [4 <./Discovery.png> <./Linechart.png>]
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 313.
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 334.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-)
-<UsernameSimilarity.png, id=283, 1810.765pt x 868.24374pt>
+) [4 <./Linechart.png>]
+<Sorting.png, id=272, 1234.6125pt x 232.87pt>
+File: Sorting.png Graphic file (type png)
+<use Sorting.png>
+Package pdftex.def Info: Sorting.png  used on input line 373.
+(pdftex.def)             Requested size: 247.94499pt x 46.76505pt.
+<UsernameSimilarity.png, id=280, 1234.6125pt x 800.9925pt>
 File: UsernameSimilarity.png Graphic file (type png)
 <use UsernameSimilarity.png>
-Package pdftex.def Info: UsernameSimilarity.png  used on input line 351.
-(pdftex.def)             Requested size: 505.89pt x 242.5634pt.
-<IPSimilarity.png, id=284, 1810.765pt x 317.185pt>
-File: IPSimilarity.png Graphic file (type png)
-<use IPSimilarity.png>
-Package pdftex.def Info: IPSimilarity.png  used on input line 358.
-(pdftex.def)             Requested size: 505.89pt x 88.61275pt.
-<tag1.png, id=285, 1801.73125pt x 282.05376pt>
-File: tag1.png Graphic file (type png)
-<use tag1.png>
-Package pdftex.def Info: tag1.png  used on input line 385.
-(pdftex.def)             Requested size: 505.89pt x 79.194pt.
-<tag2.png, id=286, 1801.73125pt x 282.05376pt>
+Package pdftex.def Info: UsernameSimilarity.png  used on input line 441.
+(pdftex.def)             Requested size: 247.94499pt x 160.85565pt.
+ [5 <./Sorting.png> <./UsernameSimilarity.png>]
+<IPSimilarity2.png, id=295, 1234.6125pt x 773.89125pt>
+File: IPSimilarity2.png Graphic file (type png)
+<use IPSimilarity2.png>
+Package pdftex.def Info: IPSimilarity2.png  used on input line 470.
+(pdftex.def)             Requested size: 247.94499pt x 155.41316pt.
+<tag2.png, id=305, 1767.60374pt x 623.32875pt>
 File: tag2.png Graphic file (type png)
 <use tag2.png>
-Package pdftex.def Info: tag2.png  used on input line 392.
-(pdftex.def)             Requested size: 505.89pt x 79.194pt.
- [5 <./Sorting.png>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-<tag3.png, id=300, 1801.73125pt x 550.055pt>
+Package pdftex.def Info: tag2.png  used on input line 500.
+(pdftex.def)             Requested size: 247.94499pt x 87.42711pt.
+<tag3.png, id=306, 1738.495pt x 982.67125pt>
 File: tag3.png Graphic file (type png)
 <use tag3.png>
-Package pdftex.def Info: tag3.png  used on input line 424.
-(pdftex.def)             Requested size: 505.89pt x 154.4424pt.
-<tag4.png, id=301, 1801.73125pt x 453.695pt>
+Package pdftex.def Info: tag3.png  used on input line 511.
+(pdftex.def)             Requested size: 247.94499pt x 140.13707pt.
+<tag4.png, id=307, 1704.3675pt x 969.6225pt>
 File: tag4.png Graphic file (type png)
 <use tag4.png>
-Package pdftex.def Info: tag4.png  used on input line 431.
-(pdftex.def)             Requested size: 505.89pt x 127.3868pt.
+Package pdftex.def Info: tag4.png  used on input line 518.
+(pdftex.def)             Requested size: 247.94499pt x 141.04291pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 3343) has occurred while \output is active []
 
- [6 <./UsernameSimilarity.png> <./IPSimilarity.png> <./tag1.png> <./tag2.png>]
-Underfull \hbox (badness 2142) in paragraph at lines 447--451
-[]\OT1/ptm/m/n/10 In Fig-ure [][]5[][], an op-er-a-tor searches for 61.177.173.46,
- []
-
-
-Underfull \vbox (badness 2894) has occurred while \output is active []
-
- [7 <./tag3.png> <./tag4.png>]
-<FInding Patterns.png, id=335, 1590.94376pt x 964.60374pt>
-File: FInding Patterns.png Graphic file (type png)
-<use FInding Patterns.png>
-Package pdftex.def Info: FInding Patterns.png  used on input line 503.
-(pdftex.def)             Requested size: 505.89pt x 306.72192pt.
-<Blockingsomethingburied.png, id=336, 1518.67375pt x 670.505pt>
+ [6 <./IPSimilarity2.png> <./tag2.png> <./tag3.png> <./tag4.png>]
+<Findingpatterns4.png, id=324, 1767.60374pt x 930.47626pt>
+File: Findingpatterns4.png Graphic file (type png)
+<use Findingpatterns4.png>
+Package pdftex.def Info: Findingpatterns4.png  used on input line 574.
+(pdftex.def)             Requested size: 247.94499pt x 130.50714pt.
+<UsernameCampaign3.png, id=325, 1234.6125pt x 891.33pt>
+File: UsernameCampaign3.png Graphic file (type png)
+<use UsernameCampaign3.png>
+Package pdftex.def Info: UsernameCampaign3.png  used on input line 581.
+(pdftex.def)             Requested size: 247.94499pt x 178.99727pt.
+<UsernameCampaignVisual1.png, id=326, 1272.755pt x 546.04pt>
+File: UsernameCampaignVisual1.png Graphic file (type png)
+<use UsernameCampaignVisual1.png>
+Package pdftex.def Info: UsernameCampaignVisual1.png  used on input line 588.
+(pdftex.def)             Requested size: 247.94499pt x 106.37321pt.
+<Blockingsomethingburied.png, id=327, 1518.67375pt x 670.505pt>
 File: Blockingsomethingburied.png Graphic file (type png)
 <use Blockingsomethingburied.png>
-Package pdftex.def Info: Blockingsomethingburied.png  used on input line 510.
+Package pdftex.def Info: Blockingsomethingburied.png  used on input line 595.
 (pdftex.def)             Requested size: 505.89pt x 223.35448pt.
- [8 <./FInding Patterns.png>]
-Underfull \hbox (badness 2173) in paragraph at lines 538--549
-\OT1/ptm/m/n/10 (Dig-i-talO-cean, Ger-many). Four IPs score 100% user-
- []
-
-<UsernameCampaign.png, id=352, 1451.4225pt x 805.0075pt>
-File: UsernameCampaign.png Graphic file (type png)
-<use UsernameCampaign.png>
-Package pdftex.def Info: UsernameCampaign.png  used on input line 559.
-(pdftex.def)             Requested size: 505.89pt x 280.57764pt.
-<UsernameCampaignVisual.png, id=353, 1451.4225pt x 429.605pt>
-File: UsernameCampaignVisual.png Graphic file (type png)
-<use UsernameCampaignVisual.png>
-Package pdftex.def Info: UsernameCampaignVisual.png  used on input line 566.
-(pdftex.def)             Requested size: 505.89pt x 149.7347pt.
-[9 <./Blockingsomethingburied.png>] (./skeleton.bbl
-Underfull \vbox (badness 1975) has occurred while \output is active []
-
- [10 <./UsernameCampaign.png> <./UsernameCampaignVisual.png>] [11]
+ [7 <./FindingPatterns4.png> <./UsernameCampaign3.png> <./UsernameCampaignVisual1.png>] (./skeleton.bbl [8 <./Blockingsomethingburied.png>]
 Underfull \hbox (badness 1490) in paragraph at lines 188--191
 []\OT1/ptm/m/n/10 I. Ko-niaris, G. Pa-padim-itriou, and P. Nicopoli-tidis,
  []
 
-
+[9]
 Underfull \hbox (badness 1331) in paragraph at lines 198--202
 []\OT1/ptm/m/n/10 I. Ko-niaris, G. Pa-padim-itriou, P. Nicopoli-tidis, and
  []
 
-[12]) [13
-
-] (./skeleton.aux)
+) [10] (./skeleton.aux)
 Package rerunfilecheck Info: File `skeleton.out' has not changed.
-(rerunfilecheck)             Checksum: 4FE61C30C88A3A97ADED0214B9BFD809;3901.
+(rerunfilecheck)             Checksum: FCF31018ED7DBFA30148E2D4236E8FEB;3586.
  ) 
 Here is how much of TeX's memory you used:
- 11615 strings out of 480247
- 192037 string characters out of 5896151
- 582380 words of memory out of 5000000
- 29269 multiletter control sequences out of 15000+600000
- 490631 words of font info for 69 fonts, out of 8000000 for 9000
+ 11889 strings out of 480247
+ 195853 string characters out of 5896151
+ 591262 words of memory out of 5000000
+ 29550 multiletter control sequences out of 15000+600000
+ 488498 words of font info for 66 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  68i,11n,77p,418b,448s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on skeleton.pdf (13 pages, 1345010 bytes).
+Output written on skeleton.pdf (10 pages, 2404726 bytes).
 PDF statistics:
- 445 PDF objects out of 1000 (max. 8388607)
- 384 compressed objects within 4 object streams
- 111 named destinations out of 1000 (max. 500000)
- 274 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 419 PDF objects out of 1000 (max. 8388607)
+ 363 compressed objects within 4 object streams
+ 102 named destinations out of 1000 (max. 500000)
+ 245 words of extra memory for PDF output out of 10000 (max. 10000000)
 
