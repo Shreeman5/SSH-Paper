@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.31)  29 OCT 2026 08:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.31)  2 NOV 2026 01:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -389,114 +389,114 @@ LaTeX Info: Redefining \nameref on input line 61.
 \@outlinefile=\write3
 \openout3 = `skeleton.out'.
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
  [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ] [2]
-<Discovery1.png, id=239, 1184.425pt x 967.615pt>
-File: Discovery1.png Graphic file (type png)
-<use Discovery1.png>
-Package pdftex.def Info: Discovery1.png  used on input line 273.
-(pdftex.def)             Requested size: 247.94499pt x 202.55551pt.
- [3 <./Discovery1.png>]
-<Linechart.png, id=256, 742.775pt x 970.62625pt>
-File: Linechart.png Graphic file (type png)
-<use Linechart.png>
-Package pdftex.def Info: Linechart.png  used on input line 305.
-(pdftex.def)             Requested size: 247.94499pt x 323.99548pt.
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 323.
+<annotated-Discovery1.png, id=239, 1234.6125pt x 1008.76875pt>
+File: annotated-Discovery1.png Graphic file (type png)
+<use annotated-Discovery1.png>
+Package pdftex.def Info: annotated-Discovery1.png  used on input line 272.
+(pdftex.def)             Requested size: 247.94499pt x 202.58138pt.
+<annotated-Linechart.png, id=241, 1234.6125pt x 1613.02625pt>
+File: annotated-Linechart.png Graphic file (type png)
+<use annotated-Linechart.png>
+Package pdftex.def Info: annotated-Linechart.png  used on input line 280.
+(pdftex.def)             Requested size: 247.94499pt x 323.92862pt.
+ [3 <./annotated-Discovery1.png>]
+<annotated-Sorting.png, id=255, 1234.6125pt x 232.87pt>
+File: annotated-Sorting.png Graphic file (type png)
+<use annotated-Sorting.png>
+Package pdftex.def Info: annotated-Sorting.png  used on input line 302.
+(pdftex.def)             Requested size: 505.89pt x 95.42046pt.
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 332.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 334.
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 343.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [4 <./Linechart.png>]
-<Sorting.png, id=272, 1234.6125pt x 232.87pt>
-File: Sorting.png Graphic file (type png)
-<use Sorting.png>
-Package pdftex.def Info: Sorting.png  used on input line 373.
-(pdftex.def)             Requested size: 247.94499pt x 46.76505pt.
-<UsernameSimilarity.png, id=280, 1234.6125pt x 800.9925pt>
-File: UsernameSimilarity.png Graphic file (type png)
-<use UsernameSimilarity.png>
-Package pdftex.def Info: UsernameSimilarity.png  used on input line 441.
-(pdftex.def)             Requested size: 247.94499pt x 160.85565pt.
- [5 <./Sorting.png> <./UsernameSimilarity.png>]
-<IPSimilarity2.png, id=295, 1234.6125pt x 773.89125pt>
-File: IPSimilarity2.png Graphic file (type png)
-<use IPSimilarity2.png>
-Package pdftex.def Info: IPSimilarity2.png  used on input line 470.
-(pdftex.def)             Requested size: 247.94499pt x 155.41316pt.
-<tag2.png, id=305, 1767.60374pt x 623.32875pt>
-File: tag2.png Graphic file (type png)
-<use tag2.png>
-Package pdftex.def Info: tag2.png  used on input line 500.
-(pdftex.def)             Requested size: 247.94499pt x 87.42711pt.
-<tag3.png, id=306, 1738.495pt x 982.67125pt>
-File: tag3.png Graphic file (type png)
-<use tag3.png>
-Package pdftex.def Info: tag3.png  used on input line 511.
-(pdftex.def)             Requested size: 247.94499pt x 140.13707pt.
-<tag4.png, id=307, 1704.3675pt x 969.6225pt>
-File: tag4.png Graphic file (type png)
-<use tag4.png>
-Package pdftex.def Info: tag4.png  used on input line 518.
-(pdftex.def)             Requested size: 247.94499pt x 141.04291pt.
+) [4 <./annotated-Linechart.png> <./annotated-Sorting.png>]
+<annotated-UsernameSimilarity.png, id=282, 1234.6125pt x 800.9925pt>
+File: annotated-UsernameSimilarity.png Graphic file (type png)
+<use annotated-UsernameSimilarity.png>
+Package pdftex.def Info: annotated-UsernameSimilarity.png  used on input line 430.
+(pdftex.def)             Requested size: 505.89pt x 328.21349pt.
+<annotated-IPSimilarity4.png, id=287, 1234.6125pt x 631.35875pt>
+File: annotated-IPSimilarity4.png Graphic file (type png)
+<use annotated-IPSimilarity4.png>
+Package pdftex.def Info: annotated-IPSimilarity4.png  used on input line 470.
+(pdftex.def)             Requested size: 247.94499pt x 126.78973pt.
+ [5]
+<annotated-tag21.png, id=306, 1234.6125pt x 422.57875pt>
+File: annotated-tag21.png Graphic file (type png)
+<use annotated-tag21.png>
+Package pdftex.def Info: annotated-tag21.png  used on input line 529.
+(pdftex.def)             Requested size: 247.94499pt x 84.86244pt.
+<annotated-tag31.png, id=307, 1234.6125pt x 992.70876pt>
+File: annotated-tag31.png Graphic file (type png)
+<use annotated-tag31.png>
+Package pdftex.def Info: annotated-tag31.png  used on input line 536.
+(pdftex.def)             Requested size: 247.94499pt x 199.3562pt.
+<annotated-tag43.png, id=308, 1234.6125pt x 640.3925pt>
+File: annotated-tag43.png Graphic file (type png)
+<use annotated-tag43.png>
+Package pdftex.def Info: annotated-tag43.png  used on input line 543.
+(pdftex.def)             Requested size: 247.94499pt x 128.6039pt.
 
-Underfull \vbox (badness 3343) has occurred while \output is active []
+Underfull \vbox (badness 1406) has occurred while \output is active []
 
- [6 <./IPSimilarity2.png> <./tag2.png> <./tag3.png> <./tag4.png>]
-<Findingpatterns4.png, id=324, 1767.60374pt x 930.47626pt>
-File: Findingpatterns4.png Graphic file (type png)
-<use Findingpatterns4.png>
-Package pdftex.def Info: Findingpatterns4.png  used on input line 574.
-(pdftex.def)             Requested size: 247.94499pt x 130.50714pt.
-<UsernameCampaign3.png, id=325, 1234.6125pt x 891.33pt>
-File: UsernameCampaign3.png Graphic file (type png)
-<use UsernameCampaign3.png>
-Package pdftex.def Info: UsernameCampaign3.png  used on input line 581.
-(pdftex.def)             Requested size: 247.94499pt x 178.99727pt.
-<UsernameCampaignVisual1.png, id=326, 1272.755pt x 546.04pt>
-File: UsernameCampaignVisual1.png Graphic file (type png)
-<use UsernameCampaignVisual1.png>
-Package pdftex.def Info: UsernameCampaignVisual1.png  used on input line 588.
-(pdftex.def)             Requested size: 247.94499pt x 106.37321pt.
-<Blockingsomethingburied.png, id=327, 1518.67375pt x 670.505pt>
-File: Blockingsomethingburied.png Graphic file (type png)
-<use Blockingsomethingburied.png>
-Package pdftex.def Info: Blockingsomethingburied.png  used on input line 595.
-(pdftex.def)             Requested size: 505.89pt x 223.35448pt.
- [7 <./FindingPatterns4.png> <./UsernameCampaign3.png> <./UsernameCampaignVisual1.png>] (./skeleton.bbl [8 <./Blockingsomethingburied.png>]
+ [6 <./annotated-UsernameSimilarity.png> <./annotated-IPSimilarity4.png>]
+<annotated-UsernameCampaign6.png, id=321, 1234.6125pt x 761.84625pt>
+File: annotated-UsernameCampaign6.png Graphic file (type png)
+<use annotated-UsernameCampaign6.png>
+Package pdftex.def Info: annotated-UsernameCampaign6.png  used on input line 564.
+(pdftex.def)             Requested size: 247.94499pt x 152.9943pt.
+<annotated-UsernameCampaignVisual1.png, id=324, 1234.6125pt x 529.98pt>
+File: annotated-UsernameCampaignVisual1.png Graphic file (type png)
+<use annotated-UsernameCampaignVisual1.png>
+Package pdftex.def Info: annotated-UsernameCampaignVisual1.png  used on input line 571.
+(pdftex.def)             Requested size: 247.94499pt x 106.4308pt.
+<Findingpatterns5.png, id=327, 976.64874pt x 707.64375pt>
+File: Findingpatterns5.png Graphic file (type png)
+<use Findingpatterns5.png>
+Package pdftex.def Info: Findingpatterns5.png  used on input line 578.
+(pdftex.def)             Requested size: 247.94499pt x 179.64233pt.
+ [7 <./annotated-tag21.png> <./annotated-tag31.png> <./annotated-tag43.png> <./annotated-UsernameCampaign6.png> <./annotated-UsernameCampaignVisual1.png> <./Findingpatterns5.png>]
+<Blockingsomethingburied1.png, id=345, 916.42375pt x 852.18375pt>
+File: Blockingsomethingburied1.png Graphic file (type png)
+<use Blockingsomethingburied1.png>
+Package pdftex.def Info: Blockingsomethingburied1.png  used on input line 608.
+(pdftex.def)             Requested size: 247.94499pt x 230.56079pt.
+ (./skeleton.bbl [8 <./Blockingsomethingburied1.png>] [9]
 Underfull \hbox (badness 1490) in paragraph at lines 188--191
 []\OT1/ptm/m/n/10 I. Ko-niaris, G. Pa-padim-itriou, and P. Nicopoli-tidis,
  []
 
-[9]
+
 Underfull \hbox (badness 1331) in paragraph at lines 198--202
 []\OT1/ptm/m/n/10 I. Ko-niaris, G. Pa-padim-itriou, P. Nicopoli-tidis, and
  []
 
-) [10] (./skeleton.aux)
+[10]) [11
+
+] (./skeleton.aux)
 Package rerunfilecheck Info: File `skeleton.out' has not changed.
-(rerunfilecheck)             Checksum: FCF31018ED7DBFA30148E2D4236E8FEB;3586.
+(rerunfilecheck)             Checksum: 5834FD6D241D5BE81B99E1F414DBEE83;3586.
  ) 
 Here is how much of TeX's memory you used:
- 11889 strings out of 480247
- 195853 string characters out of 5896151
- 591262 words of memory out of 5000000
+ 11890 strings out of 480247
+ 196588 string characters out of 5896151
+ 591383 words of memory out of 5000000
  29550 multiletter control sequences out of 15000+600000
  488498 words of font info for 66 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 68i,11n,77p,418b,448s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 68i,11n,77p,404b,445s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on skeleton.pdf (10 pages, 2404726 bytes).
+Output written on skeleton.pdf (11 pages, 3470978 bytes).
 PDF statistics:
- 419 PDF objects out of 1000 (max. 8388607)
- 363 compressed objects within 4 object streams
- 102 named destinations out of 1000 (max. 500000)
+ 428 PDF objects out of 1000 (max. 8388607)
+ 369 compressed objects within 4 object streams
+ 103 named destinations out of 1000 (max. 500000)
  245 words of extra memory for PDF output out of 10000 (max. 10000000)
 
