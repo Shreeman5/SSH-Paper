@@ -244,23 +244,6 @@ D.~M. Best, R.~P. Hafen, B.~K. Olsen, and W.~A. Pike, ``Atypical behavior
   identification in large-scale network traffic,'' in {\em 2011 IEEE Symposium
   on Large Data Analysis and Visualization}, pp.~15--22, IEEE, 2011.
 
-\bibitem{bilge2012before}
-L.~Bilge and T.~Dumitra{\c{s}}, ``Before we knew it: an empirical study of
-  zero-day attacks in the real world,'' in {\em Proceedings of the 2012 ACM
-  conference on Computer and communications security}, pp.~833--844, 2012.
-
-\bibitem{sabottke2015vulnerability}
-C.~Sabottke, O.~Suciu, and T.~Dumitraș, ``Vulnerability disclosure in the age
-  of social media: Exploiting twitter for predicting real-world exploits,'' in
-  {\em 24th USENIX security symposium (USENIX security 15)}, pp.~1041--1056,
-  2015.
-
-\bibitem{allodi2012preliminary}
-L.~Allodi and F.~Massacci, ``A preliminary analysis of vulnerability scores for
-  attacks in wild: The ekits and sym datasets,'' in {\em Proceedings of the
-  2012 ACM Workshop on Building analysis datasets and gathering experience
-  returns for security}, pp.~17--24, 2012.
-
 \bibitem{xie2007dynamic}
 Y.~Xie, F.~Yu, K.~Achan, E.~Gillum, M.~Goldszmidt, and T.~Wobber, ``How dynamic
   are ip addresses?,'' in {\em Proceedings of the 2007 conference on
