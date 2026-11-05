@@ -117,44 +117,92 @@ Section~\ref{sec:eval} is Evaluation and Section~\ref{sec:conclusion} is Conclus
 \section{Related Work}
 \label{sec:related}
 
-A long line of tools \cite{mansmann2006interactive, oberheide2006flamingo, mansmann2009visual, taylor2009flovis, chen2014oceans, tremel2022vitalflow, xiao2006enhancing, goodall2009viassist} render network traffic and security events navigable for operators and analysts with the majority being network flow
-and traffic oriented. Additionally, a smaller alert- and log-oriented group \cite{livnat2005visual, king2014coordinated, jeong2023multi, jeong2022interactive, ceneda2016routingwatch,
-roberts2007state, yi2008understanding, choi2009fast, humphries2013elvis, yu2010ember}
-organizes IDS output and heterogeneous logs of which
-\cite{jeong2023multi} contributes a visual analysis (of the CICIDS2017 dataset) that isolates attack clusters---including SSH brute-force (SSH-Patator)---through clustering and
-dimensionality reduction, namely a multi-resolution wavelet-feature analysis.
+A long line of visualization tools~\cite{mansmann2006interactive, oberheide2006flamingo,
+mansmann2009visual, taylor2009flovis, chen2014oceans, tremel2022vitalflow,
+xiao2006enhancing, goodall2009viassist, jeong2022interactive, choi2009fast}
+renders network traffic and security events navigable for operators, the majority being network-flow and traffic
+oriented~\cite{mansmann2006interactive, oberheide2006flamingo,
+taylor2009flovis, tremel2022vitalflow, xiao2006enhancing,
+jeong2022interactive, choi2009fast}, with some also integrating
+intrusion-detection/prevention and host
+logs~\cite{mansmann2009visual, chen2014oceans} or multidimensional
+cyber-defense data~\cite{goodall2009viassist}.
+Additionally, ~\cite{livnat2005visual} visualizes
+IDS alerts and ~\cite{humphries2013elvis, yu2010ember} show heterogeneous security logs.
+~\cite{jeong2023multi} extract
+multi-resolution discrete-wavelet features from traffic, project
+them with principal component analysis, and apply hierarchical clustering
+across several intrusion-detection benchmarks,
+separating brute-force attacks into distinct clusters.
+Related work on coordinated
+multiple views ~\cite{king2014coordinated, ceneda2016routingwatch, roberts2007state}
+and insight generation ~\cite{yi2008understanding} informs our design.
 
-\subsection{Attack Campaigns with Time}
+\subsection{Username Campaigns with Time}
 
-Honeypot literature does not promote the username identity as an actor in its own right (for attack campaign detection purposes): it remains an attribute to count, never a
-unit to track---the unit that, alongside the IP and AS, anchors our analysis. Some papers \cite{djap2021xb, visoottiviseth2011distributed, baykara2018novel, belqruch2019scada,
-koniaris2013analysis, kyriakou2018container, koniaris2014honeypots} collect and chart honeypot traffic, with several of them
-capturing SSH credentials (usernames and passwords). Where credentials are charted---the SCADA SSH honeypot \cite{belqruch2019scada}, kippo-graph \cite{koniaris2013analysis},
-and the container deployment \cite{kyriakou2018container}---usernames and passwords appear only as static top-N tallies (kippo-graph's top-10 username and password bars are the archetype), never placed on a time axis even where
-the same tool charts attack volume over time. The WAN honeypot framework \cite{fraunholz2017distributed} is the closest prior system on the credential axis: it computes an IP-to-IP dictionary-overlap
-(containment) score to probe whether six same-/24 source IPs share a wordlist---a manual, one-off prototype of credential-based coordination analysis, performed on the
-IP unit and without a temporal dimension.
+To our knowledge, honeypot literature has rarely treated the username identity as an actor for campaign detection purposes.
+Typically, it is a dimension to count rather than to track, whereas in our analysis
+it serves, alongside the IP and ASN, as an anchoring dimension. Several papers \cite{djap2021xb, visoottiviseth2011distributed, 
+baykara2018novel, belqruch2019scada,
+koniaris2013analysis, kyriakou2018container, koniaris2014honeypots} collect or chart honeypot traffic, with several of them
+capturing SSH credentials (usernames and passwords). Where credentials are charted, like the SCADA SSH honeypot \cite{belqruch2019scada}, 
+kippo-graph \cite{koniaris2013analysis},
+and the container deployment \cite{kyriakou2018container}, usernames and passwords appear as static top-N tallies (kippo-graph's 
+top-10 username and password bars being an example), and not placed on a time axis. The WAN honeypot framework 
+\cite{fraunholz2017distributed} is the closest prior system 
+: it computes an IP-to-IP dictionary-overlap
+(containment) score to probe whether six same-/24 source IPs share a wordlist, which is a manual, one-off prototype of credential-based 
+coordination analysis, performed on the
+IP and without a temporal dimension.
 
-\subsection{Attacker Similarity with Time}
-Computed similarity between entities is well established in literature \cite{goodall2018situ, liao2012intelligent, pike2008putting, hao2015ensemble}. We do not claim similarity computation itself as novel; the contribution lies in the entity
-it operates on and how it moves through time. On the entity: these systems cluster internal hosts \cite{goodall2018situ}, behavioral profiles \cite{pike2008putting}, IP/port members \cite{hao2015ensemble}, or internal enterprise users
-grouped by shared resources---not external attacker identities \cite{liao2012intelligent}. None treats the username as an attacker actor. On time: \cite{pike2008putting, hao2015ensemble} reach into the temporal dimension,
-but both do not compute the similarity of the attacker population across consecutive windows. We apply similarity based metrics---for example, Jaccard overlap of
-attackers between successive windows---particularly to the username actor unit, capturing how the attacker population persists or churns over time.
+\subsection{Username-Based Similarity}
+Computed similarity between entities is well established in literature \cite{goodall2018situ, liao2012intelligent, pike2008putting, hao2015ensemble}. We 
+do not claim similarity computation itself as novel; the contribution lies in the entity it operates on. Prior systems cluster internal hosts \cite{goodall2018situ}, 
+behavioral profiles \cite{pike2008putting}, IP/port members \cite{hao2015ensemble}, or internal enterprise users
+grouped by shared resources \cite{liao2012intelligent}. None treat the username as an attacker entity.
+We use the username as a signature of an IP, grouping IPs by the credentials they try, with uncommon usernames weighted as stronger evidence than
+ones nearly every attacker tries. Honeypot/honeynet analyses have related attack activity through time by
+grouping attacks whose time series rise and fall
+together~\cite{pouget2006time,thonnard2008framework}. Attackers
+that share a credential list, however, need not be active
+together, so we compute similarity independently of when each
+attacker is active and let the operator see their time series in a linechart.
 
 \subsection{Limits of Automated Detection}
-One premise of our approach is that SSH honeypot traffic does not admit the normal baseline that automated anomaly and campaign detection presuppose.
-The broader literature already documents the fragility of such detection: Sommer and Paxson \cite{sommer2010outside} note that machine-learning anomaly detection
-is rarely deployed for intrusion detection given the variability of ``normal,'' the cost of errors, and the difficulty of sound evaluation,
-while Axelsson \cite{axelsson2000base} shows it is throttled by the base-rate fallacy, where the false-positive rate becomes the limiting factor once
-intrusions are rare relative to benign traffic. Our setting departs from that one entirely, in the direction Gates and Taylor \cite{gates2006challenging}
-anticipate when they question whether attacks are rare or a stable normal exists, note that normal traffic may itself be malicious and malicious traffic
-unremarkable, and observe that detection ultimately devolves to an operator investigating clusters of activity by hand. The consequence is visible in the
-systems cited above: Situ \cite{goodall2018situ} learns a probabilistic model of each IP's behavior and CLIQUE \cite{best2011atypical} scores each actor
-against a baseline of its own expected activity, so both presume a per-actor ``normal'' that near-uniformly hostile, constantly churning traffic cannot supply.
-Situ nonetheless concedes that automation alone is insufficient---operators ``do not want another automated tool with algorithms they do not trust''---and
-builds a human-in-the-loop system; we reach the same conclusion from a starker starting point, lacking even the per-actor baseline it assumes, and so
-treat campaign identification as operator-driven from the outset.
+% One premise of our approach is that SSH honeypot traffic does not admit the normal baseline that automated anomaly and campaign detection presuppose.
+% The broader literature already documents the fragility of such detection: Sommer and Paxson \cite{sommer2010outside} note that machine-learning anomaly detection
+% is rarely deployed for intrusion detection given the variability of ``normal,'' the cost of errors, and the difficulty of sound evaluation,
+% while Axelsson \cite{axelsson2000base} shows it is throttled by the base-rate fallacy, where the false-positive rate becomes the limiting factor once
+% intrusions are rare relative to benign traffic. Our setting departs from that one entirely, in the direction Gates and Taylor \cite{gates2006challenging}
+% anticipate when they question whether attacks are rare or a stable normal exists, note that normal traffic may itself be malicious and malicious traffic
+% unremarkable, and observe that detection ultimately devolves to an operator investigating clusters of activity by hand. The consequence is visible in the
+% systems cited above: Situ \cite{goodall2018situ} learns a probabilistic model of each IP's behavior and CLIQUE \cite{best2011atypical} scores each actor
+% against a baseline of its own expected activity, so both presume a per-actor ``normal'' that near-uniformly hostile, constantly churning traffic cannot supply.
+% Situ nonetheless concedes that automation alone is insufficient---operators ``do not want another automated tool with algorithms they do not trust''---and
+% builds a human-in-the-loop system; we reach the same conclusion from a starker starting point, lacking even the per-actor baseline it assumes, and so
+% treat campaign identification as operator-driven from the outset.
+
+Automated anomaly detection assumes a normal baseline, and SSH
+traffic generally does not have one. Even where a baseline
+exists, such detection is fragile.
+\cite{sommer2010outside} find that machine-learning anomaly
+detection is rarely deployed, because normal traffic varies
+widely, errors are costly, and sound evaluation is hard.
+\cite{axelsson2000base} show that when intrusions are
+rare, the false-alarm rate limits any intrusion detector. Our
+data is the opposite case, since nearly every login attempt is
+an attack.\cite{gates2006challenging} question
+whether attacks are rare and whether attack-free training data
+exists at all, and note that malicious traffic can look normal.
+\cite{goodall2018situ} and
+\cite{best2011atypical} learn a model of each actor's
+expected behavior with \cite{best2011atypical} assuming that an actor's activity
+repeats weekly. However, constantly churning, near-uniformly
+hostile traffic like we see cannot offer a per-actor normal. Situ also
+concedes that operators ``do not want another automated tool
+with algorithms they do not trust'' and keeps a human in the
+loop. Lacking a per-actor baseline, we make campaign
+identification operator-driven from the start.
 
 \subsection{Username as Actor Identity}
 % The attacks we observe do not arrive at a steady rate; they rise, fall, and change in character as events unfold in the wider world, so understanding
@@ -171,22 +219,27 @@ treat campaign identification as operator-driven from the outset.
 % one campaign runs through a whole list of names -- so we treat it as one analysis dimension alongside the address and the network it belongs to (its AS),
 % resolving the overlaps with the similarity and grouping methods above.
 
-We analyze attackers at the level of a campaign, meaning a group of attackers acting together, rather than one attacker at a time. That raises a practical problem:
-a campaign rarely shows up as a single source address. IP addresses do not stay tied to one machine. One host is assigned many addresses over time
-\cite{xie2007dynamic}, hosts cycle through new addresses \cite{stone2009your}, and counting by address can overstate the number of real machines by orders of magnitude
-\cite{moura2015dynamic}. A view organized by address is therefore likely to scatter one campaign across dozens of entries that look unrelated. The username
-pulls those pieces back together. Attackers in the same campaign likely draw from a shared credential list, so the same login names recur across the changing addresses.
-Grouping by username reassembles the campaign that an address-by-address view splits apart.
+We analyze attackers at the level of a campaign, meaning a group of attackers acting together, rather than one attacker at a time. That raises a 
+practical problem:
+a campaign rarely shows up as a single source IP. IPs may not be tied to one machine. One IP can be assigned to different hosts 
+\cite{xie2007dynamic}, hosts can cycle through new IPs \cite{stone2009your}, and counting by address can overstate the number of real machines sometimes 
+by an order of a magnitude
+\cite{moura2015dynamic}. A view organized by address is therefore likely to scatter one campaign across dozens of entries that can look unrelated. The 
+username can
+pull those pieces back together. Attackers in the same campaign likely draw from a shared credential list, so the same login names 
+may recur across changing IPs.
+Grouping by username can reassemble the campaign that an address-by-address view could split apart.
 
-A username is not a perfect identity either. Names like root are tried by almost everyone, and one campaign runs through a whole list of names.
-We therefore treat the username as one analysis dimension alongside the address and the network it belongs to (its AS), not as a replacement for them.
-Uncommon usernames, which unrelated attackers are unlikely to share by chance, serve as the stronger evidence of coordination, and we resolve the remaining
-overlaps with the similarity and grouping methods described above.
+% A username is not a perfect identity either. Names like root are tried by almost everyone, and one campaign runs through a whole list of names.
+% We therefore treat the username as one analysis dimension alongside the address and the network it belongs to (its AS), not as a replacement for them.
+% Uncommon usernames, which unrelated attackers are unlikely to share by chance, serve as the stronger evidence of coordination, and we resolve the remaining
+% overlaps with the similarity and grouping methods described above.
 
 \subsection{Operator Labeling and Collaboration}
-Since detection on our data is operator-driven, the findings an operator produces must be captured and shared rather than discarded.
-In two works \cite{guerra2019study, xiao2006enhancing}, interactive labeling was used to fold the operator's judgments back into the system. Collaborative analysis has been
-supported through shared artifacts with \cite{chen2014oceans} and \cite{goodall2009viassist} being notable examples. These systems establish that labeling and collaboration are valuable,
+The findings an operator produces can be captured and shared.
+In two works \cite{guerra2019study, xiao2006enhancing}, interactive labeling was used to fold the operator's judgments back into the system. 
+Collaborative analysis was
+supported through shared artifacts with \cite{chen2014oceans} and \cite{goodall2009viassist} being examples. These systems establish that labeling and collaboration are valuable,
 which is why our labeling-and-sharing mechanism is the step that turns an identified set of usernames into a durable, shared campaign.
 
 
@@ -303,20 +356,20 @@ an entity that attacks sporadically but with higher frequencies).
   \label{fig:linecharts}
 \end{figure}
 
-Some columns (hidden in the dropbox of label D) apply only to particular tabs; Table~\ref{tab:columns} in Appendix~\ref{app:columns} lists every column and the tabs it appears in. The IP tab has columns ASN Name and Country that the other tabs lack with the underlying
-assumption that an IP address belongs exclusively to one ASN and one country. The tabs Countries, ASNs and IPs share these columns: unique usernames,
-username stability (mean Jaccard similarity between consecutive days' username sets where 0 = volatile and 1 = stable with a higher number
-indicating that same usernames are used consistently) and username concentration (top 3 usernames and their attack percentages).
-The tabs Countries, ASNs and Usernames share these columns: unique IPs,
-IP stability (mean Jaccard similarity between consecutive days' IP sets where 0 = volatile and 1 = stable with a higher number
-indicating that same IPs are used consistently) and IP concentration (top 3 IPs and their attack percentages).
-The tabs Countries and Usernames share these columns: unique ASNs,
-ASN stability (mean Jaccard similarity between consecutive days' ASN sets where 0 = volatile and 1 = stable with a higher number
-indicating that same ASNs are used consistently) and ASN concentration (top 3 ASNs and their attack percentages).
-The tabs ASNs and Usernames share these columns: unique countries,
-country stability (mean Jaccard similarity between consecutive days' country sets where 0 = volatile and 1 = stable with a higher number
-indicating that same countries are attacking consistently) and country concentration (top 3 countries and their attack percentages).
-Finally, the ASN tab has a unique column called primary country which shows the country it mostly comes from.
+% Some columns (hidden in the dropbox of label D) apply only to particular tabs; Table~\ref{tab:columns} in Appendix~\ref{app:columns} lists every column and the tabs it appears in. The IP tab has columns ASN Name and Country that the other tabs lack with the underlying
+% assumption that an IP address belongs exclusively to one ASN and one country. The tabs Countries, ASNs and IPs share these columns: unique usernames,
+% username stability (mean Jaccard similarity between consecutive days' username sets where 0 = volatile and 1 = stable with a higher number
+% indicating that same usernames are used consistently) and username concentration (top 3 usernames and their attack percentages).
+% The tabs Countries, ASNs and Usernames share these columns: unique IPs,
+% IP stability (mean Jaccard similarity between consecutive days' IP sets where 0 = volatile and 1 = stable with a higher number
+% indicating that same IPs are used consistently) and IP concentration (top 3 IPs and their attack percentages).
+% The tabs Countries and Usernames share these columns: unique ASNs,
+% ASN stability (mean Jaccard similarity between consecutive days' ASN sets where 0 = volatile and 1 = stable with a higher number
+% indicating that same ASNs are used consistently) and ASN concentration (top 3 ASNs and their attack percentages).
+% The tabs ASNs and Usernames share these columns: unique countries,
+% country stability (mean Jaccard similarity between consecutive days' country sets where 0 = volatile and 1 = stable with a higher number
+% indicating that same countries are attacking consistently) and country concentration (top 3 countries and their attack percentages).
+% Finally, the ASN tab has a unique column called primary country which shows the country it mostly comes from.
 
 Exclusive to the countries tab, each country entity also carries a badge summarizing its dominant behavior, namely Scan, Spray, Botnet or Brute (label E).
 Brute marks entities whose traffic comes from few IP addresses making many attempts on few usernames. Spray marks traffic from many IP addresses
@@ -469,7 +522,7 @@ Behavioral features alone therefore recover infrastructure relationships, sugges
 Figs.~\ref{fig:usersim} and~\ref{fig:ipsim} show how SSHVisual lets operators assemble sets of similar attackers along the username and IP dimensions and see why
 those attackers were grouped, fulfilling R1.
 
-\begin{figure}[b]
+\begin{figure}[h]
   \centering
   \includegraphics[width=\columnwidth]{annotated-IPSimilarity4.png}
   \caption{Similarity search (A) for IP 61.177.173.46. Nearest neighbors are adjacent addresses on the same network (B).}

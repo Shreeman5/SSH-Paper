@@ -640,6 +640,8 @@ INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmb7t.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmrc7t.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmb7t.vf
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
 INPUT ./annotated-d5.png
 INPUT ./annotated-d5.png
 INPUT annotated-d5.png
@@ -650,9 +652,6 @@ INPUT ./annotated-Linechart.png
 INPUT annotated-Linechart.png
 INPUT ./annotated-Linechart.png
 INPUT ./annotated-Linechart.png
-INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmb7t.vf
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf
 INPUT ./annotated-Sorting.png
 INPUT ./annotated-Sorting.png
 INPUT annotated-Sorting.png
@@ -681,6 +680,7 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm
@@ -704,8 +704,6 @@ INPUT ./annotated-IPSimilarity4.png
 INPUT annotated-IPSimilarity4.png
 INPUT ./annotated-IPSimilarity4.png
 INPUT ./annotated-IPSimilarity4.png
-INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/courier/pcrr7t.vf
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/courier/pcrr8r.tfm
 INPUT ./annotated-tag21.png
 INPUT ./annotated-tag21.png
 INPUT annotated-tag21.png
@@ -721,6 +719,8 @@ INPUT ./annotated-tag43.png
 INPUT annotated-tag43.png
 INPUT ./annotated-tag43.png
 INPUT ./annotated-tag43.png
+INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/courier/pcrr7t.vf
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/courier/pcrr8r.tfm
 INPUT ./annotated-UsernameCampaign6.png
 INPUT ./annotated-UsernameCampaign6.png
 INPUT annotated-UsernameCampaign6.png

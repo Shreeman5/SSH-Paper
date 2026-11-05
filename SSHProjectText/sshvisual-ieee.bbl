@@ -137,26 +137,42 @@ J.~R. Goodall and M.~Sowul, ``Viassist: Visual analytics for cyber defense,''
   in \emph{2009 IEEE conference on technologies for homeland security}.\hskip
   1em plus 0.5em minus 0.4em\relax IEEE, 2009, pp. 143--150.
 
+\bibitem{jeong2022interactive}
+D.~H. Jeong, J.-H. Cho, F.~Chen, L.~Kaplan, A.~J{\o}sang, and S.-Y. Ji,
+  ``Interactive web-based visual analysis on network traffic data,''
+  \emph{Information}, vol.~14, no.~1, p.~16, 2022.
+
+\bibitem{choi2009fast}
+H.~Choi, H.~Lee, and H.~Kim, ``Fast detection and visualization of network
+  attacks on parallel coordinates,'' \emph{computers \& security}, vol.~28,
+  no.~5, pp. 276--288, 2009.
+
 \bibitem{livnat2005visual}
 Y.~Livnat, J.~Agutter, S.~Moon, and S.~Foresti, ``Visual correlation for
   situational awareness,'' in \emph{IEEE Symposium on Information
   Visualization, 2005. INFOVIS 2005.}\hskip 1em plus 0.5em minus 0.4em\relax
   IEEE, 2005, pp. 95--102.
 
-\bibitem{king2014coordinated}
-A.~King, B.~Huffaker, A.~Dainotti, and K.~Claffy, ``A coordinated view of the
-  temporal evolution of large-scale internet events,'' \emph{Computing},
-  vol.~96, no.~1, pp. 53--65, 2014.
+\bibitem{humphries2013elvis}
+C.~Humphries, N.~Prigent, C.~Bidan, and F.~Majorczyk, ``Elvis: Extensible log
+  visualization,'' in \emph{Proceedings of the Tenth Workshop on Visualization
+  for Cyber Security}, 2013, pp. 9--16.
+
+\bibitem{yu2010ember}
+T.~Yu, R.~Lippmann, J.~Riordan, and S.~Boyer, ``Ember: a global perspective on
+  extreme malicious behavior,'' in \emph{Proceedings of the seventh
+  international symposium on visualization for cyber security}, 2010, pp.
+  1--12.
 
 \bibitem{jeong2023multi}
 D.~H. Jeong, B.-K. Jeong, and S.-Y. Ji, ``Multi-resolution analysis with
   visualization to determine network attack patterns,'' \emph{Applied
   Sciences}, vol.~13, no.~6, p. 3792, 2023.
 
-\bibitem{jeong2022interactive}
-D.~H. Jeong, J.-H. Cho, F.~Chen, L.~Kaplan, A.~J{\o}sang, and S.-Y. Ji,
-  ``Interactive web-based visual analysis on network traffic data,''
-  \emph{Information}, vol.~14, no.~1, p.~16, 2022.
+\bibitem{king2014coordinated}
+A.~King, B.~Huffaker, A.~Dainotti, and K.~Claffy, ``A coordinated view of the
+  temporal evolution of large-scale internet events,'' \emph{Computing},
+  vol.~96, no.~1, pp. 53--65, 2014.
 
 \bibitem{ceneda2016routingwatch}
 D.~Ceneda, M.~Di~Bartolomeo, V.~Di~Donato, M.~Patrignani, M.~Pizzonia, and
@@ -176,22 +192,6 @@ J.~S. Yi, Y.-a. Kang, J.~T. Stasko, and J.~A. Jacko, ``Understanding and
   visualization?'' in \emph{Proceedings of the 2008 Workshop on BEyond time and
   errors: novel evaLuation methods for Information Visualization}, 2008, pp.
   1--6.
-
-\bibitem{choi2009fast}
-H.~Choi, H.~Lee, and H.~Kim, ``Fast detection and visualization of network
-  attacks on parallel coordinates,'' \emph{computers \& security}, vol.~28,
-  no.~5, pp. 276--288, 2009.
-
-\bibitem{humphries2013elvis}
-C.~Humphries, N.~Prigent, C.~Bidan, and F.~Majorczyk, ``Elvis: Extensible log
-  visualization,'' in \emph{Proceedings of the Tenth Workshop on Visualization
-  for Cyber Security}, 2013, pp. 9--16.
-
-\bibitem{yu2010ember}
-T.~Yu, R.~Lippmann, J.~Riordan, and S.~Boyer, ``Ember: a global perspective on
-  extreme malicious behavior,'' in \emph{Proceedings of the seventh
-  international symposium on visualization for cyber security}, 2010, pp.
-  1--12.
 
 \bibitem{djap2021xb}
 R.~Djap, C.~Lim, K.~E. Silaen, and A.~Yusuf, ``Xb-pot: Revealing honeypot-based
@@ -266,6 +266,16 @@ L.~Hao, C.~G. Healey, and S.~E. Hutchinson, ``Ensemble visualization for cyber
   situation awareness of network security data,'' in \emph{2015 IEEE Symposium
   on Visualization for Cyber Security (VizSec)}.\hskip 1em plus 0.5em minus
   0.4em\relax IEEE, 2015, pp. 1--8.
+
+\bibitem{pouget2006time}
+F.~Pouget, G.~Urvoy-Keller, and M.~Dacier, ``Time signatures to detect
+  multi-headed stealthy attack tools,'' in \emph{18th Annual FIRST Conference},
+  Baltimore, MD, USA, 2006.
+
+\bibitem{thonnard2008framework}
+O.~Thonnard and M.~Dacier, ``A framework for attack patterns' discovery in
+  honeynet data,'' \emph{Digital Investigation}, vol.~5, pp. S128--S139, 2008,
+  proc. DFRWS 2008.
 
 \bibitem{sommer2010outside}
 R.~Sommer and V.~Paxson, ``Outside the closed world: On using machine learning
