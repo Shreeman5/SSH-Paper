@@ -65,19 +65,33 @@
 \begin{abstract} 
 
 Network operators use visualizations to detect attacks on their systems, exploring and interacting with data to uncover patterns 
-that would otherwise stay hidden. Operators then use these findings to block attackers and to expand the knowledge base of known threats. Detecting
-anomalies and uncovering deeper patterns iteratively in data is at best, tedious and at worst, not achievable without data visualizations.
-Previous works in network visualization analyzed the IP and AS dimensions of SSH logins without much focus on the username aspect of 
-the attackers' attempts, detected anomalous network events only where baseline events were available, and enabled operators to share findings with one 
-another. Little attention has been paid to whether attackers observed at different times represent the same persistent actor.
-We present an iterative visualization SSHVisual, using login attempts collected on our own SSH-facing systems. SSHVisual analyzes the IP, AS, and username dimensions 
-of SSH attacks, in service of SSH campaign detection. It complements automated detection by allowing operators to find anomalous events without normal baseline events. 
-It also introduces a similarity metric that quantifies attacker persistence over time. Like previous 
-systems, SSHVisual supports iterative and collaborative sharing of findings between operators. We evaluated SSHVisual using case studies and found that it helps us block attacks
-and uncover patterns. We identified campaigns in which a set of attempted usernames recurred across unrelated IPs and ASes. 
-The similarity metric surfaced attackers returning across different time periods despite changing network origin. SSHVisual shows that treating 
-usernames as a first-class analytic dimension reveals attacker coordination that IP-centric analysis misses, and that exploratory, operator-driven 
-detection remains valuable.
+that might otherwise stay overlooked. Operators then use these findings to block attackers and to expand the knowledge base of known threats. Detecting
+anomalies and identifying deeper relationships iteratively in data is, at best, tedious and, at worst, infeasible without data visualizations.
+Prior work in network visualization analyzed the IP address and ASN dimensions of SSH logins with little focus on the username aspect of 
+the attackers' attempts and detected anomalous network events only where baseline events were available. 
+As a result, little attention has been paid to whether attackers seen at different times and from different
+addresses using different usernames belong to the same coordinated campaign.
+We present SSHVisual, an iterative visualization system built on login attempts collected from our production SSH systems. SSHVisual analyzes the IP, ASN, and 
+username dimensions 
+of SSH attacks, to support campaign detection. It complements automated detection by allowing operators to find anomalous events 
+without normal a normal baseline. 
+It provides a similarity search across dimensions that groups
+attackers by behavior and explains each match. Like prior systems, it supports iterative and collaborative sharing of findings between operators.
+We evaluated SSHVisual on 206.6M attacker login attempts collected over 69 days on our production systems. We found that it helps operators surface hidden patterns
+and find attackers to block. In one case study, some IPs tried a very similar set of usernames,
+including uncommon ones, which pointed to a single obscure campaign that volume charts could present as unrelated
+bursts. In another, similarity search surfaced low-volume IPs working through
+various username lists, none of which ranked in the top ten by volume. Without similarity search, these IPs would likely have been hard to find and block. These results
+suggest that username-centric, operator-driven exploration remains valuable because it can reveal covertness and coordination that previous 
+analyses can miss.
+
+
+% We evaluated SSHVisual using case studies and found that it helps us block attacks
+% and uncover patterns. We identified campaigns in which a set of attempted usernames recurred across unrelated IPs and ASes and we showed 
+% how buried some IPs are given the heavy tailed nature of SSH data. 
+% The similarity metric surfaced attackers returning across different time periods despite changing network origin. SSHVisual shows that treating 
+% usernames as a first-class analytic dimension reveals attacker coordination that IP-centric analysis misses, and that exploratory, operator-driven 
+% detection remains valuable.
 
 \end{abstract}
 
