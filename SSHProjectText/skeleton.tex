@@ -97,10 +97,12 @@ analyses can miss.
 
 % =====================  I. INTRODUCTION  =====================
 \section{Introduction}
-Computer systems employ SSH \cite{ylonen1996ssh} to allow users to securely connect to them in order to execute commands and do remote 
-administration. Many users do a username, password combination (password based authentication) in order to gain entry to the SSH system. Attackers, 
-who are adversarial, can use brute force attack mechanisms \cite{295683} to get into SSH systems. Sometimes, they guess the username, 
-password combinations and other times, they take advantage of poorly secured systems to build botnets \cite{295683} to carry out further attacks 
+May computer systems employ SSH \cite{ylonen1996ssh} for secure connections, giving legitimate users the ability to execute commands and perform remote 
+administration.
+%Many users do a username, password combination (password based authentication) in order to gain entry to the SSH system.
+A common class of attacks against these systems are brute force attempts to guess username/password combinations~\cite{295683}. Such attacks are still prevalent, because they are relatively cheap to execute and there are still plenty of poorly-secured targets.
+Once in, attackers frequently use compromised
+systems to build botnets \cite{295683} to carry out further attacks 
 \cite{antonakakis2017understanding, kolias2017ddos} or steal resources from the systems, like cryptomining \cite{dang2019understanding, pastrana2019first}.
 
 Given the prevalence of SSH attacks in the IPv4 space \cite{295683}, we collected SSH data on our own systems and designed SSHVisual. SSHVisual serves two kinds of 
@@ -112,7 +114,7 @@ attempt an identical sequence of usernames, and group them as a coordinated botn
 Surveys of network visualization \cite{7166305, 6007132, zhang2017survey, raynor2022state, wu2018research} establish the maturity of the field and the gaps 
 we target. Our contributions follow from treating the username as an attacker identity. First, actor-level analysis: we treat the attacker as a 
 first-class actor — including the username identity, not only the source IP or autonomous system (AS) — and we identify coordinated campaigns. Since network data 
-affords no nromal baseline for automated detection \cite{gates2006challenging}, this identification is necessarily exploratory (therefore, not antagonistic but complementary to automated
+affords no normal baseline for automated detection \cite{gates2006challenging}, this identification is necessarily exploratory (therefore, not antagonistic but complementary to automated
 detection with nromal baselines) — operators recognize coordination visually rather than specifying it in advance. Second, a similarity metric that 
 quantifies attacker similarity and lets operators track how actors evolve in the username dimension across time periods. 
 Additionally, following established practices, we allow iterative operator driven collaboration and labeling of irregularities found in the data.
