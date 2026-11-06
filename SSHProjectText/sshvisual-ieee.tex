@@ -58,12 +58,12 @@ email address or ORCID}
 Network operators use visualizations to detect attacks on their systems, interacting with data to uncover patterns that might stay hidden. Operators 
 use these findings to block attackers and to expand the knowledge base of known threats. Detecting anomalies and identifying relationships iteratively in data is, 
 at best, tedious and, at worst, infeasible without data visualizations. Prior work in network visualization analyzed the IP address and ASN dimensions of SSH logins with little 
-focus on the username aspect of the attackers' attempts and detected anomalous network events when baseline events were available. As a result, little attention has been 
+focus on the username aspect of the attackers and detected anomalous network events when baseline events were available. As a result, little attention has been 
 paid to whether attackers that differ in timing, source address, and username belong to the same coordinated campaign. We present SSHVisual, an iterative visualization system 
-evaluated on login attempts collected from our production SSH systems. SSHVisual analyzes the IP, ASN, and username dimensions of SSH attacks, to support campaign detection. 
+evaluated on login attacks collected from our production SSH systems. SSHVisual analyzes the IP, ASN, and username dimensions of SSH attacks, to support campaign detection. 
 It complements automated detection by allowing operators to find anomalous events without a normal baseline. It uses a similarity search across dimensions that groups 
 attackers by behavior and explains each match. It supports iterative and collaborative sharing of findings between operators. We evaluated SSHVisual on 
-206.6 million attacker login attempts collected over 69 days. We found that it helps operators surface hidden patterns and find attackers to block. In one 
+206.6 million attacker login attacks collected over 69 days. We found that it helps operators surface hidden patterns and find attackers to block. In one 
 case study, some IPs tried a similar set of usernames, including uncommon ones, which pointed to a single obscure campaign that volume charts could present as unrelated 
 bursts. In another, similarity search surfaced low-volume IPs working through various username lists, none of which ranked in the top ten by volume. Without similarity search, 
 these IPs would likely have been hard to find and block. These results suggest that username-centric, operator-driven exploration can be valuable because it can reveal 
@@ -91,7 +91,7 @@ who are adversarial, can use brute force attack mechanisms \cite{295683} to get 
 password combinations and other times, they take advantage of poorly secured systems to build botnets \cite{295683} to carry out further attacks
 \cite{antonakakis2017understanding, kolias2017ddos} or steal resources from the systems, like cryptomining \cite{dang2019understanding, pastrana2019first}.
 
-Given the prevalence of SSH attacks in the IPv4 space \cite{295683}, we designed SSHVisual and evaluated it on login attempts from our production SSH systems. 
+Given the prevalence of SSH attacks in the IPv4 space \cite{295683}, we designed SSHVisual and evaluated it on login attacks from our production SSH systems. 
 SSHVisual serves two kinds of
 network operators: Network administrators, who handle daily SSH traffic, need to identify attackers quickly and block them and Security analysts, who study traffic
 over longer periods, look for patterns that are not apparent and share what they find. Consider a single period: an administrator can isolate
@@ -278,8 +278,8 @@ same patterns are not identified twice.
 \textbf{R1: Attacker similarity profiling.} SSHVisual should be able to cluster similar attackers along the username, IP and ASN
 dimensions. R1 mostly serves T1 as it allows security analysts to build a repository of similar attackers.
 
-\textbf{R2: Sorting and ranking.} SSH data can be heavy-tailed: one username can account for a quarter of attempts (remaining attacks spread across other usernames)
-~\cite{owens2008study} and persistent IPs can account for most attempts~\cite{wu2020mining}.
+\textbf{R2: Sorting and ranking.} SSH data can be heavy-tailed: one username can account for a quarter of attacks (remaining attacks spread across other usernames)
+~\cite{owens2008study} and persistent IPs can account for most attacks~\cite{wu2020mining}.
 SSHVisual should therefore list every entity in each dimension,
 and let the operator sort and rank entities by any combination of attributes. R2 supports T1 and T2: network administrators can surface anomalous entities that may not reach the
 top of a volume ranking, and security analysts can find similar entities.
@@ -325,9 +325,9 @@ as more series are added~\cite{javed2010graphical}. Each linechart should theref
 \section{Design}
 \label{sec:design}
 
-SSHVisual combines two visual components, a discovery table and a set of linecharts, with two non-visual components, similarity search and tagging.
-We describe the visual design in Section~\ref{sec:visual} and the non-visual design in Section~\ref{sec:nonvisual}. All figures show SSH login attempts
-collected between 1~November 2022 and 8~January 2023, a period of 69 days.
+SSHVisual combines two visual components, a discovery table and linecharts, with two non-visual components, similarity search and tagging.
+Section~\ref{sec:visual} and Section~\ref{sec:nonvisual} describe them respectively. All figures show SSH login attacks
+between Nov 1 2022 and Jan 8 2023, a period of 69 days.
 
 \subsection{Visual Design}
 \label{sec:visual}
@@ -354,33 +354,22 @@ of entities (197 countries).
 Some columns (label C) are shared across all tabs: total attacks, average daily attacks, persistence (the share of days on which the entity was active),
 the largest absolute and percentage daily change, attacks in the most recent seven days, first- and last-seen dates, maximum daily count,
 trend (line chart showing attacks at seven day intervals) and burst intensity (ratio of max daily attacks to average daily attacks where a higher ratio likely indicates
-an entity that attacks sporadically but with higher frequencies). The full list and figures of columns (labels C and D) are found in the Appendix, 
-Section~\ref{app:columns}.
+an entity that attacks sporadically but with higher frequencies). The full list and figures of columns (labels C and D) are found in Appendix ~\ref{app:columns}.
 
 \begin{figure}[t]
   \centering
   \includegraphics[width=\columnwidth]{annotated-Linechart.png}
-  \caption{The first chart (A) shows total attacks; the four charts below show the 10 most active Countries (B), ASNs (C), IPs (D), and Usernames (E).}
+  \caption{The top chart (A) shows total attacks over time, and the four charts below it 
+  show the 10 most active countries (B), ASNs (C), IPs (D), and usernames (E). A legend entry (F) 
+  identifies each series, and a brushed region (G) selects a time window. A spike appears around 
+  Dec 30 (H), and two lines (I, J) follow individual countries’ attacks over time.}
   \label{fig:linecharts}
 \end{figure}
 
-% Some columns (hidden in the dropbox of label D) apply only to particular tabs; Table~\ref{tab:columns} in Appendix~\ref{app:columns} lists every column and the tabs it appears in. The IP tab has columns ASN Name and Country that the other tabs lack with the underlying
-% assumption that an IP address belongs exclusively to one ASN and one country. The tabs Countries, ASNs and IPs share these columns: unique usernames,
-% username stability (mean Jaccard similarity between consecutive days' username sets where 0 = volatile and 1 = stable with a higher number
-% indicating that same usernames are used consistently) and username concentration (top 3 usernames and their attack percentages).
-% The tabs Countries, ASNs and Usernames share these columns: unique IPs,
-% IP stability (mean Jaccard similarity between consecutive days' IP sets where 0 = volatile and 1 = stable with a higher number
-% indicating that same IPs are used consistently) and IP concentration (top 3 IPs and their attack percentages).
-% The tabs Countries and Usernames share these columns: unique ASNs,
-% ASN stability (mean Jaccard similarity between consecutive days' ASN sets where 0 = volatile and 1 = stable with a higher number
-% indicating that same ASNs are used consistently) and ASN concentration (top 3 ASNs and their attack percentages).
-% The tabs ASNs and Usernames share these columns: unique countries,
-% country stability (mean Jaccard similarity between consecutive days' country sets where 0 = volatile and 1 = stable with a higher number
-% indicating that same countries are attacking consistently) and country concentration (top 3 countries and their attack percentages).
-% Finally, the ASN tab has a unique column called primary country which shows the country it mostly comes from.
+
 
 Exclusive to the countries tab, each country also carries a badge summarizing its dominant behavior, namely Scan, Spray, Botnet or Brute (label E).
-Brute marks entities whose traffic comes from few IP addresses making many attempts on few usernames. Spray marks traffic from many IP addresses
+Brute marks entities whose traffic comes from few IP addresses making many attacks using few usernames. Spray marks traffic from many IP addresses
 trying many usernames, and Botnet marks traffic spread across many IP addresses and many ASNs. Scan marks a general attack pattern that fits none
 of the other three.
 
@@ -400,20 +389,20 @@ ranked lookup to the temporal behavior of the same entities, fulfilling R4.
 
 % (Placed earlier in the source than its text on purpose: a full-width figure* can never appear on the page where it is defined, only on a later page.)
 
-The linechart view (Fig.~\ref{fig:linecharts}) stacks five charts on a shared time axis. The first, Total Attacks Over Time, shows the 
+The linechart view (Fig.~\ref{fig:linecharts}) stacks five charts on a shared time axis. The first, Total Attacks, shows the 
 aggregate volume of
-attempts (label A); the remaining four show the 10 most active countries, ASNs, IPs, and usernames (labels B-E). Each legend entry lists the entity's total for the selected period.
+attacks (label A); the remaining four show the 10 most active countries, ASNs, IPs, and usernames (labels B-E). Each legend entry (label F) lists the entity's total for the selected period.
 Interaction with the linecharts follows ~\cite{shneiderman1996eyes} (fulfilling R5), and the charts are coordinated so that an action in any one of them
 updates all of them.
 
 \textbf{Overview first.} The charts cover all 69 days of data, with each chart showing the 10 most active entities in its dimension.
 
-\textbf{Zoom.} Every chart supports brushing. When the operator brushes a time range on any chart, the range is applied to all five charts and recorded in the Active Filters bar,
+\textbf{Zoom.} Every chart supports brushing (label G). When the operator brushes a time range on any chart, the range is applied to all five charts and recorded in the Active Filters bar,
 so the temporal context stays the same whichever dimension the operator is examining. Brushing is disabled once the range is two days or fewer, since a line needs more
 datapoints.
 
 \textbf{Filter.} Right-clicking a legend entry crosses the entity out, removing it from its chart and rescaling the y-axis so that smaller series are no longer flattened against the
-axis by a dominant one. Left-clicking a legend entry selects that entity and filters every chart to the attacks associated with it. Because each attack attempt links a username,
+axis by a dominant one. Left-clicking a legend entry selects that entity and filters every chart to the attacks associated with it. Because each attack links a username,
 an IP, an ASN, and a country, the selection propagates along these relationships:
 
 \begin{itemize}
@@ -426,15 +415,15 @@ an IP, an ASN, and a country, the selection propagates along these relationships
 \textbf{Details-on-demand.} Hovering over a data point shows a tooltip with that entity's attack count for the day, and hovering over a legend entry highlights the entity's line,
 and the legend reports each entity's total for the selected period.
 
-Linked filtering can turn the linecharts from four separate rankings into a means of tracing an entity across dimensions. An operator investigating the spike on 30~December,
-for example, can select \texttt{root} in the username chart; the IP, ASN, and country charts then show which addresses, networks, and countries tried \texttt{root}, and
-brushing around 30~December narrows the view to the spike itself. Conversely, selecting an ASN such as DigitalOcean reveals which usernames its hosts try, indicating
-whether traffic from a hosting provider can be one campaign or many. Brushing on every chart, linked filtering, and on-demand details together fulfill R5.
+Linked filtering can turn linecharts from four separate rankings into a means of tracing an entity across dimensions. An operator investigating 
+the spike on Dec 30 (label H) can select root in the username chart; the IP, ASN, and country charts then show which addresses, networks, and countries tried root, and
+brushing around Dec 30 narrows the view to the spike. Conversely, selecting an ASN like DigitalOcean reveals which usernames its hosts try, indicating
+whether a hosting provider’s traffic is one campaign or many. Brushing on every chart, linked filtering, and on-demand details fulfill R5.
 
 The linecharts answer questions that the discovery table cannot, such as ``Do the countries in Fig.~\ref{fig:discovery} share the same peaks and valleys?'' or ``Does one country
-begin attacking earlier than another?'' In Fig.~\ref{fig:linecharts}, the aggregate chart shows a sharp spike on 30~December, and most of the top ten countries peak on the same
-day, indicating a coordinated, multi-country event rather than activity from a single source. The charts also reveal differences in timing. China's largest peak falls in late
-November, weeks before the US' activity rises, and the IP chart shows individual addresses that each spike for a day or two and then fall silent. Neither pattern can
+begin attacking earlier than another?'' In Fig.~\ref{fig:linecharts}, the aggregate chart shows a spike on Dec 30 (label H), and most top-ten countries peak on the same
+day, indicating a coordinated, multi-country event rather than a single source. The charts also reveal timing differences. China's largest peak falls in late
+November (label I), weeks before the US' activity rises (label J), and the IP chart shows individual addresses that each spike for a day or two then fall silent. Neither pattern can
 be recovered from the table's per-entity totals. Together, Figs.~\ref{fig:discovery} and~\ref{fig:linecharts} show how the two views complement each other, fulfilling R4.
 
 \subsubsection{Sorting and Ranking}
@@ -443,14 +432,12 @@ be recovered from the table's per-entity totals. Together, Figs.~\ref{fig:discov
 Fig.~\ref{fig:sorting} shows the usernames tab sorted on two columns (labels A and B). Operators sort by holding Ctrl/Cmd while clicking headers, and the bracketed
 indices in the headers show when the column was clicked.
 
-Sorting matters because the data are heavy-tailed. The username linechart in Fig.~\ref{fig:linecharts} is dominated by \texttt{root},
+Sorting matters because the data are heavy-tailed. The username linechart in Fig.~\ref{fig:linecharts} is dominated by root,
 which accounts for tens of
-millions of attempts and flattens every other line. Ranking by day-over-day change instead surfaces usernames (label C in Fig.~\ref{fig:sorting}), which are
-not seen in Fig.~\ref{fig:linecharts}, several of which are default accounts for specific software or hardware products (\texttt{karaf}, for
+millions of attacks and flattens every other line. Ranking by day-over-day change instead surfaces usernames (label C in Fig.~\ref{fig:sorting}), absent from Fig.~\ref{fig:linecharts}, several of which are default accounts for specific software or hardware products (karaf, for
 example, is the
-default account of Apache Karaf). Their totals are far below the top ten, but their activity is concentrated: \texttt{karaf} received
-77.6K attempts in total,
-44.8K of them on a single day, and was active on only 15 of the 69 days. Bursts of product-specific credentials like these suggest campaigns targeting particular
+default account of Apache Karaf). Their totals are far below the top ten, but their activity is concentrated: karaf was used to attack 78 thousand times,
+45 thousand of them on a single day, and was active on only 15 of the 69 days. Bursts of product-specific credentials like these suggest campaigns targeting particular
 devices, yet they can be invisible in a volume-ranked chart. Fig.~\ref{fig:sorting} thus shows how sorting and ranking over the full entity list fulfills R2.
 
 % \subsubsection{Visual Clarity}
@@ -481,32 +468,32 @@ its volume, traffic concentration on its most active source, among other feature
 reuse the 17-dimensional profile we apply to
 IPs (Section~\ref{sec:ipsim}), because a diagnostic showed some features to be uninformative for usernames. Daily stability is an example: 
 most IPs are active many days, so their stability is well defined, but half of the usernames appear only one day, where
-stability is meaningless. We cluster username profiles with $k$-means ($k=9$). Each
+stability is meaningless. We cluster username profiles with k-means (k=9). Each
 cluster is labeled automatically from its centroid. To answer a query, the system retrieves the query's cluster and ranks the other members by Euclidean distance to the query,
 reported as a similarity score.
 
 % its persistence,
 
-In Fig.~\ref{fig:usersim}, an operator searches for \texttt{james} (label A). The system places it in Cluster~3, labeled
+In Fig.~\ref{fig:usersim}, an operator searches for james (label A). The system places it in Cluster~3, labeled
 High-Volume Persistent Botnet-Scale,
-which contains 2,624 usernames; a cluster member receives about thirty one thousand attempts from roughly four thousand IPs and is active
+which contains 2,624 usernames; a cluster member receives about 31 thousand attacks from roughly four thousand IPs and is active
 on 72\% of days (label B).
 The results table lists the 20 most similar usernames (five shown here), each with its total attacks, top country, top three source IPs,
 the top three ASNs, and a set of ``Why similar?'' labels (label D), such as a
 shared lead source country, comparable volume, or sourcing volume, that explain the match.
 
-Above the results, a shared infrastructure panel (label C) lists IPs that appear among the top sources of more than one result, and these IPs are shown in the
-table. In Fig.~\ref{fig:usersim}, 37 IPs are shared. Each line of the panel names an IP and counts how many of the 100 results it is a
+Above the results, a shared infrastructure panel (label C) lists IPs that appear as the top sources of more than one username, also shown in the
+table. In Fig.~\ref{fig:usersim}, 37 IPs are shared. Each panel line names an IP and counts how many of the 100 usernames it is a
 top source for, followed by examples of those usernames. Two of the most shared addresses, 152.89.196.123 and 152.89.196.220, lie in the same /24 network and
-are top sources for 34 and 33 results respectively, including \texttt{manager}, \texttt{daniel}, and \texttt{oscar}. The panel applies the same analysis to ASNs: 
-13 are shared, led by DigitalOcean (99 of 100 results), Tencent (90), and
+are top sources for 34 and 33 usernames respectively, including manager, daniel, and oscar. The panel applies the same analysis to ASNs: 
+13 are shared, led by DigitalOcean (99 of 100 usernames), Tencent (90), and
 OVH (40). This panel can turn behavioral resemblance into infrastructural
 evidence: usernames tried by the same hosts are likely drawn from the same credential list and belong to the same campaign.
 
 \begin{figure*}[t]
   \centering
   \includegraphics[width=\textwidth]{annotated-UsernameSimilarity.png}
-  \caption{Similarity search for \texttt{james} (A). Cluster summary (B), Shared infrastructure (C), and Why similar? (D) explain why the results were grouped.}
+  \caption{Similarity search for james (A). Cluster summary (B), Shared infrastructure (C), and Why similar? (D) explain why the results were grouped.}
   \label{fig:usersim}
 \end{figure*}
 
@@ -524,12 +511,12 @@ We characterize each IP address by a 17-dimensional profile drawn entirely from 
 groups: volume (log-scaled totals, daily means, and peaks); temporal shape (the fraction of days on which the address was active, its burst intensity, its 
 largest daily
 swings, a fitted trend slope, its activity span, and the share of its traffic in the final week); targeting behavior (unique usernames tried, how stable
-that set is from one day to the next, its rotation rate, and the share of attempts taken by its most-tried username); and two flags indicating whether the address belongs to
+that set is from one day to the next, its rotation rate, and the share of attacks taken by its most-tried username); and two flags indicating whether the address belongs to
 a cloud provider and whether it originates from a major source country. We cluster these profiles with $k$-means, label each cluster
 from its centroid, and answer queries in the same way as for usernames.
 
 In Fig.~\ref{fig:ipsim}, an operator searches for 61.177.173.46 (label A), which falls in Cluster~5, labeled Low-Volume Persistent Exploratory, containing 4,405 addresses.
-The most similar results are shown in label B, with similarity scores between 91.2\% and 80.4\%, all belonging to
+The most similar results are shown in label B, with similarity scores between 80.4\% and 91.2\%, all belonging to
 CHINANET-BACKBONE.
 Behavioral features alone can recover infrastructure relationships, suggesting that these hosts may be operated together.
 
@@ -566,7 +553,7 @@ tag repository for each dimension. The repository displays the current operator'
 \begin{figure}[h]
   \centering
   \includegraphics[width=\columnwidth]{annotated-tag43.png}
-  \caption{The tag repository after the tag is applied (A), listing each tagged username (B) with its note (C), author (D), timestamp (E), and application counts (F).}
+  \caption{Repository after tagging (A), listing tagged username (B) with note (C), author (D), timestamp (E), application counts (F), and untag option (G).}
   \label{fig:tag4}
 \end{figure}
 
@@ -575,11 +562,11 @@ for the username cluster found in Fig.~\ref{fig:usersim}. The repository lists t
 Tags are applied from
 the similarity results. In Fig.~\ref{fig:tag3} the operator selects seven usernames (label A), chooses the
 new tag, and adds a note
-explaining this particular application: ``recurring ASNs'' (label B). In Fig.~\ref{fig:tag4} the repository reports seven applications (labels A and F).
+explaining this application: ``recurring ASNs'' (label B). In Fig.~\ref{fig:tag4} the repository reports seven applications (labels A and F).
 Filtering the
 list by tag shows each tagged username with its note (labels B and C), the operator who applied it (label D), and a timestamp (label E); any
-application can be removed with Untag.
-Tagged usernames also appear in the Tags column of subsequent similarity searches, so an operator who later retrieves them sees immediately that
+application can be removed with Untag (label G).
+Tagged usernames also appear in the Tags column of future similarity searches (label E in Fig.~\ref{fig:ipsim}), so an operator who later retrieves them sees immediately that
 they were already investigated.
 % The selection reflects the evidence from the shared infrastructure panel. All seven usernames have highlighted, shared IP addresses among their top sources, whereas
 % \texttt{jack}, despite the highest similarity score, has none and is left untagged.
@@ -605,33 +592,31 @@ what else it is connected to.
 \subsection{Username Campaigns}
 \label{sec:sa}
 
-Fig.~\ref{fig:UAIPs} shows the username search for IP 68.183.213.225 (DigitalOcean, Germany). Four IPs have 100\% 
-username similarity with it (labels A--E): 143.244.183.240, 24.199.108.32, and 146.190.113.228 in the United States, 
-and 134.122.62.125 in the Netherlands. All five try the same 77 usernames in nearly identical proportions, and 
+Fig.~\ref{fig:UAIPs} shows the username search (label A) for IP 68.183.213.225 (DigitalOcean, Germany). Five IPs have 100\% 
+username similarity with it (labels B--F): 143.244.183.240, 24.199.108.32, and 146.190.113.228 in the US, 
+134.122.62.125 in the Netherlands, and 101.204.27.20 in China. All six try the same 77 usernames, and 
 every list contains all 16 of the searched IP’s uncommon usernames, such as ecell, guojing, and xxaifwq. These 
 uncommon usernames make the match meaningful. A 100\% score built on common usernames like root and admin 
-would say little, but 16 shared uncommon usernames are unlikely by chance. The five IPs share one ASN 
-but span three countries, which is consistent with a single operator renting servers in several regions. The campaign 
-also extends further: at least 12 IPs score above 84\% similarity, spanning five countries and six ASNs (Appendix, Section~\ref{app:campaigns}).
+would say little, but 16 shared uncommon usernames are unlikely by chance. The six IPs share two ASNs 
+but span four countries, consistent with a single operator renting servers in several regions. The campaign 
+also extends further: at least 12 IPs score above 84\% similarity, spanning five countries and six ASNs (Appendix~\ref{app:campaigns}).
 
-Fig.~\ref{fig:IPswoutUsernames} shows why this campaign can be hard to see from volume
-alone. Each of the IPs is active for only a day or two, and at different
-times: 146.190.113.228 on Dec 19 (label D), 143.244.183.240 on Dec 20 (label B), 24.199.108.32 on Dec 28 (label C),
-68.183.213.225 on Jan 2 and Jan 8 (label A), and 134.122.62.125 on Jan 5 to 6 (label E). The lines never rise
-together, so the chart can suggest five unrelated bursts. The shared username list can link
+Fig.~\ref{fig:IPswoutUsernames} shows why this campaign may not be seen from volume. Each IP is active on different days: 146.190.113.228 on Dec 19 (label D), 143.244.183.240 on Dec 20 (label B), 24.199.108.32 on Dec 28 (label C),
+68.183.213.225 on Jan 2 and Jan 8 (label A), 134.122.62.125 on Jan 5 to 6 (label E), and 101.204.27.20 on Nov 25 (label F). The lines never rise
+together, so the chart suggests six unrelated bursts. Shared usernames can link
 them into one campaign.
 
 \begin{figure}[!tb]
 \centering
-\includegraphics[width=\columnwidth]{annotated-UsernameCampaign6.png}
-\caption{100\% usernames shared among five IPs. IPs A, B, C, D, E match the IPs A, B, C, D, E in Fig.~\ref{fig:IPswoutUsernames}.}
+\includegraphics[width=\columnwidth]{Untitled.png}
+\caption{100\% usernames shared among six IPs. IPs A, B, C, D, E, and F match the IPs A, B, C, D, E, and F in Fig.~\ref{fig:IPswoutUsernames}.}
 \label{fig:UAIPs}
 \end{figure}
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=\columnwidth]{annotated-UsernameCampaignVisual1.png}
-\caption{Five IPs labeled A--E from Fig.~\ref{fig:UAIPs} in the linechart, along with other IPs with almost the same username list.}
+\caption{Six IPs labeled A--F from Fig.~\ref{fig:UAIPs} in the linechart, along with other IPs with almost the same username list.}
 \label{fig:IPswoutUsernames}
 \end{figure}
 
@@ -642,13 +627,13 @@ them into one campaign.
 \label{sec:na}
 
 Fig.~\ref{fig:FindingPatterns} shows the IP similarity search for 200.195.169.59, an IP from Ligga Telecomunica\c{c}~{o}es S.A. in 
-Brazil with thirty six thousand attacks. Its five closest matches (88.6\% to 94.9\% behavioral similarity) come from Brazil, Indonesia, Italy, 
-Mexico, and Australia, each from a different ASN. Despite this spread, they behave alike. Each made roughly thirty to forty thousand attacks and is 
-tagged as exploratory targeting, meaning they try many different usernames. Each also shares 1,684 to 1,899 usernames with the 
+Brazil with 36 thousand attacks. Its five closest matches (88.6\% to 94.9\% similarity) come from Brazil, Indonesia, Italy, 
+Mexico, and Australia, each from a different ASN. Despite this spread, they behave alike. Each made roughly 30-40 thousand attacks and is 
+tagged as exploratory targeting, meaning they try many different usernames. Each shares 1,684 to 1,899 usernames with the 
 searched IP, 46 to 140 of them uncommon (tried by fewer than 1\% of all IPs). The searched IP itself tried 3,821 usernames, 925 
-of them uncommon. The pattern extends beyond these five: the top 20 matches, all at least 86\% similar, span 15 countries and 21 
-ASNs (Appendix, Section~\ref{app:hidden}). Together they show low-volume IPs in many countries working through large, overlapping 
-lists of uncommon usernames at the same time.
+of them uncommon. The pattern extends beyond these five: the top 20 matches, all at least 86\% similar, span 14 countries and 20 
+ASNs (Appendix~\ref{app:hidden}). Together they show low-volume IPs in many countries working through large, overlapping 
+lists of usernames at the same time.
 
 
 
@@ -703,7 +688,7 @@ to automated methods, and that the username is a valuable lens for recognizing c
 % \label{app:second}
 % Add further appendices here; each becomes Appendix B, C, ...
 
-\FloatBarrier
+
 
 % ---- References ----
 % IEEEtran.bst = official IEEE reference style (numbered, order of first citation).
@@ -711,12 +696,47 @@ to automated methods, and that the username is a valuable lens for recognizing c
 \bibliographystyle{IEEEtran}
 \bibliography{refs}
 
-\section*{Appendix}
+\FloatBarrier
 
-\subsection{Discovery Table Columns}
+\appendices
+
+\section{Discovery Table Columns}
 \label{app:columns}
 
-Table~\ref{tab:columns} lists every column of the discovery table (Section~\ref{sec:table}) and the tabs in which it appears.
+This appendix lists every column of the discovery table described in
+Section~\ref{sec:table}. That section shows the Countries tab
+(Fig.~\ref{fig:discovery}) and describes only the columns shared by all
+four tabs (label C). The remaining columns are selected from the drop-down
+menu (label D) and depend on the tab. Table~\ref{tab:columns} lists every
+column and the tabs in which it appears, and
+Figs.~\ref{fig:countries}--\ref{fig:Usernames} show all columns of the
+Countries, IP Addresses, ASN Organizations, and Usernames tabs, respectively.
+
+\textbf{Columns shared by all tabs.} The upper part of
+Table~\ref{tab:columns} lists the ten columns described in
+Section~\ref{sec:table}: total attacks, average daily attacks,
+persistence, the largest absolute and percentage daily change, attacks in
+the most recent seven days, first- and last-seen dates, maximum daily
+count, trend, and burst intensity.
+
+\textbf{Cross-dimension columns.} The lower part of
+Table~\ref{tab:columns} lists columns that describe an entity in terms of
+another dimension. For each of the four dimensions (usernames, IPs, ASNs,
+and countries), a tab can have three such columns:
+\begin{itemize}
+  \item \emph{Unique count}: the number of distinct values of that
+  dimension associated with the entity, e.g., how many distinct usernames
+  a country's IPs tried.
+  \item \emph{Stability}: the mean Jaccard similarity between consecutive
+  days' sets of that dimension, from 0 (volatile) to 1 (stable). A higher
+  value means the entity uses the same values from day to day.
+  \item \emph{Concentration}: the top three values of that dimension and
+  their percentages of the entity's attacks.
+\end{itemize}
+A tab never has these columns for its own dimension; for example, the
+Usernames tab has no username stability column. The IP tab also has no ASN
+or country columns of this kind, because each IP address is assumed to
+belong to exactly one ASN and one country.
 
 \begin{table}[!htb]
   \centering
@@ -727,41 +747,99 @@ Table~\ref{tab:columns} lists every column of the discovery table (Section~\ref{
     \textbf{Column} & \textbf{Countries} & \textbf{IPs} & \textbf{ASNs} & \textbf{Usernames} \\
     \midrule
     Total attacks                  & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ \\
-    Average daily attacks          & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ \\
+    Average daily                  & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ \\
     Persistence                    & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ \\
     Max absolute $\Delta$          & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ \\
     Max \% $\Delta$                & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ \\
-    Attacks in last 7 days         & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ \\
+    Recent (7d)                    & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ \\
     First / last seen              & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ \\
-    Max daily count                & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ \\
+    Max daily                      & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ \\
     Trend                          & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ \\
     Burst intensity                & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ \\
     \midrule
     Unique usernames               & $\checkmark$ & $\checkmark$ & $\checkmark$ &              \\
-    Username stability             & $\checkmark$ & $\checkmark$ & $\checkmark$ &              \\
-    Username concentration         & $\checkmark$ & $\checkmark$ & $\checkmark$ &              \\
     Unique IPs                     & $\checkmark$ &              & $\checkmark$ & $\checkmark$ \\
-    IP stability                   & $\checkmark$ &              & $\checkmark$ & $\checkmark$ \\
-    IP concentration               & $\checkmark$ &              & $\checkmark$ & $\checkmark$ \\
     Unique ASNs                    & $\checkmark$ &              &              & $\checkmark$ \\
+    Unique Countries               &              &              &              & $\checkmark$ \\
+    Username stability             & $\checkmark$ & $\checkmark$ & $\checkmark$ &              \\
+    IP stability                   & $\checkmark$ &              & $\checkmark$ & $\checkmark$ \\
     ASN stability                  & $\checkmark$ &              &              & $\checkmark$ \\
-    ASN concentration              & $\checkmark$ &              &              & $\checkmark$ \\
-    Unique countries               &              &              & $\checkmark$ & $\checkmark$ \\
     Country stability              &              &              & $\checkmark$ & $\checkmark$ \\
+    Username concentration         & $\checkmark$ & $\checkmark$ & $\checkmark$ &              \\
+    IP concentration               & $\checkmark$ &              & $\checkmark$ & $\checkmark$ \\
+    ASN concentration              & $\checkmark$ &              &              & $\checkmark$ \\
     Country concentration          &              &              & $\checkmark$ & $\checkmark$ \\
-    \midrule
-    ASN name, Country              &              & $\checkmark$ &              &              \\
-    Primary country                &              &              & $\checkmark$ &              \\
-    Behavior badge                 & $\checkmark$ &              &              &              \\
     \bottomrule
   \end{tabular}
 \end{table}
 
-\subsection{Username Campaigns}
+
+\begin{figure*}[t]
+\includegraphics[width=\textwidth]{A1.png}
+\caption{All the columns of the Countries tab}
+\label{fig:countries}
+\end{figure*}
+
+\begin{figure*}[t]
+\includegraphics[width=\textwidth]{A2.png}
+\caption{All the columns of the IP Addresses tab}
+\label{fig:IPs}
+\end{figure*}
+
+\begin{figure*}[t]
+\includegraphics[width=\textwidth]{A3.png}
+\caption{All the columns of the ASN Organizations tab}
+\label{fig:ASNs}
+\end{figure*}
+
+\begin{figure*}[t]
+\includegraphics[width=\textwidth]{A4.png}
+\caption{All the columns of the Usernames tab}
+\label{fig:Usernames}
+\end{figure*}
+
+
+\section{Username Campaigns}
 \label{app:campaigns}
 
+This appendix extends the username campaign in Section~\ref{sec:sa}.
+There, the username similarity search for 68.183.213.225 (DigitalOcean,
+Germany) returned five IPs with 100\% username similarity (Fig.~\ref{fig:UAIPs}).
+All six IPs tried the same 77 usernames, including 16 uncommon ones.
+Fig.~\ref{fig:campaign222} shows the same search beyond those six results.
+12 IPs score above 84\% similarity, and they span five countries
+and six ASNs. The 100\% matches (except one) all share one ASN, but the wider set reaches
+other providers. This suggests that the campaign's username list is used
+beyond a single hosting provider, either by one operator renting servers
+from several providers or by several operators sharing a list.
 
-\subsection{Hidden Entities}
+\begin{figure}[t]
+\includegraphics[width=\columnwidth]{A5.png}
+\caption{Username similarity search for 68.183.213.225 (Section~\ref{sec:sa}),
+showing IPs above 84\% similarity across five countries and six ASNs.}
+\label{fig:campaign222}
+\end{figure}
+
+
+\section{Hidden Entities}
 \label{app:hidden}
+
+This appendix extends the IP similarity search in Section~\ref{sec:na}.
+There, the five closest matches to 200.195.169.59 (Ligga
+Telecomunica\c{c}\~{o}es S.A., Brazil) were each at least 88.6\% similar
+and each came from a different country and ASN (Fig.~\ref{fig:FindingPatterns}).
+Fig.~\ref{fig:campaign333} shows the top 20 matches. All are at least
+86\% similar, and they span 14 countries and 20 ASNs, so no two matches
+share an ASN. Blocking by country or by ASN would therefore not catch this
+group. The similarity search gives
+administrators the full set of IPs to block, along with the shared
+behavior that justifies blocking them.
+
+\begin{figure}[t]
+\includegraphics[width=\columnwidth]{A6.png}
+\caption{Top 20 IP similarity matches for 200.195.169.59
+(Section~\ref{sec:na}), spanning 14 countries and 20 ASNs.}
+\label{fig:campaign333}
+\end{figure}
 
 \end{document}
