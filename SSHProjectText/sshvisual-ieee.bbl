@@ -86,6 +86,28 @@ C.~Wu, S.~Sheng, and X.~Dong, ``Research on visualization systems for ddos
   Man, and Cybernetics (SMC)}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE,
   2018, pp. 2986--2991.
 
+\bibitem{estan2002newdirections}
+C.~Estan and G.~Varghese, ``New directions in traffic measurement and
+  accounting,'' in \emph{Proceedings of the ACM SIGCOMM 2002 Conference}.\hskip
+  1em plus 0.5em minus 0.4em\relax ACM, 2002, pp. 323--336.
+
+\bibitem{staniford2002spice}
+S.~Staniford, J.~A. Hoagland, and J.~M. McAlerney, ``Practical automated
+  detection of stealthy portscans,'' \emph{Journal of Computer Security},
+  vol.~10, no. 1--2, pp. 105--136, 2002.
+
+\bibitem{griffioen2020collaboration}
+H.~Griffioen and C.~Doerr, ``Discovering collaboration: Unveiling slow,
+  distributed scanners based on common header field patterns,'' in \emph{NOMS
+  2020 -- IEEE/IFIP Network Operations and Management Symposium}.\hskip 1em
+  plus 0.5em minus 0.4em\relax IEEE, 2020, pp. 1--9.
+
+\bibitem{gu2008botminer}
+G.~Gu, R.~Perdisci, J.~Zhang, and W.~Lee, ``{BotMiner}: Clustering analysis of
+  network traffic for protocol- and structure-independent botnet detection,''
+  in \emph{Proceedings of the 17th USENIX Security Symposium}.\hskip 1em plus
+  0.5em minus 0.4em\relax USENIX Association, 2008, pp. 139--154.
+
 \bibitem{gates2006challenging}
 C.~Gates and C.~Taylor, ``Challenging the anomaly detection paradigm: A
   provocative discussion,'' in \emph{Proceedings of the 2006 workshop on New
@@ -335,6 +357,14 @@ Y.~Wu, P.~M. Cao, A.~Withers, Z.~T. Kalbarczyk, and R.~K. Iyer, ``Mining threat
   plus 0.5em minus 0.4em\relax San Diego, CA, USA: Internet Society, 2020.
   [Online]. Available:
   \url{https://www.ndss-symposium.org/wp-content/uploads/2020/04/diss2020-23007-paper.pdf}
+\BIBentrySTDinterwordspacing
+
+\bibitem{few2006visual}
+\BIBentryALTinterwordspacing
+S.~Few, ``Visual communication: Core design principles for displaying
+  quantitative information,'' Perceptual Edge whitepaper, 2006. [Online].
+  Available:
+  \url{https://public.dhe.ibm.com/software/data/sw-library/cognos/pdfs/whitepapers/wp_visual_communications_core_design_principles.pdf}
 \BIBentrySTDinterwordspacing
 
 \bibitem{shneiderman1996eyes}

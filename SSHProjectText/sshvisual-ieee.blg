@@ -14,45 +14,45 @@ Database file #1: refs.bib
 Warning--empty journal in mansmann2006interactive
 
 Done.
-You've used 55 entries,
+You've used 60 entries,
             4087 wiz_defined-function locations,
-            1136 strings with 20037 characters,
-and the built_in function-call counts, 48114 in all, are:
-= -- 3708
-> -- 1258
-< -- 418
-+ -- 678
-- -- 217
-* -- 2301
-:= -- 6737
-add.period$ -- 134
-call.type$ -- 55
-change.case$ -- 56
-chr.to.int$ -- 1020
-cite$ -- 56
-duplicate$ -- 3374
-empty$ -- 4104
-format.name$ -- 268
-if$ -- 11442
+            1163 strings with 21104 characters,
+and the built_in function-call counts, 52038 in all, are:
+= -- 4020
+> -- 1338
+< -- 452
++ -- 722
+- -- 229
+* -- 2480
+:= -- 7306
+add.period$ -- 147
+call.type$ -- 60
+change.case$ -- 61
+chr.to.int$ -- 1104
+cite$ -- 61
+duplicate$ -- 3657
+empty$ -- 4448
+format.name$ -- 284
+if$ -- 12370
 int.to.chr$ -- 0
-int.to.str$ -- 55
-missing$ -- 599
-newline$ -- 194
-num.names$ -- 55
-pop$ -- 1477
+int.to.str$ -- 60
+missing$ -- 648
+newline$ -- 211
+num.names$ -- 60
+pop$ -- 1599
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 3693
+skip$ -- 3996
 stack$ -- 0
-substring$ -- 2457
-swap$ -- 2762
-text.length$ -- 78
+substring$ -- 2658
+swap$ -- 2985
+text.length$ -- 84
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 55
+type$ -- 60
 warning$ -- 1
-while$ -- 248
-width$ -- 57
-write$ -- 549
+while$ -- 269
+width$ -- 62
+write$ -- 598
 (There was 1 warning)
