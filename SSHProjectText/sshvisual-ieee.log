@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.31)  7 NOV 2026 16:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.31)  8 NOV 2026 08:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -341,24 +341,24 @@ File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
 ) (./sshvisual-ieee.aux)
 \openout1 = `sshvisual-ieee.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
 
 -- Lines per column: 56 (exact).
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -380,7 +380,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring OFF on input line 36.
+Package hyperref Info: Link coloring OFF on input line 39.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
  (/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
@@ -390,9 +390,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count301
 )
-LaTeX Info: Redefining \ref on input line 36.
-LaTeX Info: Redefining \pageref on input line 36.
-LaTeX Info: Redefining \nameref on input line 36.
+LaTeX Info: Redefining \ref on input line 39.
+LaTeX Info: Redefining \pageref on input line 39.
+LaTeX Info: Redefining \nameref on input line 39.
  (./sshvisual-ieee.out) (./sshvisual-ieee.out)
 \@outlinefile=\write3
 \openout3 = `sshvisual-ieee.out'.
@@ -401,114 +401,156 @@ LaTeX Info: Redefining \nameref on input line 36.
 
 
 ]
-<annotated-d5.png, id=200, 1234.6125pt x 735.74875pt>
+<annotated-d5.png, id=207, 1234.6125pt x 735.74875pt>
 File: annotated-d5.png Graphic file (type png)
 <use annotated-d5.png>
-Package pdftex.def Info: annotated-d5.png  used on input line 278.
+Package pdftex.def Info: annotated-d5.png  used on input line 271.
 (pdftex.def)             Requested size: 516.0pt x 307.508pt.
- [2]
-Underfull \hbox (badness 1810) in paragraph at lines 321--326
-[]\OT1/ptm/b/n/10 R5: In-ter-ac-tive ex-plo-ration of the linecharts. \OT1/ptm/m/n/10 The
+LaTeX Font Info:    Trying to load font information for OT1+phv on input line 274.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1phv.fd
+File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
+)
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 288.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+) [2]
+Underfull \hbox (badness 5504) in paragraph at lines 362--371
+\OT1/ptm/m/n/10 one per di-men-sion: \OT1/phv/m/n/10 Countries\OT1/ptm/m/n/10 , \OT1/phv/m/n/10 IP Addresses\OT1/ptm/m/n/10 , \OT1/phv/m/n/10 ASN
  []
 
 [3 <./annotated-d5.png>]
-<annotated-Linechart.png, id=265, 1234.6125pt x 1613.02625pt>
+<annotated-Linechart.png, id=273, 1234.6125pt x 1613.02625pt>
 File: annotated-Linechart.png Graphic file (type png)
 <use annotated-Linechart.png>
-Package pdftex.def Info: annotated-Linechart.png  used on input line 380.
+Package pdftex.def Info: annotated-Linechart.png  used on input line 374.
 (pdftex.def)             Requested size: 252.0pt x 329.22037pt.
-<annotated-Sorting.png, id=266, 1234.6125pt x 232.87pt>
+<annotated-Sorting.png, id=274, 1234.6125pt x 232.87pt>
 File: annotated-Sorting.png Graphic file (type png)
 <use annotated-Sorting.png>
-Package pdftex.def Info: annotated-Sorting.png  used on input line 401.
+Package pdftex.def Info: annotated-Sorting.png  used on input line 393.
 (pdftex.def)             Requested size: 516.0pt x 97.32858pt.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 402.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 394.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 402.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 394.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [4 <./annotated-Linechart.png>]
-<annotated-UsernameSimilarity.png, id=291, 1234.6125pt x 800.9925pt>
+<annotated-UsernameSimilarity.png, id=298, 1234.6125pt x 800.9925pt>
 File: annotated-UsernameSimilarity.png Graphic file (type png)
 <use annotated-UsernameSimilarity.png>
-Package pdftex.def Info: annotated-UsernameSimilarity.png  used on input line 516.
+Package pdftex.def Info: annotated-UsernameSimilarity.png  used on input line 503.
 (pdftex.def)             Requested size: 516.0pt x 334.77678pt.
- [5 <./annotated-Sorting.png>]
-<annotated-IPSimilarity4.png, id=303, 1234.6125pt x 631.35875pt>
+
+Underfull \hbox (badness 1629) in paragraph at lines 518--525
+ \OT1/ptm/m/it/10 2) IP Sim-i-lar-ity: [][][] \OT1/ptm/m/n/10 We char-ac-ter-ize each IP by a 14-
+ []
+
+[5 <./annotated-Sorting.png>]
+<annotated-IPSimilarity4.png, id=313, 1234.6125pt x 631.35875pt>
 File: annotated-IPSimilarity4.png Graphic file (type png)
 <use annotated-IPSimilarity4.png>
-Package pdftex.def Info: annotated-IPSimilarity4.png  used on input line 549.
+Package pdftex.def Info: annotated-IPSimilarity4.png  used on input line 546.
 (pdftex.def)             Requested size: 252.0pt x 128.861pt.
-
-Underfull \vbox (badness 1237) has occurred while \output is active []
-
-<annotated-tag21.png, id=306, 1234.6125pt x 422.57875pt>
-File: annotated-tag21.png Graphic file (type png)
-<use annotated-tag21.png>
-Package pdftex.def Info: annotated-tag21.png  used on input line 562.
-(pdftex.def)             Requested size: 252.0pt x 86.24876pt.
-<annotated-tag31.png, id=307, 1234.6125pt x 992.70876pt>
-File: annotated-tag31.png Graphic file (type png)
-<use annotated-tag31.png>
-Package pdftex.def Info: annotated-tag31.png  used on input line 569.
-(pdftex.def)             Requested size: 252.0pt x 202.61292pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<annotated-tag43.png, id=308, 1234.6125pt x 640.3925pt>
+<annotated-tag21.png, id=316, 1234.6125pt x 422.57875pt>
+File: annotated-tag21.png Graphic file (type png)
+<use annotated-tag21.png>
+Package pdftex.def Info: annotated-tag21.png  used on input line 559.
+(pdftex.def)             Requested size: 252.0pt x 86.24876pt.
+<annotated-tag31.png, id=317, 1234.6125pt x 992.70876pt>
+File: annotated-tag31.png Graphic file (type png)
+<use annotated-tag31.png>
+Package pdftex.def Info: annotated-tag31.png  used on input line 566.
+(pdftex.def)             Requested size: 252.0pt x 202.61292pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<annotated-tag43.png, id=320, 1234.6125pt x 640.3925pt>
 File: annotated-tag43.png Graphic file (type png)
 <use annotated-tag43.png>
-Package pdftex.def Info: annotated-tag43.png  used on input line 576.
+Package pdftex.def Info: annotated-tag43.png  used on input line 573.
 (pdftex.def)             Requested size: 252.0pt x 130.70479pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[6 <./annotated-UsernameSimilarity.png> <./annotated-IPSimilarity4.png>]
-Underfull \hbox (badness 6141) in paragraph at lines 616--624
-[]\OT1/ptm/m/n/10 Fig. []9[] shows the user-name search (la-bel A) for
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [6 <./annotated-UsernameSimilarity.png> <./annotated-IPSimilarity4.png (PNG copy)>]
+Underfull \hbox (badness 7851) in paragraph at lines 613--619
+\OT1/ptm/m/n/10 IP [] (Dig-i-talO-cean, Ger-many). Five
  []
 
 
-Underfull \hbox (badness 6995) in paragraph at lines 616--624
-\OT1/ptm/m/n/10 IP 68.183.213.225 (Dig-i-talO-cean, Ger-many). Five IPs
+Underfull \hbox (badness 10000) in paragraph at lines 613--619
+[]\OT1/ptm/m/n/10 , and [] in the
  []
 
 
-Underfull \hbox (badness 3907) in paragraph at lines 616--624
-\OT1/ptm/m/n/10 have 100% user-name sim-i-lar-ity with it (la-bels B--F):
+Underfull \hbox (badness 10000) in paragraph at lines 613--619
+\OT1/ptm/m/n/10 US, [] in the Nether-lands, and
  []
 
-<Untitled.png, id=331, 1234.6125pt x 895.345pt>
+
+Underfull \hbox (badness 2173) in paragraph at lines 613--619
+[] \OT1/ptm/m/n/10 in China. All six try the same 77
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 620--624
+[]\OT1/ptm/m/n/10 Fig. []10[] shows why volume-based views may
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 620--624
+\OT1/ptm/m/n/10 miss this cam-paign. Each IP peaks on days the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 620--624
+\OT1/ptm/m/n/10 oth-ers do not: [] on Nov. 25
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 620--624
+\OT1/ptm/m/n/10 (la-bel F), [] on Dec. 19 (la-bel
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 620--624
+\OT1/ptm/m/n/10 D), [] on Dec. 20 (la-bel B),
+ []
+
+<Untitled.png, id=342, 1234.6125pt x 895.345pt>
 File: Untitled.png Graphic file (type png)
 <use Untitled.png>
-Package pdftex.def Info: Untitled.png  used on input line 632.
+Package pdftex.def Info: Untitled.png  used on input line 627.
 (pdftex.def)             Requested size: 252.0pt x 182.74086pt.
-<annotated-UsernameCampaignVisual1.png, id=334, 1234.6125pt x 529.98pt>
+<annotated-UsernameCampaignVisual1.png, id=345, 1234.6125pt x 529.98pt>
 File: annotated-UsernameCampaignVisual1.png Graphic file (type png)
 <use annotated-UsernameCampaignVisual1.png>
-Package pdftex.def Info: annotated-UsernameCampaignVisual1.png  used on input line 639.
+Package pdftex.def Info: annotated-UsernameCampaignVisual1.png  used on input line 634.
 (pdftex.def)             Requested size: 252.0pt x 108.16946pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[7 <./annotated-tag21.png> <./annotated-tag31.png> <./annotated-tag43.png>]
-<Findingpatterns5.png, id=354, 976.64874pt x 707.64375pt>
+[7 <./annotated-tag21.png (PNG copy)> <./annotated-tag31.png> <./annotated-tag43.png (PNG copy)> <./Untitled.png (PNG copy)>]
+<Findingpatterns5.png, id=362, 976.64874pt x 707.64375pt>
 File: Findingpatterns5.png Graphic file (type png)
 <use Findingpatterns5.png>
-Package pdftex.def Info: Findingpatterns5.png  used on input line 673.
+Package pdftex.def Info: Findingpatterns5.png  used on input line 668.
 (pdftex.def)             Requested size: 252.0pt x 182.59012pt.
-<Blockingsomethingburied1.png, id=355, 916.42375pt x 852.18375pt>
+<Blockingsomethingburied1.png, id=363, 916.42375pt x 852.18375pt>
 File: Blockingsomethingburied1.png Graphic file (type png)
 <use Blockingsomethingburied1.png>
-Package pdftex.def Info: Blockingsomethingburied1.png  used on input line 680.
+Package pdftex.def Info: Blockingsomethingburied1.png  used on input line 675.
 (pdftex.def)             Requested size: 252.0pt x 234.33174pt.
-
-Underfull \vbox (badness 1412) has occurred while \output is active []
-
- [8 <./Untitled.png (PNG copy)> <./annotated-UsernameCampaignVisual1.png> <./Findingpatterns5.png> <./Blockingsomethingburied1.png>] (./sshvisual-ieee.bbl [9]
+ (./sshvisual-ieee.bbl [8 <./annotated-UsernameCampaignVisual1.png> <./Findingpatterns5.png> <./Blockingsomethingburied1.png>] [9]
 Underfull \hbox (badness 1975) in paragraph at lines 364--369
 \OT1/ptm/m/n/8 ci-ples for dis-play-ing quan-ti-ta-tive in-for-ma-tion,'' Per-
  []
@@ -519,43 +561,54 @@ Underfull \hbox (badness 3189) in paragraph at lines 364--369
  []
 
 )
-<A1.png, id=386, 1789.68625pt x 545.03625pt>
+Underfull \vbox (badness 4378) has occurred while \output is active []
+
+ [10]
+<A1.png, id=411, 1789.68625pt x 545.03625pt>
 File: A1.png Graphic file (type png)
 <use A1.png>
-Package pdftex.def Info: A1.png  used on input line 799.
+Package pdftex.def Info: A1.png  used on input line 797.
 (pdftex.def)             Requested size: 516.0pt x 157.14163pt.
-<A2.png, id=387, 1796.7125pt x 210.7875pt>
+<A2.png, id=412, 1796.7125pt x 210.7875pt>
 File: A2.png Graphic file (type png)
 <use A2.png>
-Package pdftex.def Info: A2.png  used on input line 805.
+Package pdftex.def Info: A2.png  used on input line 803.
 (pdftex.def)             Requested size: 516.0pt x 60.53499pt.
-<A3.png, id=388, 1796.7125pt x 466.74374pt>
+<A3.png, id=413, 1796.7125pt x 466.74374pt>
 File: A3.png Graphic file (type png)
 <use A3.png>
-Package pdftex.def Info: A3.png  used on input line 811.
+Package pdftex.def Info: A3.png  used on input line 809.
 (pdftex.def)             Requested size: 516.0pt x 134.04178pt.
-<A4.png, id=389, 1796.7125pt x 480.79625pt>
+<A4.png, id=414, 1796.7125pt x 480.79625pt>
 File: A4.png Graphic file (type png)
 <use A4.png>
-Package pdftex.def Info: A4.png  used on input line 817.
+Package pdftex.def Info: A4.png  used on input line 815.
 (pdftex.def)             Requested size: 516.0pt x 138.07744pt.
-
-Underfull \hbox (badness 5847) in paragraph at lines 826--836
-\OT1/ptm/m/n/10 tion [][][]. There, the user-name sim-i-lar-ity search for
- []
-
-<A5.png, id=393, 1181.41376pt x 872.25874pt>
+<A5.png, id=415, 1181.41376pt x 872.25874pt>
 File: A5.png Graphic file (type png)
 <use A5.png>
-Package pdftex.def Info: A5.png  used on input line 838.
+Package pdftex.def Info: A5.png  used on input line 822.
 (pdftex.def)             Requested size: 252.0pt x 186.05461pt.
-[10]
-<A6.png, id=416, 1038.88126pt x 954.56625pt>
+
+Underfull \hbox (badness 8094) in paragraph at lines 832--841
+[]\OT1/ptm/m/n/10 This ap-pendix ex-tends the user-name cam-paign in
+ []
+
+
+Underfull \hbox (badness 7963) in paragraph at lines 832--841
+\OT1/ptm/m/n/10 Sec-tion [][][]. There, the shared-username search for
+ []
+
+
+Underfull \hbox (badness 6032) in paragraph at lines 848--857
+\OT1/ptm/m/n/10 in Sec-tion [][][]. There, the five clos-est matches to
+ []
+
+<A6.png, id=424, 1038.88126pt x 954.56625pt>
 File: A6.png Graphic file (type png)
 <use A6.png>
-Package pdftex.def Info: A6.png  used on input line 860.
+Package pdftex.def Info: A6.png  used on input line 859.
 (pdftex.def)             Requested size: 252.0pt x 231.54758pt.
-
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -567,25 +620,25 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[11
+[11 <./A1.png> <./A2.png> <./A3.png>] [12
 
- <./A1.png> <./A2.png> <./A3.png>] [12 <./A4.png> <./A5.png> <./A6.png>] (./sshvisual-ieee.aux)
+ <./A4.png> <./A5.png> <./A6.png>] (./sshvisual-ieee.aux)
 Package rerunfilecheck Info: File `sshvisual-ieee.out' has not changed.
-(rerunfilecheck)             Checksum: 845361A0B8CE5B2459C492612A77C566;4093.
+(rerunfilecheck)             Checksum: AF0BF7BAFF20AC2C6F8512303087F1C7;4285.
  ) 
 Here is how much of TeX's memory you used:
- 11263 strings out of 480247
- 178101 string characters out of 5896151
- 500334 words of memory out of 5000000
- 28916 multiletter control sequences out of 15000+600000
- 509006 words of font info for 102 fonts, out of 8000000 for 9000
+ 11363 strings out of 480247
+ 179434 string characters out of 5896151
+ 500357 words of memory out of 5000000
+ 29004 multiletter control sequences out of 15000+600000
+ 513556 words of font info for 110 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 60i,15n,63p,551b,475s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on sshvisual-ieee.pdf (12 pages, 4092101 bytes).
+ 60i,15n,63p,595b,481s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on sshvisual-ieee.pdf (12 pages, 4075965 bytes).
 PDF statistics:
- 506 PDF objects out of 1000 (max. 8388607)
- 430 compressed objects within 5 object streams
+ 520 PDF objects out of 1000 (max. 8388607)
+ 443 compressed objects within 5 object streams
  123 named destinations out of 1000 (max. 500000)
  307 words of extra memory for PDF output out of 10000 (max. 10000000)
 
