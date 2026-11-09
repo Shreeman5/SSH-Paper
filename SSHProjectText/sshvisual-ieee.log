@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.31)  9 NOV 2026 01:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.1.31)  9 NOV 2026 03:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -401,145 +401,136 @@ LaTeX Info: Redefining \nameref on input line 39.
 
 
 ]
-<annotated-d5.png, id=206, 1234.6125pt x 735.74875pt>
-File: annotated-d5.png Graphic file (type png)
-<use annotated-d5.png>
-Package pdftex.def Info: annotated-d5.png  used on input line 272.
+<Figure1.png, id=212, 1234.6125pt x 735.74875pt>
+File: Figure1.png Graphic file (type png)
+<use Figure1.png>
+Package pdftex.def Info: Figure1.png  used on input line 267.
 (pdftex.def)             Requested size: 516.0pt x 307.508pt.
-LaTeX Font Info:    Trying to load font information for OT1+phv on input line 275.
+LaTeX Font Info:    Trying to load font information for OT1+phv on input line 270.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
-) [2]
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 289.
+)
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 283.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [3 <./annotated-d5.png>]
-Underfull \hbox (badness 5504) in paragraph at lines 361--370
+) [2]
+Underfull \hbox (badness 5504) in paragraph at lines 355--364
 \OT1/ptm/m/n/10 one per di-men-sion: \OT1/phv/m/n/10 Countries\OT1/ptm/m/n/10 , \OT1/phv/m/n/10 IP Addresses\OT1/ptm/m/n/10 , \OT1/phv/m/n/10 ASN
  []
 
-<annotated-Linechart.png, id=272, 1234.6125pt x 1613.02625pt>
-File: annotated-Linechart.png Graphic file (type png)
-<use annotated-Linechart.png>
-Package pdftex.def Info: annotated-Linechart.png  used on input line 373.
+[3 <./Figure1.png>]
+<Figure2.png, id=272, 1234.6125pt x 1613.02625pt>
+File: Figure2.png Graphic file (type png)
+<use Figure2.png>
+Package pdftex.def Info: Figure2.png  used on input line 367.
 (pdftex.def)             Requested size: 252.0pt x 329.22037pt.
-<annotated-Sorting.png, id=273, 1234.6125pt x 232.87pt>
-File: annotated-Sorting.png Graphic file (type png)
-<use annotated-Sorting.png>
-Package pdftex.def Info: annotated-Sorting.png  used on input line 392.
+<Figure3.png, id=273, 1234.6125pt x 232.87pt>
+File: Figure3.png Graphic file (type png)
+<use Figure3.png>
+Package pdftex.def Info: Figure3.png  used on input line 386.
 (pdftex.def)             Requested size: 516.0pt x 97.32858pt.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 393.
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+LaTeX Font Info:    Trying to load font information for U+msa on input line 387.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 393.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 387.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [4 <./annotated-Linechart.png>]
-<annotated-UsernameSimilarity.png, id=296, 1234.6125pt x 800.9925pt>
-File: annotated-UsernameSimilarity.png Graphic file (type png)
-<use annotated-UsernameSimilarity.png>
-Package pdftex.def Info: annotated-UsernameSimilarity.png  used on input line 501.
+) [4 <./Figure2.png>]
+<Figure4.png, id=296, 1234.6125pt x 800.9925pt>
+File: Figure4.png Graphic file (type png)
+<use Figure4.png>
+Package pdftex.def Info: Figure4.png  used on input line 494.
 (pdftex.def)             Requested size: 516.0pt x 334.77678pt.
 
-Underfull \hbox (badness 1629) in paragraph at lines 516--522
+Underfull \hbox (badness 1629) in paragraph at lines 509--515
  \OT1/ptm/m/it/10 2) IP Sim-i-lar-ity: [][][] \OT1/ptm/m/n/10 We char-ac-ter-ize each IP by a 16-
  []
 
-[5 <./annotated-Sorting.png>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-<annotated-IPSimilarity4.png, id=313, 1234.6125pt x 631.35875pt>
-File: annotated-IPSimilarity4.png Graphic file (type png)
-<use annotated-IPSimilarity4.png>
-Package pdftex.def Info: annotated-IPSimilarity4.png  used on input line 543.
+[5 <./Figure3.png>]
+<Figure5.png, id=314, 1234.6125pt x 631.35875pt>
+File: Figure5.png Graphic file (type png)
+<use Figure5.png>
+Package pdftex.def Info: Figure5.png  used on input line 536.
 (pdftex.def)             Requested size: 252.0pt x 128.861pt.
- [6 <./annotated-UsernameSimilarity.png> <./annotated-IPSimilarity4.png (PNG copy)>]
-<annotated-tag21.png, id=323, 1234.6125pt x 422.57875pt>
-File: annotated-tag21.png Graphic file (type png)
-<use annotated-tag21.png>
-Package pdftex.def Info: annotated-tag21.png  used on input line 556.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Figure6.png, id=315, 1234.6125pt x 422.57875pt>
+File: Figure6.png Graphic file (type png)
+<use Figure6.png>
+Package pdftex.def Info: Figure6.png  used on input line 549.
 (pdftex.def)             Requested size: 252.0pt x 86.24876pt.
-<annotated-tag31.png, id=324, 1234.6125pt x 992.70876pt>
-File: annotated-tag31.png Graphic file (type png)
-<use annotated-tag31.png>
-Package pdftex.def Info: annotated-tag31.png  used on input line 563.
+<Figure7.png, id=316, 1234.6125pt x 992.70876pt>
+File: Figure7.png Graphic file (type png)
+<use Figure7.png>
+Package pdftex.def Info: Figure7.png  used on input line 556.
 (pdftex.def)             Requested size: 252.0pt x 202.61292pt.
-<annotated-tag43.png, id=327, 1234.6125pt x 640.3925pt>
-File: annotated-tag43.png Graphic file (type png)
-<use annotated-tag43.png>
-Package pdftex.def Info: annotated-tag43.png  used on input line 570.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Figure8.png, id=319, 1234.6125pt x 640.3925pt>
+File: Figure8.png Graphic file (type png)
+<use Figure8.png>
+Package pdftex.def Info: Figure8.png  used on input line 563.
 (pdftex.def)             Requested size: 252.0pt x 130.70479pt.
 
-Underfull \hbox (badness 7851) in paragraph at lines 610--616
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \vbox (badness 3168) has occurred while \output is active []
+
+ [6 <./Figure4.png> <./Figure5.png (PNG copy)>]
+Underfull \hbox (badness 7851) in paragraph at lines 603--609
 \OT1/ptm/m/n/10 IP [] (Dig-i-talO-cean, Ger-many). Five
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 610--616
+Underfull \hbox (badness 10000) in paragraph at lines 603--609
 []\OT1/ptm/m/n/10 , and [] in the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 610--616
+Underfull \hbox (badness 10000) in paragraph at lines 603--609
 \OT1/ptm/m/n/10 US, [] in the Nether-lands, and
  []
 
 
-Underfull \hbox (badness 2173) in paragraph at lines 610--616
+Underfull \hbox (badness 2173) in paragraph at lines 603--609
 [] \OT1/ptm/m/n/10 in China. All six try the same 77
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 617--621
-[]\OT1/ptm/m/n/10 Fig. []10[] shows why volume-based views may
+Underfull \hbox (badness 1852) in paragraph at lines 610--614
+\OT1/ptm/m/n/10 (la-bel D), [] on Dec. 20 (la-bel B),
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 617--621
-\OT1/ptm/m/n/10 miss this cam-paign. Each IP peaks on days the
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 617--621
-\OT1/ptm/m/n/10 oth-ers do not: [] on Nov. 25
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 617--621
-\OT1/ptm/m/n/10 (la-bel F), [] on Dec. 19 (la-bel
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 617--621
-\OT1/ptm/m/n/10 D), [] on Dec. 20 (la-bel B),
- []
-
-<Untitled.png, id=340, 1234.6125pt x 895.345pt>
-File: Untitled.png Graphic file (type png)
-<use Untitled.png>
-Package pdftex.def Info: Untitled.png  used on input line 624.
+<Figure9.png, id=342, 1234.6125pt x 895.345pt>
+File: Figure9.png Graphic file (type png)
+<use Figure9.png>
+Package pdftex.def Info: Figure9.png  used on input line 617.
 (pdftex.def)             Requested size: 252.0pt x 182.74086pt.
-<annotated-UsernameCampaignVisual1.png, id=343, 1234.6125pt x 529.98pt>
-File: annotated-UsernameCampaignVisual1.png Graphic file (type png)
-<use annotated-UsernameCampaignVisual1.png>
-Package pdftex.def Info: annotated-UsernameCampaignVisual1.png  used on input line 631.
+<Figure10.png, id=345, 1234.6125pt x 529.98pt>
+File: Figure10.png Graphic file (type png)
+<use Figure10.png>
+Package pdftex.def Info: Figure10.png  used on input line 624.
 (pdftex.def)             Requested size: 252.0pt x 108.16946pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[7 <./annotated-tag21.png (PNG copy)> <./annotated-tag31.png> <./annotated-tag43.png (PNG copy)>]
-<Findingpatterns5.png, id=363, 976.64874pt x 707.64375pt>
-File: Findingpatterns5.png Graphic file (type png)
-<use Findingpatterns5.png>
-Package pdftex.def Info: Findingpatterns5.png  used on input line 665.
+[7 <./Figure6.png (PNG copy)> <./Figure7.png> <./Figure8.png (PNG copy)> <./Figure9.png (PNG copy)>]
+<Figure11.png, id=362, 976.64874pt x 707.64375pt>
+File: Figure11.png Graphic file (type png)
+<use Figure11.png>
+Package pdftex.def Info: Figure11.png  used on input line 658.
 (pdftex.def)             Requested size: 252.0pt x 182.59012pt.
-<Blockingsomethingburied1.png, id=364, 916.42375pt x 852.18375pt>
-File: Blockingsomethingburied1.png Graphic file (type png)
-<use Blockingsomethingburied1.png>
-Package pdftex.def Info: Blockingsomethingburied1.png  used on input line 672.
+<Figure12.png, id=363, 916.42375pt x 852.18375pt>
+File: Figure12.png Graphic file (type png)
+<use Figure12.png>
+Package pdftex.def Info: Figure12.png  used on input line 665.
 (pdftex.def)             Requested size: 252.0pt x 234.33174pt.
- [8 <./Untitled.png (PNG copy)> <./annotated-UsernameCampaignVisual1.png> <./Findingpatterns5.png> <./Blockingsomethingburied1.png>] (./sshvisual-ieee.bbl [9]
+ (./sshvisual-ieee.bbl [8 <./Figure10.png> <./Figure11.png> <./Figure12.png>] [9]
 Underfull \hbox (badness 1975) in paragraph at lines 364--369
 \OT1/ptm/m/n/8 ci-ples for dis-play-ing quan-ti-ta-tive in-for-ma-tion,'' Per-
  []
@@ -550,55 +541,65 @@ Underfull \hbox (badness 3189) in paragraph at lines 364--369
  []
 
 )
-<A1.png, id=397, 1789.68625pt x 545.03625pt>
-File: A1.png Graphic file (type png)
-<use A1.png>
-Package pdftex.def Info: A1.png  used on input line 795.
+<Figure13.png, id=397, 1789.68625pt x 545.03625pt>
+File: Figure13.png Graphic file (type png)
+<use Figure13.png>
+Package pdftex.def Info: Figure13.png  used on input line 787.
 (pdftex.def)             Requested size: 516.0pt x 157.14163pt.
-<A2.png, id=398, 1796.7125pt x 210.7875pt>
-File: A2.png Graphic file (type png)
-<use A2.png>
-Package pdftex.def Info: A2.png  used on input line 799.
+<Figure14.png, id=398, 1796.7125pt x 210.7875pt>
+File: Figure14.png Graphic file (type png)
+<use Figure14.png>
+Package pdftex.def Info: Figure14.png  used on input line 791.
 (pdftex.def)             Requested size: 516.0pt x 60.53499pt.
-<A3.png, id=399, 1796.7125pt x 466.74374pt>
-File: A3.png Graphic file (type png)
-<use A3.png>
-Package pdftex.def Info: A3.png  used on input line 803.
+<Figure15.png, id=399, 1796.7125pt x 466.74374pt>
+File: Figure15.png Graphic file (type png)
+<use Figure15.png>
+Package pdftex.def Info: Figure15.png  used on input line 795.
 (pdftex.def)             Requested size: 516.0pt x 134.04178pt.
-<A4.png, id=400, 1796.7125pt x 480.79625pt>
-File: A4.png Graphic file (type png)
-<use A4.png>
-Package pdftex.def Info: A4.png  used on input line 807.
+<Figure16.png, id=400, 1796.7125pt x 480.79625pt>
+File: Figure16.png Graphic file (type png)
+<use Figure16.png>
+Package pdftex.def Info: Figure16.png  used on input line 799.
 (pdftex.def)             Requested size: 516.0pt x 138.07744pt.
- [10] [11 <./A1.png> <./A2.png> <./A3.png> <./A4.png>] [12
-
-
-]
-<A5.png, id=431, 1181.41376pt x 872.25874pt>
-File: A5.png Graphic file (type png)
-<use A5.png>
-Package pdftex.def Info: A5.png  used on input line 815.
+<Figure17.png, id=401, 1181.41376pt x 872.25874pt>
+File: Figure17.png Graphic file (type png)
+<use Figure17.png>
+Package pdftex.def Info: Figure17.png  used on input line 805.
 (pdftex.def)             Requested size: 252.0pt x 186.05461pt.
-<A6.png, id=434, 1038.88126pt x 954.56625pt>
-File: A6.png Graphic file (type png)
-<use A6.png>
-Package pdftex.def Info: A6.png  used on input line 822.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Figure18.png, id=404, 1038.88126pt x 954.56625pt>
+File: Figure18.png Graphic file (type png)
+<use Figure18.png>
+Package pdftex.def Info: Figure18.png  used on input line 814.
 (pdftex.def)             Requested size: 252.0pt x 231.54758pt.
 
-Underfull \hbox (badness 8094) in paragraph at lines 831--840
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 8094) in paragraph at lines 824--833
 []\OT1/ptm/m/n/10 This ap-pendix ex-tends the user-name cam-paign in
  []
 
 
-Underfull \hbox (badness 7963) in paragraph at lines 831--840
+Underfull \hbox (badness 7963) in paragraph at lines 824--833
 \OT1/ptm/m/n/10 Sec-tion [][][]. There, the shared-username search for
  []
 
+[10]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Underfull \hbox (badness 6032) in paragraph at lines 844--853
+
+Underfull \hbox (badness 6032) in paragraph at lines 837--846
 \OT1/ptm/m/n/10 in Sec-tion [][][]. There, the five clos-est matches to
  []
 
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [11 <./Figure13.png> <./Figure14.png> <./Figure15.png> <./Figure16.png>]
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -610,25 +611,25 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[13
+[12
 
- <./A5.png> <./A6.png>] (./sshvisual-ieee.aux)
+ <./Figure17.png> <./Figure18.png>] (./sshvisual-ieee.aux)
 Package rerunfilecheck Info: File `sshvisual-ieee.out' has not changed.
-(rerunfilecheck)             Checksum: AF0BF7BAFF20AC2C6F8512303087F1C7;4285.
+(rerunfilecheck)             Checksum: 9F77535EFF9D6C03E1D329378FCAEE8F;4274.
  ) 
 Here is how much of TeX's memory you used:
- 11364 strings out of 480247
- 179441 string characters out of 5896151
- 498686 words of memory out of 5000000
+ 11363 strings out of 480247
+ 178709 string characters out of 5896151
+ 504385 words of memory out of 5000000
  29004 multiletter control sequences out of 15000+600000
  513556 words of font info for 110 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 60i,15n,63p,595b,477s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,15n,63p,595b,479s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on sshvisual-ieee.pdf (13 pages, 4093987 bytes).
+Output written on sshvisual-ieee.pdf (12 pages, 4092821 bytes).
 PDF statistics:
- 535 PDF objects out of 1000 (max. 8388607)
- 453 compressed objects within 5 object streams
- 124 named destinations out of 1000 (max. 500000)
+ 529 PDF objects out of 1000 (max. 8388607)
+ 448 compressed objects within 5 object streams
+ 123 named destinations out of 1000 (max. 500000)
  307 words of extra memory for PDF output out of 10000 (max. 10000000)
 
