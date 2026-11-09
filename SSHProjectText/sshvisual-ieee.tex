@@ -64,17 +64,17 @@ anomalies and relationships in data can be tedious at best and impractical at wo
 Much prior work in network visualization analyzed the IP and ASN dimensions of SSH logins with little 
 focus on the username, and detected anomalies only when baselines were available. As a result, little 
 attention has been paid to whether attackers that differ in timing, source, and username belong to the same 
-campaign. We present SSHVisual, a visualization system evaluated on 206.6 million login attacks against our 
-production SSH systems over 69 days. SSHVisual analyzes the IPs, ASNs, and usernames of SSH attacks to support 
-campaign detection. It complements automated detection, letting operators find anomalies without a 
-normal baseline. Its similarity search groups attackers by behavior or by the usernames they share, and 
-explains each match. As in prior tools, operators can tag and share findings. Case studies suggest it can surface 
-hidden patterns and find attackers to block. In one study, username search surfaced six IPs in four 
-countries trying the same 77 usernames, including 16 uncommon ones, pointing to a single campaign that 
-volume charts might show as unrelated bursts. In another, behavioral search surfaced low-volume IPs 
-working through large, overlapping username lists; none ranked in the top 10 by volume. These results 
-suggest that username-centric, operator-driven exploration can reveal covert, coordinated activity that 
-volume-based, IP-centric analyses may miss.
+campaign. We present SSHVisual, a visualization system evaluated on 206.6 million login attacks against
+production SSH systems over 69 days. SSHVisual analyzes the IPs, ASNs, and usernames of SSH attacks to support
+campaign detection. It complements automated detection by letting operators find anomalies without requiring a
+``normal'' baseline. SSHVisual provides similarity search across dimensions that groups attackers by behavior
+or by the usernames they share and explains each match. Operators can also tag and share findings. Case studies
+suggest it can surface hidden patterns and find attackers to block. In one study, username search surfaced six
+IPs in four countries trying the same 77 usernames, including 16 uncommon ones, pointing to a single campaign
+that volume charts alone might show as unrelated bursts. In another, behavioral search surfaced low-volume IPs
+working through large, overlapping username lists; none ranked in the top 10 by volume. These results
+suggest that SSHVisual's username-centric, operator-driven exploration is valuable because of its ability to
+reveal covertness and coordination that previous analyses can miss.
 
 % We evaluated SSHVisual using case studies and found that it helps us block attacks
 % and uncover patterns. We identified campaigns in which a set of attempted usernames recurred across unrelated IPs and ASes and we showed
