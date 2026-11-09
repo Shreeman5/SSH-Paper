@@ -59,7 +59,7 @@ email address or ORCID}
 
 \begin{abstract}
 Network operators use visualizations to detect attacks on their systems and uncover hidden patterns. Operators 
-use these findings to block attackers and expand the knowledge base of known threats. Iteratively detecting 
+use these findings to block attackers and expand the set of known threats. Iteratively detecting 
 anomalies and relationships in data can be tedious at best and impractical at worst without visualization. 
 Much prior work in network visualization analyzed the IP and ASN dimensions of SSH logins with little 
 focus on the username, and detected anomalies only when baselines were available. As a result, little 
@@ -94,17 +94,22 @@ attack campaigns, visual analytics, network security visualization, similarity s
 \label{sec:intro}
 Many computer systems employ SSH~\cite{ylonen1996ssh} for secure connections, giving legitimate users the ability to execute commands and perform remote
 administration.
-A common class of attacks against these systems are brute-force attempts to guess username--password combinations~\cite{295683}. Such attacks are still prevalent because they are relatively cheap to execute and there are still plenty of poorly secured targets.
-Once in, attackers frequently use compromised systems to build botnets~\cite{295683} to carry out further attacks~\cite{antonakakis2017understanding, kolias2017ddos} or steal resources from the systems, such as for cryptomining~\cite{dang2019understanding, pastrana2019first}.
+A common class of attacks against these systems are brute-force attempts to guess username--password combinations~\cite{295683}. Such attacks are prevalent because they are cheap to execute and there are many poorly-secured targets.
+Once in, attackers often use compromised systems to build botnets~\cite{295683} to carry out further attacks~\cite{antonakakis2017understanding, kolias2017ddos} or steal resources, such as for cryptomining~\cite{dang2019understanding, pastrana2019first}.
 Given the prevalence of SSH attacks across IPv4~\cite{295683}, we designed SSHVisual and evaluated it on login attacks from our production SSH systems. 
 SSHVisual serves two kinds of
 network operators: network administrators, who handle daily SSH traffic and need to quickly identify and block attackers; and security analysts, who study traffic
-over longer periods, look for hidden patterns, and share findings. For example, in a single period, an administrator can block the highest-volume attacker, 
+over longer periods, look for hidden patterns, and share findings. For example, an administrator can block the highest-volume attacker, 
 while an analyst can surface low-volume attackers that attempt the same usernames and group them as a campaign.
 
+Since network traffic may not offer a stable, attack-free baseline~\cite{gates2006challenging}, baseline-driven detectors may miss activity that does not 
+deviate from that baseline. Operators, by contrast, may recognize coordination and similarity across sessions visually, without specifying normality. 
+Our contributions build on this ability and are designed to complement baseline-driven detection. As operators explore, they can label and share findings 
+so colleagues avoid repeat investigations, and those findings can in turn inform automated detection.
+
 Surveys~\cite{7166305, 6007132, zhang2017survey, raynor2022state, wu2018research} map an extensive body of network visualization work, 
-spanning management, security, anomalies, routing, and DDoS. 
-Treating the username, alongside the IP and ASN, as part of attacker identity, we make three contributions.
+    spanning management, security, anomalies, routing, and DDoS (Section~\ref{sec:related}). 
+Treating the username, alongside IP and ASN, as part of attacker identity, we make three contributions.
 First, we derive operator tasks and requirements (Section~\ref{sec:tasksreqs}). Second, we present SSHVisual, which pairs
 a ranked discovery table and coordinated line charts with similarity search over usernames and IPs, and with shared tagging
 (Section~\ref{sec:design}). Third, case studies (Section~\ref{sec:eval}) illustrate how SSHVisual serves each operator. For analysts,
@@ -116,12 +121,8 @@ but shared behavior can reveal host relationships~\cite{gu2008botminer}. We make
 the administrator wants blocked, our search surfaces similar low-volume IPs, showing the administrator what to block and why.
 
 
-Since network traffic may not offer a stable, attack-free baseline~\cite{gates2006challenging}, baseline-driven detectors may miss activity that does not 
-deviate from that baseline. Operators, by contrast, may recognize coordination and similarity across sessions visually, without specifying normality. 
-Our contributions build on this ability and are designed to complement baseline-driven detection. As operators explore, they can label and share findings 
-so colleagues avoid repeat investigations, and those findings can in turn inform automated detection.
-The rest of the paper is organized as follows: Section~\ref{sec:related} is Related Work, Section~\ref{sec:tasksreqs} is Tasks and Requirements, Section~\ref{sec:design} is Design, 
-Section~\ref{sec:eval} is Evaluation, and Section~\ref{sec:conclusion} is Conclusion.
+%The rest of the paper is organized as follows: Section~\ref{sec:related} is Related Work, Section~\ref{sec:tasksreqs} is Tasks and Requirements, Section~\ref{sec:design} is Design, 
+%Section~\ref{sec:eval} is Evaluation, and Section~\ref{sec:conclusion} is Conclusion.
 
 % =====================  II. RELATED WORK  =====================
 \section{Related Work}
@@ -164,8 +165,8 @@ coordination analysis per IP.
 
 
 \subsection{Username-Based Similarity}
-Grouping similar entities is well established~\cite{goodall2018situ, liao2012intelligent, pike2008putting, hao2015ensemble}. We 
-do not claim similarity computation as novel; our contribution is the username entity. Prior systems cluster IPs by port behavior~\cite{goodall2018situ}, 
+Grouping similar entities is an established technique~\cite{goodall2018situ, liao2012intelligent, pike2008putting, hao2015ensemble};
+our novelty comes from grouping on the username entity. Prior systems cluster IPs by port behavior~\cite{goodall2018situ}, 
 IPs by their diurnal traffic profiles~\cite{pike2008putting}, IP/port members by their alert and flow timelines~\cite{hao2015ensemble}, or enterprise users
 by shared hosts~\cite{liao2012intelligent}. None of these treat the username as an attacker entity.
 We use the username as an IP signature, grouping IPs by the credentials they try, with uncommon usernames weighted as stronger evidence than
@@ -360,9 +361,9 @@ The discovery table has four tabs, one per dimension: \ui{Countries}, \ui{IP Add
 In Fig.~\ref{fig:discovery}, the \ui{Countries}
 tab is active (label A). A search box filters rows (label B), and a counter shows the number
 of entities (197 countries).
-Some columns (label C) are shared across all tabs: total attacks, average daily attacks, persistence (the share of days the entity was active),
+Some columns (label C) are shared across all tabs: total attacks, average daily attacks, persistence (the share of days active),
 largest absolute and percentage daily change, attacks in the last week, first-seen and last-seen dates, maximum daily count,
-trend (a sparkline of attacks at seven-day intervals), and burst intensity (ratio of maximum daily attacks to average daily attacks, where a higher ratio likely indicates
+trend (a sparkline of attacks at seven-day intervals), and burst intensity (ratio of maximum to average daily attacks, where a higher ratio likely indicates
 sporadic, intense attacks). Appendix~\ref{app:columns} lists all columns (labels C and D). The \ui{Countries} tab summarizes traffic origins, 
 but because a campaign’s hosts can span many countries (Section~\ref{sec:eval}), analysis relies mainly on the IP, ASN, and username tabs.
 
@@ -637,9 +638,8 @@ so the chart suggests unrelated bursts. Shared usernames suggest one campaign.
 \label{sec:na}
 
 Fig.~\ref{fig:FindingPatterns} shows the behavioral IP similarity search for \ip{200.195.169.59}, from Ligga Telecomunica\c{c}\~{o}es S.A. in 
-Brazil, with 36 thousand attacks. Its five closest matches (88.6--94.9\% similar) come from Brazil, Indonesia, Italy, 
-Mexico, and Australia, each from a different ASN. Despite this spread, they behave alike. Each made roughly 30-40 thousand attacks and the usernames it tries 
-change from day to day. Although the behavioral mode does not compare usernames, each match shares 1,684 to 1,899 usernames with the 
+Brazil, with 36k attacks. Its five closest matches (88.6--94.9\% similar) come from Brazil, Indonesia, Italy,
+Mexico, and Australia, each from a different ASN. Despite this spread, they behave alike. Each made roughly 30k-40k attacks and the usernames it tries change daily. Although the behavioral mode does not compare usernames, each match shares 1,684 to 1,899 usernames with the
 searched IP, 46 to 140 of them uncommon (tried by fewer than 1\% of IPs). The searched IP itself tried 3,821 usernames, 925 
 of them uncommon. The pattern extends beyond these five: the top 20 matches, all at least 86\% similar, span 14 countries and 20 
 ASNs (Appendix~\ref{app:hidden}). Together, they suggest relatively low-volume IPs in many countries are working through large, overlapping 
@@ -667,7 +667,7 @@ but also which similar IPs they may want to block and, most importantly, why.
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{Figure12.png}
-\caption{The top 10 IP chart does not include \protect\ip{200.195.169.59} or its matches.}
+\caption{Top 10 IP chart does not include \protect\ip{200.195.169.59} or its matches.}
 \label{fig:BlockingBuried}
 \end{figure}
 

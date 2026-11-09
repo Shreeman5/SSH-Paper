@@ -58,6 +58,11 @@ S.~Pastrana and G.~Suarez-Tangil, ``A first look at the crypto-mining malware
   ecosystem: A decade of unrestricted wealth,'' in \emph{Proceedings of the
   Internet Measurement Conference}, 2019, pp. 73--86.
 
+\bibitem{gates2006challenging}
+C.~Gates and C.~Taylor, ``Challenging the anomaly detection paradigm: A
+  provocative discussion,'' in \emph{Proceedings of the 2006 workshop on New
+  security paradigms}, 2006, pp. 21--29.
+
 \bibitem{7166305}
 V.~T. Guimarães, C.~M. D.~S. Freitas, R.~Sadre, L.~M.~R. Tarouco, and L.~Z.
   Granville, ``A survey on information visualization for network and service
@@ -107,11 +112,6 @@ G.~Gu, R.~Perdisci, J.~Zhang, and W.~Lee, ``{BotMiner}: Clustering analysis of
   network traffic for protocol- and structure-independent botnet detection,''
   in \emph{Proceedings of the 17th USENIX Security Symposium}.\hskip 1em plus
   0.5em minus 0.4em\relax USENIX Association, 2008, pp. 139--154.
-
-\bibitem{gates2006challenging}
-C.~Gates and C.~Taylor, ``Challenging the anomaly detection paradigm: A
-  provocative discussion,'' in \emph{Proceedings of the 2006 workshop on New
-  security paradigms}, 2006, pp. 21--29.
 
 \bibitem{mansmann2006interactive}
 F.~Mansmann and S.~Mansmann, ``Interactive exploration of data traffic with
