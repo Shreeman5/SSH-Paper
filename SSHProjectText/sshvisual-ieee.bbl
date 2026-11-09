@@ -86,6 +86,11 @@ C.~Wu, S.~Sheng, and X.~Dong, ``Research on visualization systems for ddos
   Man, and Cybernetics (SMC)}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE,
   2018, pp. 2986--2991.
 
+\bibitem{goodall2009viassist}
+J.~R. Goodall and M.~Sowul, ``Viassist: Visual analytics for cyber defense,''
+  in \emph{2009 IEEE conference on technologies for homeland security}.\hskip
+  1em plus 0.5em minus 0.4em\relax IEEE, 2009, pp. 143--150.
+
 \bibitem{estan2002newdirections}
 C.~Estan and G.~Varghese, ``New directions in traffic measurement and
   accounting,'' in \emph{Proceedings of the ACM SIGCOMM 2002 Conference}.\hskip
@@ -153,11 +158,6 @@ L.~Xiao, J.~Gerth, and P.~Hanrahan, ``Enhancing visual analysis of network
   traffic using a knowledge representation,'' in \emph{2006 IEEE symposium on
   visual analytics science and technology}.\hskip 1em plus 0.5em minus
   0.4em\relax IEEE, 2006, pp. 107--114.
-
-\bibitem{goodall2009viassist}
-J.~R. Goodall and M.~Sowul, ``Viassist: Visual analytics for cyber defense,''
-  in \emph{2009 IEEE conference on technologies for homeland security}.\hskip
-  1em plus 0.5em minus 0.4em\relax IEEE, 2009, pp. 143--150.
 
 \bibitem{jeong2022interactive}
 D.~H. Jeong, J.-H. Cho, F.~Chen, L.~Kaplan, A.~J{\o}sang, and S.-Y. Ji,

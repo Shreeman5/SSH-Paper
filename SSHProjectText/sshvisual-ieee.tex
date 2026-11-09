@@ -65,7 +65,7 @@ focus on the username, and detected anomalies only when baseline events were ava
 paid to whether attackers that differ in timing, source, and username belong to the same campaign. We present SSHVisual, a visualization system
 evaluated on 206.6 million login attacks against our production SSH systems over 69 days. SSHVisual analyzes the IPs, ASNs, and usernames of SSH attacks to support campaign detection. 
 It complements automated detection, letting operators find anomalous events without a normal baseline. Its similarity search groups attackers by behavior or 
-by the usernames they share, and explains each match. Operators can tag findings and share them. Case studies suggest it can help operators surface hidden patterns and find attackers to block. In one 
+by the usernames they share, and explains each match. As in prior tools, operators can tag findings and share them. Case studies suggest it can help operators surface hidden patterns and find attackers to block. In one 
 study, six IPs in four countries tried the same 77 usernames, including 16 uncommon ones, pointing to a single campaign that volume charts could show as unrelated bursts. 
 In another, similarity search surfaced low-volume IPs working through large, overlapping username lists; none ranked in the top 10 by volume. 
 These results suggest that username-centric, operator-driven exploration can reveal 
@@ -89,25 +89,26 @@ SSH, brute-force attacks, attack campaigns, network security visualization, visu
 \label{sec:intro}
 Computer systems employ SSH~\cite{ylonen1996ssh} to let users connect securely, run commands, and perform remote
 administration. Many users gain access with a username and password (password-based authentication). Attackers try to
-brute-force~\cite{295683} their way into SSH systems. They guess username--password combinations or exploit
-poorly secured systems to build botnets~\cite{295683} for further attacks~\cite{antonakakis2017understanding, kolias2017ddos} 
-or steal system resources for cryptomining~\cite{dang2019understanding, pastrana2019first}.
+brute-force~\cite{295683} their way into SSH systems. They guess username--password combinations to exploit
+poorly secured systems, which they then use to build botnets~\cite{295683} for further attacks~\cite{antonakakis2017understanding, kolias2017ddos} 
+or to mine cryptocurrency with stolen resources~\cite{dang2019understanding, pastrana2019first}.
 Given the prevalence of SSH attacks in the IPv4 space~\cite{295683}, we designed SSHVisual and evaluated it on login attacks from our production SSH systems. 
 SSHVisual serves two kinds of
 network operators: network administrators, who handle daily SSH traffic and need to quickly identify and block attackers; and security analysts, who study traffic
 over longer periods, look for hidden patterns, and share findings. For example, in a single period, an administrator can block the highest-volume attacker, 
 while an analyst can iteratively surface low-volume attackers that attempt the same usernames and group them as a campaign.
 
-Surveys of network visualization~\cite{7166305, 6007132, zhang2017survey, raynor2022state, wu2018research} establish the field's maturity. 
+Surveys of network visualization~\cite{7166305, 6007132, zhang2017survey, raynor2022state, wu2018research} map an extensive body of network visualization work, 
+spanning management, security, anomalies, routing, and DDoS detection. 
 We treat the username, alongside the IP and ASN, as part of an attacker's identity, and make three contributions.
-First, we derive tasks and requirements for two kinds of operators (Section~\ref{sec:tasksreqs}). Second, we present SSHVisual, which pairs
-a ranked discovery table and coordinated line charts with similarity search over usernames and IPs, and with shared tagging
+First, we derive tasks and requirements for the two operators (Section~\ref{sec:tasksreqs}). Second, we present SSHVisual, which pairs
+a ranked discovery table and coordinated line charts with similarity search over usernames and IPs, and with shared tagging, as in~\cite{goodall2009viassist}
 (Section~\ref{sec:design}). Third, two case studies (Section~\ref{sec:eval}) illustrate how SSHVisual serves each operator. For analysts,
 username-based similarity can identify campaigns that volume-based views may split apart: IPs that try the same usernames
 likely belong to one campaign, even when they span countries and ASNs and peak on different days. For administrators,
 behavioral similarity search can find attackers that volume rankings may hide. Operational monitoring can focus on the largest
 flows~\cite{estan2002newdirections}, and threshold detectors can be evaded by spread-out attackers~\cite{staniford2002spice,griffioen2020collaboration},
-but Gu et al.~\cite{gu2008botminer} show that shared behavior can reveal host relationships. We make this actionable: starting from an IP the
+with Gu et al.~\cite{gu2008botminer} showing that shared behavior can reveal host relationships. We make this actionable: starting from an IP the
 administrator wants blocked, our search surfaces low-volume IPs that behave alike but miss the top 10 rankings, and explains each match,
 so the administrator can see which IPs to block and why.
 
@@ -129,17 +130,17 @@ xiao2006enhancing, goodall2009viassist, jeong2022interactive, choi2009fast}
 make network traffic and security events navigable, most being
 traffic-oriented~\cite{mansmann2006interactive, oberheide2006flamingo,
 taylor2009flovis, tremel2022vitalflow, xiao2006enhancing,
-jeong2022interactive, choi2009fast}, with some integrating
-intrusion-detection/prevention and host
-logs~\cite{mansmann2009visual, chen2014oceans} or multidimensional
-cyber-defense data~\cite{goodall2009viassist}.
+jeong2022interactive, choi2009fast}. Mansmann et al.~\cite{mansmann2009visual} combine intrusion-detection
+events with NetFlow data, Chen et al.\cite{chen2014oceans} combine IPS and host logs, and
+Goodall and Sowul\cite{goodall2009viassist} show multidimensional cyber-defense data.
 Livnat et al.~\cite{livnat2005visual} visualize
-IDS alerts, and others~\cite{humphries2013elvis, yu2010ember} visualize heterogeneous security logs.
-Jeong et al.~\cite{jeong2023multi} extract
+IDS alerts, Humphries et al.~\cite{humphries2013elvis} visualize heterogeneous security logs,
+and Yu et al.~\cite{yu2010ember} map malicious activity from firewall and
+intrusion logs at the city level. Jeong et al.~\cite{jeong2023multi} extract
 multi-resolution discrete-wavelet features from traffic, project
 them with principal component analysis, and apply hierarchical clustering
 across intrusion-detection benchmarks,
-separating brute-force attacks into clusters.
+separating brute-force attacks from normal traffic.
 Related work on coordinated
 multiple views~\cite{king2014coordinated, ceneda2016routingwatch, roberts2007state}
 and insight generation~\cite{yi2008understanding} informs our design.
@@ -151,26 +152,26 @@ to our knowledge, that literature has rarely treated the username as an actor.
 Typically, it is a dimension to count rather than track, whereas in our analysis
 it serves, alongside the IP and ASN, as an anchoring dimension. Several papers~\cite{djap2021xb, visoottiviseth2011distributed, 
 baykara2018novel, belqruch2019scada,
-koniaris2013analysis, kyriakou2018container, koniaris2014honeypots} collect or chart honeypot traffic, some
+koniaris2013analysis, kyriakou2018container, koniaris2014honeypots} collect or chart honeypot traffic, with some
 capturing SSH credentials. Where credentials are charted, such as the SCADA SSH honeypot~\cite{belqruch2019scada}, 
 kippo-graph~\cite{koniaris2013analysis},
 and the container deployment~\cite{kyriakou2018container}, usernames and passwords appear as static top-N tallies (e.g., kippo-graph's 
 top 10 bars). The WAN honeypot framework ~\cite{fraunholz2017distributed} is the closest 
-prior system: it computes an IP-to-IP dictionary-overlap
+prior system to ours: it computes an IP-to-IP dictionary-overlap
 score to probe whether six IPs from the same /24 subnet share a wordlist, a manual, one-off prototype of credential-based 
 coordination analysis per IP.
 
 
 
 \subsection{Username-Based Similarity}
-Similarity between entities is well established~\cite{goodall2018situ, liao2012intelligent, pike2008putting, hao2015ensemble}. We 
-do not claim similarity computation as novel; our contribution is the username entity. Prior systems cluster internal hosts~\cite{goodall2018situ}, 
-behavioral profiles~\cite{pike2008putting}, IP/port members~\cite{hao2015ensemble}, or enterprise users
-grouped by shared resources~\cite{liao2012intelligent}. None of these treat the username as an attacker entity.
+Grouping similar entities is well established~\cite{goodall2018situ, liao2012intelligent, pike2008putting, hao2015ensemble}. We 
+do not claim similarity computation as novel; our contribution is the username entity. Prior systems cluster IPs by port behavior~\cite{goodall2018situ}, 
+IPs by their diurnal traffic profiles~\cite{pike2008putting}, IP/port members by their alert and flow timelines~\cite{hao2015ensemble}, or enterprise users
+by shared hosts~\cite{liao2012intelligent}. None of these treat the username as an attacker entity.
 We use the username as an IP signature, grouping IPs by the credentials they try, with uncommon usernames weighted as stronger evidence than
-ones nearly every attacker tries. Honeypot/honeynet analyses have linked attack activity over time by
+ones nearly every attacker tries. Analyses have linked attack activity over time by
 grouping attacks whose time series rise and fall
-together~\cite{pouget2006time,thonnard2008framework}. Attackers
+together~\cite{pouget2006time,thonnard2008framework} and by diurnal profiles~\cite{pike2008putting}. Attackers
 that share a credential list, however, need not be active
 together, so our shared-username search ignores when each attacker is 
 active and lets the operator see their time series in a line chart.
@@ -196,15 +197,15 @@ Sommer and Paxson~\cite{sommer2010outside} argue that machine-learning anomaly
 detection is rarely deployed because normal traffic varies
 widely, errors are costly, and sound evaluation is hard.
 Axelsson~\cite{axelsson2000base} shows that when intrusions are
-rare, the false-alarm rate limits any intrusion detector. Our
+rare, the false-alarm rate becomes the limiting factor for intrusion detection. Our
 data are the opposite case, since nearly every login attempt is
 an attack. Gates and Taylor~\cite{gates2006challenging} question
 whether attacks are rare and whether attack-free training data
-exist at all, and note that malicious traffic can look normal.
+is available, and note that malicious traffic can look normal and normal traffic can look anomalous.
 Goodall et al.~\cite{goodall2018situ} and
 Best et al.~\cite{best2011atypical} learn a model of each actor's
 expected behavior, with Best et al.~\cite{best2011atypical} assuming that an actor's activity
-repeats weekly. However, the churning, near-uniformly
+repeats weekly and aggregating actors for statistical robustness. However, the churning, near-uniformly
 hostile traffic we observe is unlikely to offer a per-actor normal. Goodall et al.~\cite{goodall2018situ}
 concede that operators ``do not want another automated tool
 with algorithms they do not trust'' and keep a human in the
@@ -228,8 +229,8 @@ identification operator-driven.
 
 We analyze attackers at the level of a campaign, meaning a group of attackers acting together, rather than one at a time. A campaign often spans multiple IPs. 
 One IP can be assigned to different hosts ~\cite{xie2007dynamic}, hosts can 
-cycle through new IPs~\cite{stone2009your}, and counting by IPs can overstate the number of real machines, sometimes 
-by an order of a magnitude ~\cite{moura2015dynamic}. An IP-based view is therefore 
+cycle through new IPs~\cite{stone2009your}, and counting by IPs can overstate the number of hosts, sometimes 
+by an order of magnitude ~\cite{moura2015dynamic}. An IP-based view is therefore 
 likely to scatter one campaign across many seemingly unrelated entries. However, a campaign’s attackers likely draw from a shared credential list, so the same login names 
 may recur across changing IPs. Grouping by username can reassemble the campaign that an IP-by-IP view could split.
 
@@ -240,7 +241,7 @@ may recur across changing IPs. Grouping by username can reassemble the campaign 
 
 \subsection{Operator Labeling and Collaboration}
 The findings an operator produces can be captured and shared.
-In two works~\cite{guerra2019study, xiao2006enhancing}, interactive labeling was used to fold the operator's judgments back into the system. 
+In two works~\cite{guerra2019study, xiao2006enhancing}, labeling was used to fold the operator's judgments back into the system. 
 Other systems, such as~\cite{chen2014oceans} and~\cite{goodall2009viassist}, supported collaborative analysis through shared artifacts. 
 These systems suggest that labeling and collaboration are valuable,
 which motivates our labeling-and-sharing mechanism: the step that turns an identified set of attackers into a durable, shared campaign.
@@ -285,8 +286,8 @@ R1 supports T1 and T2: analysts can assemble campaigns, and administrators can f
 SSH attack data take many forms,
 and no single ranking can suit them all.
 The data can be heavy-tailed: one username can account for a quarter of
-attacks~\cite{owens2008study} (in our data, \uname{root} accounts for nearly half), and a few
-persistent IPs for most attacks~\cite{wu2020mining}. The data can also be spread out:
+attacks~\cite{owens2008study} (in our data, \uname{root} accounts for nearly half), and recurring IPs for over 70\% of 
+attempts~\cite{wu2020mining} (in our data, the top 0.34\% IP accounts for 0.018\% of attacks). The data can also be spread out:
 distributed attackers split attempts across many low-volume
 sources, so no entity may stand out by count.
 SSHVisual should therefore list every entity and let operators sort
@@ -303,17 +304,15 @@ analysts can rank by bursts or day-over-day change.
 and keep those tags visible to every operator. Each tag application should record who applied it and when,
 so later operators can judge whether a finding is still current. R3 supports T3 and T1 because tags accumulate into a repository of related attackers.
 
-\textbf{R4: Complementary tabular and temporal views.} A table can support precise lookup and ranking 
-but can discard temporal structure;
-a line chart can preserve it, showing spikes and trends at a glance, but can convey values less precisely~\cite{few2006visual}. SSHVisual should 
-provide both views and let operators
+\textbf{R4: Complementary tabular and temporal views.} A table can support precise lookup and ranking but can discard 
+temporal structure; a line chart can preserve it, showing spikes and trends at a glance~\cite{few2006visual}. SSHVisual should provide both views and let operators
 move between them. An administrator may find and act on an anomaly using the table alone, whereas an analyst may use the table to assemble related attackers and
 examine their behavior in the line charts. R4 supports T1 and T2.
 
 \textbf{R5: Interactive exploration of the line charts.} The line charts should follow Shneiderman's Visual Information-Seeking Mantra: overview first, zoom and
 filter, then details-on-demand~\cite{shneiderman1996eyes}. They should open on the full time range, let operators zoom
 and filter entities, and reveal details. R5 supports T1 and T2: zooming can isolate a
-suspected campaign's window, and filtering can remove dominant entities masking smaller ones. A line chart can become harder to read
+suspected campaign's window, and filtering can remove dominant entities masking smaller ones. A line chart can become harder to understand
 as more series are added~\cite{javed2010graphical}. Each line chart should therefore show few entities; we cap the number at 10.
 
 % \begin{table}[t]
@@ -474,11 +473,10 @@ Similarity search lets an operator start from one username and find
 usernames that attackers use the same way.
 The unit of analysis is the population of
 sources that tries a username. For each username, we compute the breadth of that population (the number of distinct IPs, ASNs, and countries that try it),
-its volume, and the concentration of its traffic on its most active source, among other features. We do not 
-reuse the 14-dimensional profile we apply to
-IPs (Section~\ref{sec:ipsim}), because a diagnostic analysis showed some features were uninformative for usernames. Daily stability is an example: 
+its volume, and the concentration of its traffic on its most active source, among other features. A diagnostic analysis showed some features which were informative for IPs, turn out 
+uninformative for usernames. Daily stability is an example: 
 most IPs are active on many days, so their stability is well defined, but half of the usernames appear on only one day, for which
-stability is meaningless. We cluster username profiles with k-means (k=9). Each
+stability is meaningless. We cluster username profiles with k-means ($k=9$), selected by silhouette score. Each
 cluster is labeled automatically from its centroid. To answer a query, SSHVisual retrieves the query's cluster and ranks the other members by Euclidean distance to the query,
 reported as a similarity score.
 
@@ -515,13 +513,12 @@ ASNs, since large providers can host many unrelated attackers.
 \subsubsection{IP Similarity}
 \label{sec:ipsim}
 
-We characterize each IP by a 14-dimensional profile: 12 features from its activity plus two infrastructure flags. The features fall into four
-groups: volume (log-scaled totals, daily means, and peaks); temporal shape (the fraction of days the IP was active, its burst intensity, its
-largest daily
-swings, a fitted trend slope, activity span, and the share of traffic in the final week); targeting behavior (the number of unique usernames tried, how stable
-that set is day to day, and its top username's share of attacks); and infrastructure (two
-flags indicating whether the IP belongs to a cloud provider and whether it originates from a major source country). We cluster these profiles with k-means, label each cluster
-from its centroid, and answer queries as for usernames.
+We characterize each IP by a 16-dimensional profile: 14 features from its activity plus two infrastructure flags. The features fall into four
+groups: volume (log-scaled totals, daily means, peaks, and final-week attacks); temporal shape (the fraction of days the IP was active, its burst intensity, its
+largest daily swings, a fitted trend slope, activity span, and the share of traffic in the final week); targeting behavior (the number of unique usernames tried, 
+unique usernames per active day, how stable that set is day to day, and its top username's share of attacks); and infrastructure (two
+flags indicating whether the IP belongs to a cloud provider and whether it originates from a major source country). We cluster these profiles with k-means ($k = 20$), 
+selected by silhouette score, label each cluster from its centroid, and answer queries as for usernames.
 
 IP similarity search offers two modes, selected with the \ui{Find by} toggle (label C in Fig.~\ref{fig:ipsim}). The \emph{behavioral} mode, described above, ranks the other
 members of the query's cluster by their distance to the query. The \emph{shared-username}
@@ -793,30 +790,26 @@ A tab never has these columns for its own dimension; for example, the
 or country columns of this kind, because each IP is assumed to
 belong to exactly one ASN and one country.
 
-\begin{figure*}[t]
-\includegraphics[width=\textwidth]{A1.png}
-\caption{All columns of the \ui{Countries} tab.}
-\label{fig:countries}
+\begin{figure*}[!t]
+  \centering
+  \includegraphics[width=\textwidth]{A1.png}
+  \caption{All columns of the \ui{Countries} tab.}
+  \label{fig:countries}
+  \vspace{2mm}
+  \includegraphics[width=\textwidth]{A2.png}
+  \caption{All columns of the \ui{IP Addresses} tab.}
+  \label{fig:IPs}
+  \vspace{2mm}
+  \includegraphics[width=\textwidth]{A3.png}
+  \caption{All columns of the \ui{ASN Organizations} tab.}
+  \label{fig:ASNs}
+  \vspace{2mm}
+  \includegraphics[width=\textwidth]{A4.png}
+  \caption{All columns of the \ui{Usernames} tab.}
+  \label{fig:Usernames}
 \end{figure*}
 
-\begin{figure*}[t]
-\includegraphics[width=\textwidth]{A2.png}
-\caption{All columns of the \ui{IP Addresses} tab.}
-\label{fig:IPs}
-\end{figure*}
-
-\begin{figure*}[t]
-\includegraphics[width=\textwidth]{A3.png}
-\caption{All columns of the \ui{ASN Organizations} tab.}
-\label{fig:ASNs}
-\end{figure*}
-
-\begin{figure*}[t]
-\includegraphics[width=\textwidth]{A4.png}
-\caption{All columns of the \ui{Usernames} tab.}
-\label{fig:Usernames}
-\end{figure*}
-
+\clearpage
 
 \begin{figure}[t]
 \includegraphics[width=\columnwidth]{A5.png}
@@ -825,6 +818,12 @@ showing IPs above 84\% similarity across five countries and six ASNs.}
 \label{fig:campaign222}
 \end{figure}
 
+\begin{figure}[t]
+\includegraphics[width=\columnwidth]{A6.png}
+\caption{Top 20 behavioral similarity matches for \protect\ip{200.195.169.59}
+(Section~\ref{sec:na}), spanning 14 countries and 20 ASNs.}
+\label{fig:campaign333}
+\end{figure}
 
 \section{Username Campaigns}
 \label{app:campaigns}
@@ -839,9 +838,6 @@ and six ASNs. All but one of the 100\% matches share a single ASN,
 but the wider set reaches other providers. This suggests that the campaign's username list is used
 beyond a single hosting provider, either by one operator controlling hosts on several networks or by several operators sharing a list.
 
-
-
-
 \section{Hidden Entities}
 \label{app:hidden}
 
@@ -855,11 +851,6 @@ share an ASN. No single country or ASN block would therefore catch more than a f
 The behavioral similarity search gives
 administrators a candidate set of IPs to consider blocking, along with the shared behavior that supports doing so.
 
-\begin{figure}[t]
-\includegraphics[width=\columnwidth]{A6.png}
-\caption{Top 20 behavioral similarity matches for \protect\ip{200.195.169.59}
-(Section~\ref{sec:na}), spanning 14 countries and 20 ASNs.}
-\label{fig:campaign333}
-\end{figure}
+
 
 \end{document}
