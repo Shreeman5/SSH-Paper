@@ -46,13 +46,13 @@
 \IEEEauthorblockA{\textit{Kahlert School of Computing} \\
 \textit{University of Utah}\\
 Salt Lake City, UT, USA \\
-email address or ORCID}
+u1092041@utah.edu}
 \and
 \IEEEauthorblockN{Robert Ricci}
 \IEEEauthorblockA{\textit{Kahlert School of Computing} \\
 \textit{University of Utah}\\
 Salt Lake City, UT, USA \\
-email address or ORCID}
+ricci@cs.utah.edu}
 }
 
 \maketitle
@@ -108,16 +108,16 @@ Our contributions build on this ability and are designed to complement baseline-
 so colleagues avoid repeat investigations, and those findings can in turn inform automated detection.
 
 Surveys~\cite{7166305, 6007132, zhang2017survey, raynor2022state, wu2018research} map an extensive body of network visualization work, 
-    spanning management, security, anomalies, routing, and DDoS (Section~\ref{sec:related}). 
+    spanning management, security, anomalies, routing, and DDoS; Section~\ref{sec:related} reviews the work closest to ours. 
 Treating the username, alongside IP and ASN, as part of attacker identity, we make three contributions.
 First, we derive operator tasks and requirements (Section~\ref{sec:tasksreqs}). Second, we present SSHVisual, which pairs
-a ranked discovery table and coordinated line charts with similarity search over usernames and IPs, and with shared tagging
+a ranked discovery table and coordinated line charts with similarity search over usernames and IPs, and with shared tagging (as in prior work)
 (Section~\ref{sec:design}). Third, case studies (Section~\ref{sec:eval}) illustrate how SSHVisual serves each operator. For analysts,
 username-based similarity can identify campaigns that volume-based views may split: IPs that try the same usernames
 likely belong to a campaign, even when spanning countries and ASNs, and peaking on different days. For administrators,
-behavioral similarity search can find attackers that volume rankings may hide. Operational monitoring can focus on large
-flows~\cite{estan2002newdirections}, spread-out attackers can evade threshold detectors~\cite{staniford2002spice,griffioen2020collaboration},
-but shared behavior can reveal host relationships~\cite{gu2008botminer}. We make this actionable: from an IP 
+behavioral similarity search can find attackers that volume rankings may hide. While operational monitoring can focus on large
+flows~\cite{estan2002newdirections} and spread-out attackers can evade threshold detectors~\cite{staniford2002spice,griffioen2020collaboration},
+hared behavior can reveal host relationships~\cite{gu2008botminer}. We make this actionable: from an IP 
 the administrator wants blocked, our search surfaces similar low-volume IPs, showing the administrator what to block and why.
 
 
@@ -135,7 +135,7 @@ make network traffic and security events navigable, most being
 traffic-oriented~\cite{mansmann2006interactive, oberheide2006flamingo,
 taylor2009flovis, tremel2022vitalflow, xiao2006enhancing,
 jeong2022interactive, choi2009fast}. Mansmann et al.~\cite{mansmann2009visual} add IDS
-events to NetFlow, Chen et al.\cite{chen2014oceans} add IPS and host logs, and
+events to NetFlow, Chen et al.\cite{chen2014oceans} combine IPS and host logs, and
 Goodall and Sowul\cite{goodall2009viassist} show multidimensional cyber-defense data.
 Livnat et al.~\cite{livnat2005visual} visualize
 IDS alerts, Humphries et al.~\cite{humphries2013elvis} visualize heterogeneous security logs,
@@ -365,7 +365,7 @@ Some columns (label C) are shared across all tabs: total attacks, average daily 
 largest absolute and percentage daily change, attacks in the last week, first-seen and last-seen dates, maximum daily count,
 trend (a sparkline of attacks at seven-day intervals), and burst intensity (ratio of maximum to average daily attacks, where a higher ratio likely indicates
 sporadic, intense attacks). Appendix~\ref{app:columns} lists all columns (labels C and D). The \ui{Countries} tab summarizes traffic origins, 
-but because a campaign’s hosts can span many countries (Section~\ref{sec:eval}), analysis relies mainly on the IP, ASN, and username tabs.
+but because a campaign’s hosts can span many countries, analysis relies mainly on the IP, ASN, and username tabs.
 
 \begin{figure}[t]
   \centering
@@ -638,8 +638,8 @@ so the chart suggests unrelated bursts. Shared usernames suggest one campaign.
 \label{sec:na}
 
 Fig.~\ref{fig:FindingPatterns} shows the behavioral IP similarity search for \ip{200.195.169.59}, from Ligga Telecomunica\c{c}\~{o}es S.A. in 
-Brazil, with 36k attacks. Its five closest matches (88.6--94.9\% similar) come from Brazil, Indonesia, Italy,
-Mexico, and Australia, each from a different ASN. Despite this spread, they behave alike. Each made roughly 30k-40k attacks and the usernames it tries change daily. Although the behavioral mode does not compare usernames, each match shares 1,684 to 1,899 usernames with the
+Brazil, with 36 thousand attacks. Its five closest matches (88.6--94.9\% similar) come from Brazil, Indonesia, Italy,
+Mexico, and Australia, each from a different ASN. Despite this spread, they behave alike. Each made roughly 30-40 thousand attacks and the usernames it tries change daily. Although the behavioral mode does not compare usernames, each match shares 1,684 to 1,899 usernames with the
 searched IP, 46 to 140 of them uncommon (tried by fewer than 1\% of IPs). The searched IP itself tried 3,821 usernames, 925 
 of them uncommon. The pattern extends beyond these five: the top 20 matches, all at least 86\% similar, span 14 countries and 20 
 ASNs (Appendix~\ref{app:hidden}). Together, they suggest relatively low-volume IPs in many countries are working through large, overlapping 
@@ -762,10 +762,10 @@ Figs.~\ref{fig:countries}--\ref{fig:Usernames} show all columns of the
 \ui{Countries}, \ui{IP Addresses}, \ui{ASN Organizations}, and \ui{Usernames} tabs.
 
 \textbf{Columns shared by all tabs.} The upper part of
-Table~\ref{tab:columns} lists the ten columns described in
+Table~\ref{tab:columns} lists the 10 columns described in
 Section~\ref{sec:table}: total attacks, average daily attacks,
 persistence, largest absolute and percentage daily change, attacks in
-the last week, first- and last-seen dates, maximum daily
+the last week, first-seen and last-seen dates, maximum daily
 count, trend, and burst intensity.
 
 \textbf{Cross-dimension columns.} The lower part of
@@ -830,7 +830,7 @@ There, the shared-username search for \ip{68.183.213.225} (DigitalOcean,
 Germany) returned five IPs with 100\% shared-username similarity (Fig.~\ref{fig:UAIPs}).
 All six IPs tried the same 77 usernames, including 16 uncommon ones.
 Fig.~\ref{fig:campaign222} shows the same search beyond those six IPs.
-Twelve IPs score above 84\% similarity, and spanning five countries
+12 IPs score above 84\% similarity, and span five countries
 and six ASNs. All but one of the 100\% matches share a single ASN, 
 but the wider set reaches other providers. This suggests that the campaign's username list is used
 beyond a single provider, either by one operator controlling hosts on several networks or by several operators sharing a list.
