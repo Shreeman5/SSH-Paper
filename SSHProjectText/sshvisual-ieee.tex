@@ -92,11 +92,10 @@ attack campaigns, visual analytics, network security visualization, similarity s
 % =====================  I. INTRODUCTION  =====================
 \section{Introduction}
 \label{sec:intro}
-SSH~\cite{ylonen1996ssh} lets users connect securely, run commands, and perform remote
-administration. Many users gain access with a username and password. Attackers try to
-brute-force~\cite{295683} SSH logins. They guess username--password combinations to exploit
-poorly secured systems, which they then use to build botnets~\cite{295683} for further attacks~\cite{antonakakis2017understanding, kolias2017ddos} 
-or to mine cryptocurrency with stolen resources~\cite{dang2019understanding, pastrana2019first}.
+Many computer systems employ SSH~\cite{ylonen1996ssh} for secure connections, giving legitimate users the ability to execute commands and perform remote
+administration.
+A common class of attacks against these systems are brute-force attempts to guess username--password combinations~\cite{295683}. Such attacks are still prevalent because they are relatively cheap to execute and there are still plenty of poorly secured targets.
+Once in, attackers frequently use compromised systems to build botnets~\cite{295683} to carry out further attacks~\cite{antonakakis2017understanding, kolias2017ddos} or steal resources from the systems, such as for cryptomining~\cite{dang2019understanding, pastrana2019first}.
 Given the prevalence of SSH attacks across IPv4~\cite{295683}, we designed SSHVisual and evaluated it on login attacks from our production SSH systems. 
 SSHVisual serves two kinds of
 network operators: network administrators, who handle daily SSH traffic and need to quickly identify and block attackers; and security analysts, who study traffic
